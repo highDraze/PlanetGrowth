@@ -16,6 +16,7 @@ public class Hand : MonoBehaviour
     public int maxEnergy = 3;
     public int energy = 0;
 
+    public Transform cardLayoutParent;
     public CardInfo[] cardInfos;
     private List<GameObject> possibleCardsToDraw = new List<GameObject>();
 
@@ -38,12 +39,13 @@ public class Hand : MonoBehaviour
 
         while (handCards.Count < handSize)
             DrawCard();
+        LayoutCards();
     }
 
     private void DrawCard()
     {
         var randomPrefab = possibleCardsToDraw[Random.Range(0, possibleCardsToDraw.Count)];
-        var card = Instantiate(randomPrefab);
+        var card = Instantiate(randomPrefab, cardLayoutParent);
         handCards.Add(card.GetComponent<Card>());
     }
 
@@ -60,7 +62,18 @@ public class Hand : MonoBehaviour
                 handCards.RemoveAt(i);
                 Destroy(card.gameObject);
                 DrawCard();
+                LayoutCards();
             }
+        }
+    }
+
+    private void LayoutCards()
+    {
+        float width = 5.0f;
+        float stepSize = 2 * width / handSize;
+        for (int i = 0; i < handCards.Count; i++)
+        {
+            handCards[i].targetPosition = new Vector3(i * stepSize - width, 0, 0);
         }
     }
 }

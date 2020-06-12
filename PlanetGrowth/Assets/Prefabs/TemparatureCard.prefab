@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4701617258570176941}
+  - component: {fileID: 2072430667225613747}
   m_Layer: 0
-  m_Name: Card
+  m_Name: TemparatureCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,6 +32,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2072430667225613747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3268830537082418814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b670131e2283894784c4ad3c5eb8abe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 1
+  moveSpeed: 5
+  targetPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &4769879550051407571
 GameObject:
   m_ObjectHideFlags: 0
@@ -40,7 +56,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8128030814407629299}
-  - component: {fileID: 8823505719804273255}
   - component: {fileID: 1319776105679660888}
   - component: {fileID: 5447683663044874467}
   m_Layer: 0
@@ -64,19 +79,6 @@ Transform:
   m_Father: {fileID: 4701617258570176941}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8823505719804273255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4769879550051407571}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b670131e2283894784c4ad3c5eb8abe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cost: 1
 --- !u!23 &1319776105679660888
 MeshRenderer:
   m_ObjectHideFlags: 0
