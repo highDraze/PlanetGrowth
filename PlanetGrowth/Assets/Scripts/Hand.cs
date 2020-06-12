@@ -13,6 +13,7 @@ public class Hand : MonoBehaviour
 {
     public int handSize = 5;
     public float handWidth = 2.0f;
+    public float cardMoveSpeed = 10.0f;
 
     public float maxEnergy = 3;
     public float energy = 0;
@@ -42,7 +43,7 @@ public class Hand : MonoBehaviour
 
         while (handCards.Count < handSize)
             DrawCard();
-        LayoutCards();
+        UpdateCardLayoutPosition();
     }
 
     private void DrawCard()
@@ -70,12 +71,16 @@ public class Hand : MonoBehaviour
                 handCards.RemoveAt(i);
                 Destroy(card.gameObject);
                 DrawCard();
-                LayoutCards();
+                UpdateCardLayoutPosition();
             }
         }
+
+        // move cards
+        foreach (var card in handCards)
+            card.transform.localPosition = Vector3.Lerp(card.transform.localPosition, card.targetPosition, cardMoveSpeed * Time.deltaTime);
     }
 
-    private void LayoutCards()
+    private void UpdateCardLayoutPosition()
     {
         float width = 2.0f;
         float stepSize = 2 * width / handSize;
