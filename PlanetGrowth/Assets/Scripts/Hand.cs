@@ -1,38 +1,66 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
+
+[System.Serializable]
+public struct CardInfo
+{
+    public GameObject card;
+    public int amount;
+}
 
 public class Hand : MonoBehaviour
 {
-   public int energy = 3;
-    public List<Card> handCards = new List<Card>();
+    public int handSize = 5;
+
+    public int maxEnergy = 3;
+    public int energy = 0;
+
+    public CardInfo[] cardInfos;
+    private List<GameObject> possibleCardsToDraw = new List<GameObject>();
+
+    private List<Card> handCards = new List<Card>();
+
     // Start is called before the first frame update
     void Start()
     {
-        handCards.Add(GameObject.Find("Card").GetComponent<Card>());
+        energy = maxEnergy;
+        foreach (var cardInfo in cardInfos)
+            for (int i = 0; i < cardInfo.amount; i++)
+                possibleCardsToDraw.Add(cardInfo.card);
+
+        if (possibleCardsToDraw.Count == 0)
+        {
+            Debug.LogError("No cards provided");
+            Destroy(gameObject);
+            return;
+        }
+
+        while (handCards.Count < handSize)
+            DrawCard();
+    }
+
+    private void DrawCard()
+    {
+        var randomPrefab = possibleCardsToDraw[Random.Range(0, possibleCardsToDraw.Count)];
+        var card = Instantiate(randomPrefab);
+        handCards.Add(card.GetComponent<Card>());
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Energy: " + energy);
-        if (Input.GetKeyDown(KeyCode.Alpha1)&& handCards.Count > 0 && energy > handCards[0].cost )
+        for (int i = 0; i < handCards.Count; i++)
         {
-            energy -= handCards[0].cost;
-            handCards[0].Effect();
-            handCards.RemoveAt(0);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2) && handCards.Count > 1 && energy > handCards[1].cost)
-        {
-            energy -= handCards[1].cost;
-            handCards[1].Effect();
-            handCards.RemoveAt(1);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3) && handCards.Count > 2 && energy > handCards[2].cost)
-        {
-            energy -= handCards[2].cost;
-            handCards[2].Effect();
-            handCards.RemoveAt(2);
+            var card = handCards[i];
+            if (Input.GetKeyDown(KeyCode.Alpha1 + i) && energy > card.cost)
+            {
+                energy -= card.cost;
+                card.Effect();
+                handCards.RemoveAt(i);
+                Destroy(card.gameObject);
+                DrawCard();
+            }
         }
     }
 }
