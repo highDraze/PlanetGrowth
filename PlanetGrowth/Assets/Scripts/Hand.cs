@@ -14,8 +14,9 @@ public class Hand : MonoBehaviour
     public int handSize = 5;
     public float handWidth = 2.0f;
 
-    public int maxEnergy = 3;
-    public int energy = 0;
+    public float maxEnergy = 3;
+    public float energy = 0;
+    public float energyPerSecond = 1;
 
     public Transform cardLayoutParent;
     public CardInfo[] cardInfos;
@@ -27,6 +28,7 @@ public class Hand : MonoBehaviour
     void Start()
     {
         energy = maxEnergy;
+
         foreach (var cardInfo in cardInfos)
             for (int i = 0; i < cardInfo.amount; i++)
                 possibleCardsToDraw.Add(cardInfo.card);
@@ -54,6 +56,10 @@ public class Hand : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        energy += energyPerSecond * Time.deltaTime;
+        if (energy > maxEnergy)
+            energy = maxEnergy;
+
         for (int i = 0; i < handCards.Count; i++)
         {
             var card = handCards[i];

@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 1
-  moveSpeed: 5
+  moveSpeed: 10
   targetPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &4769879550051407571
 GameObject:
