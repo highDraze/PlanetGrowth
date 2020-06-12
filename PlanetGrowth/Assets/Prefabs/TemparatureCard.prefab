@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4701617258570176941}
-  - component: {fileID: 2072430667225613747}
+  - component: {fileID: 8787018424982525957}
   m_Layer: 0
   m_Name: TemparatureCard
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2072430667225613747
+--- !u!114 &8787018424982525957
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,11 +41,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3268830537082418814}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b670131e2283894784c4ad3c5eb8abe, type: 3}
+  m_Script: {fileID: 11500000, guid: 02ec2d12b0b481e41b62f0a8e89be055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 1
-  moveSpeed: 10
   targetPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &4769879550051407571
 GameObject:
