@@ -13,17 +13,20 @@ public class Hand : MonoBehaviour
 {
     public int handSize = 5;
     public float handWidth = 2.0f;
-    public float cardMoveSpeed = 10.0f;
 
     public float maxEnergy = 3;
     public float energy = 0;
     public float energyPerSecond = 1;
+
+    public LayerMask mouseColliderLayer;
+    public LayerMask hexLayer;
 
     public Transform cardLayoutParent;
     public CardInfo[] cardInfos;
     private List<GameObject> possibleCardsToDraw = new List<GameObject>();
 
     private List<Card> handCards = new List<Card>();
+    private Card heldCard = null;
 
     // Start is called before the first frame update
     void Start()
@@ -64,20 +67,49 @@ public class Hand : MonoBehaviour
         for (int i = 0; i < handCards.Count; i++)
         {
             var card = handCards[i];
-            if (Input.GetKeyDown(KeyCode.Alpha1 + i) && energy > card.cost)
+            if (energy > card.cost && Input.GetKeyDown(KeyCode.Alpha1 + i))
             {
-                energy -= card.cost;
-                card.Effect();
-                handCards.RemoveAt(i);
-                Destroy(card.gameObject);
-                DrawCard();
-                UpdateCardLayoutPosition();
+                PlayCard(card);
             }
         }
 
-        // move cards
         foreach (var card in handCards)
-            card.transform.localPosition = Vector3.Lerp(card.transform.localPosition, card.targetPosition, cardMoveSpeed * Time.deltaTime);
+            if (card.wasClicked)
+                heldCard = card;
+
+        if (heldCard != null)
+        {
+            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out var hitPoint, 1000, mouseColliderLayer.value))
+            {
+                var target = cardLayoutParent.worldToLocalMatrix.MultiplyPoint(hitPoint.point);
+                heldCard.targetPosition = target;
+            }
+        }
+
+        if (heldCard != null && Input.GetMouseButtonUp(0))
+        {
+            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (energy > heldCard.cost && Physics.Raycast(ray, out var hitPoint, 1000, hexLayer.value))
+            {
+                PlayCard(heldCard);
+            }
+
+            heldCard = null;
+            UpdateCardLayoutPosition();
+        }
+    }
+
+    private void PlayCard(Card card)
+    {
+        heldCard = null;
+        energy -= card.cost;
+
+        card.Effect();
+
+        handCards.Remove(card);
+        DrawCard();
+        UpdateCardLayoutPosition();
     }
 
     private void UpdateCardLayoutPosition()
