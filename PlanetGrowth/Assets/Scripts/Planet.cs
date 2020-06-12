@@ -23,7 +23,7 @@ public class Planet : MonoBehaviour
     void Start()
     {
         AddGap();
-        CreateGrid();
+        CreateGrid2();
     }
 
     // Update is called once per frame
@@ -58,6 +58,28 @@ public class Planet : MonoBehaviour
         }
 
     }
+    void CreateGrid2()
+    {
+        for (int i = 0; i < 12; i++)
+        {
+            for (int j = 0; j < 5; j++)
+            {
+                Transform hex = Instantiate(hexPrefab) as Transform;
+                Vector2 gridPos = new Vector2(i, j);
+                hex.rotation = CalcRotation(gridPos);
+                hex.position = CalcWorldPos2(gridPos);
+                hex.parent = this.transform;
+                hex.name = "Hexagon" + i + "|" + j;
+                surfaceHexagons.Add(hex);
+            }
+        }
+    }
+
+    private Quaternion CalcRotation(Vector2 gridPos)
+    {
+        return Quaternion.Euler(-27f, 72f * gridPos.y, 0f);
+        
+    }
 
     Vector3 CalcWorldPos(Vector2 gridPos)
     {
@@ -67,6 +89,13 @@ public class Planet : MonoBehaviour
             offset = hexWidth / 2;
         }
         float x = startPos.x + gridPos.x * hexWidth + offset;
+        float z = startPos.z - gridPos.y * hexHeigth * 0.75f;
+        return new Vector3(x, 0, z);
+    }
+    Vector3 CalcWorldPos2(Vector2 gridPos)
+    {
+
+        float x = startPos.x + gridPos.x * hexWidth;
         float z = startPos.z - gridPos.y * hexHeigth * 0.75f;
         return new Vector3(x, 0, z);
     }
