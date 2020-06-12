@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4701617258570176941}
   - component: {fileID: 8787018424982525957}
+  - component: {fileID: 7420976533820033597}
   m_Layer: 0
-  m_Name: TemparatureCard
+  m_Name: ExampleCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,6 +47,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 1
   targetPosition: {x: 0, y: 0, z: 0}
+--- !u!65 &7420976533820033597
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3268830537082418814}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6, y: 1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4769879550051407571
 GameObject:
   m_ObjectHideFlags: 0
