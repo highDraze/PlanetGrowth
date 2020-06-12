@@ -12,6 +12,7 @@ public struct CardInfo
 public class Hand : MonoBehaviour
 {
     public int handSize = 5;
+    public float handWidth = 2.0f;
 
     public int maxEnergy = 3;
     public int energy = 0;
@@ -46,6 +47,7 @@ public class Hand : MonoBehaviour
     {
         var randomPrefab = possibleCardsToDraw[Random.Range(0, possibleCardsToDraw.Count)];
         var card = Instantiate(randomPrefab, cardLayoutParent);
+        card.transform.localPosition = new Vector3(handWidth + 5, 0, 0);
         handCards.Add(card.GetComponent<Card>());
     }
 
@@ -69,11 +71,11 @@ public class Hand : MonoBehaviour
 
     private void LayoutCards()
     {
-        float width = 5.0f;
+        float width = 2.0f;
         float stepSize = 2 * width / handSize;
         for (int i = 0; i < handCards.Count; i++)
         {
-            handCards[i].targetPosition = new Vector3(i * stepSize - width, 0, 0);
+            handCards[i].targetPosition = new Vector3((i + 0.5f) * stepSize - width, 0, 0);
         }
     }
 }
