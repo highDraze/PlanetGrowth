@@ -8,7 +8,7 @@ public class Planet : MonoBehaviour
     public List<Transform> surfaceHexagons;
     public float temperature;
 
-    public Transform hexPrefab;
+    public GameObject hexPrefab;
     public int gridWidth = 12;
     public int gridHeigth = 12;
 
@@ -47,7 +47,7 @@ public class Planet : MonoBehaviour
         {
             for (int j = 0; j < gridWidth; j++)
             {
-                Transform hex = Instantiate(hexPrefab) as Transform;
+                Transform hex = Instantiate(hexPrefab).transform;
                 Vector2 gridPos = new Vector2(i, j);
                 hex.position = CalcWorldPos(gridPos);
                 hex.rotation = CalcRotation(gridPos);
@@ -76,7 +76,7 @@ public class Planet : MonoBehaviour
         {
             for (int j = 0; j < 5; j++)
             {
-                Transform hex = Instantiate(hexPrefab) as Transform;
+                Transform hex = Instantiate(hexPrefab).transform;
                 Vector2 gridPos = new Vector2(i, j);
                 hex.rotation = CalcRotation2(gridPos);
                 hex.position = CalcWorldPos2(gridPos);

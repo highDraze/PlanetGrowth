@@ -13,6 +13,7 @@ public class Hand : MonoBehaviour
 {
     public int handSize = 5;
     public float handWidth = 2.0f;
+    public float cardDragHeight = 0.2f;
 
     public float maxEnergy = 3;
     public float energy = 0;
@@ -22,6 +23,7 @@ public class Hand : MonoBehaviour
     public LayerMask hexLayer;
 
     public Transform cardLayoutParent;
+    public Transform cardSpawnLocation;
     public CardInfo[] cardInfos;
     private List<GameObject> possibleCardsToDraw = new List<GameObject>();
 
@@ -53,7 +55,9 @@ public class Hand : MonoBehaviour
     {
         var randomPrefab = possibleCardsToDraw[Random.Range(0, possibleCardsToDraw.Count)];
         var card = Instantiate(randomPrefab, cardLayoutParent);
-        card.transform.localPosition = new Vector3(handWidth + 5, 0, 0);
+        card.transform.localPosition = cardSpawnLocation.localPosition;
+        card.transform.localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
+        card.transform.localScale = new Vector3(0, 0, 0);
         handCards.Add(card.GetComponent<Card>());
     }
 
@@ -76,13 +80,14 @@ public class Hand : MonoBehaviour
         foreach (var card in handCards)
             if (card.wasClicked)
                 heldCard = card;
-
+        UpdateCardLayoutPosition();
         if (heldCard != null)
         {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out var hitPoint, 1000, mouseColliderLayer.value))
             {
                 var target = cardLayoutParent.worldToLocalMatrix.MultiplyPoint(hitPoint.point);
+                target.z = -cardDragHeight;
                 heldCard.targetPosition = target;
             }
         }
@@ -114,11 +119,10 @@ public class Hand : MonoBehaviour
 
     private void UpdateCardLayoutPosition()
     {
-        float width = 2.0f;
-        float stepSize = 2 * width / handSize;
+        float stepSize = 2 * handWidth / handSize;
         for (int i = 0; i < handCards.Count; i++)
         {
-            handCards[i].targetPosition = new Vector3((i + 0.5f) * stepSize - width, 0, 0);
+            handCards[i].targetPosition = new Vector3((i + 0.5f) * stepSize - handWidth, 0, 0);
         }
     }
 }
