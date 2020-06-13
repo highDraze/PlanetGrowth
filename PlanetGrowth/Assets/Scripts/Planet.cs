@@ -67,11 +67,11 @@ public class Planet : MonoBehaviour
 
         float radius = hexWidth * 2;
         float offset = 0;
-        if (gridPos.x % 2 != 0)
+        if (gridPos.y % 2 != 0)
         {
             offset = 0.5f;
         }
-        float ang = (360 / gridHeigth) * (gridPos.x);
+        float ang = (360 / gridHeigth) * (gridPos.x+offset);
         Vector3 pos;
         pos.z = startPos.z + radius * Mathf.Sin(ang * Mathf.Deg2Rad);
         pos.y = startPos.y + radius * Mathf.Cos(ang * Mathf.Deg2Rad);
@@ -79,7 +79,7 @@ public class Planet : MonoBehaviour
 
 
 
-        pos.x = startPos.x + (gridPos.y + offset)* (hexHeigth)*0.75f;
+        pos.x = startPos.x + (gridPos.y )* (hexHeigth)*0.75f;
         return pos;
     }
     private Quaternion CalcRotation(Vector2 gridPos)
@@ -87,7 +87,7 @@ public class Planet : MonoBehaviour
         float offset = 0;
         if (gridPos.y % 2 != 0)
         {
-   //         offset = 0.5f;
+            offset = 0.5f;
         }
         return Quaternion.Euler((gridPos.x + offset) * 360 / gridHeigth+90, 0, 0);
     }
