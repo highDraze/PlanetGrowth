@@ -134,12 +134,18 @@ public class Hand : MonoBehaviour
                     
                         int new_index = GameObject.Find("Planet").GetComponent<Planet>().getHexagonIndex(hitPoint.transform);
                         Debug.Log(new_index);
-                        //hex.material = highlightedHex;
-                        if (new_index != hoveredHex)
-                        {
+                    //hex.material = highlightedHex;
+                    if (new_index != hoveredHex)
+                    {
 
-                            //selectSingle(new_index);
+                        if (phase == 1)
+                        { 
+                            selectSingle(new_index);
+                        }
+                        if (phase == 2)
+                        { 
                             selectSeven(new_index);
+                        }
                             hoveredHex = new_index;
                       
 
@@ -268,8 +274,12 @@ public class Hand : MonoBehaviour
         }
 
     }
-    
-    private void selectOnePlusRnd()
+
+    public void changeLocalTemperature(int value)
+    {
+
+    }
+    public void changeLocalHumidity(int value)
     {
 
     }
