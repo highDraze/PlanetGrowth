@@ -1,17 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
+
 
 public class Hexagon : MonoBehaviour
 {
     public Color color;
+    public GameObject model1;
+    public GameObject model2;
+    public GameObject model3;
+    private GameObject currentModel;
 
-     int temperature;
-     int humidity;
+    int temperature;
+    int humidity;
 
     // Start is called before the first frame update
     void Start()
     {
+       
+
+
         transform.GetChild(0).GetChild(0).GetComponent<ParticleSystem>().Stop();
         int a = Random.Range(0, 2);
         
@@ -29,8 +38,101 @@ public class Hexagon : MonoBehaviour
 
         updateMaterial();
     }
+
     void updateMaterial()
     {
+
+        if (temperature == -2){
+            if(humidity == -2){
+
+            }
+            else if(humidity == -1){
+
+            }
+            else if (humidity == 0){
+
+            }
+            else if (humidity == 1){
+
+            }
+            else if (humidity == 2){
+
+            }
+        }
+        else if (temperature == -1){
+            if (humidity == -2){
+
+            }
+            else if (humidity == -1){
+
+            }
+            else if (humidity == -1){
+
+            }
+            else if (humidity == 0){
+
+            }
+            else if (humidity == 1){
+
+            }
+            else if (humidity == 2){
+
+            }
+        }
+        else if (temperature == 0){
+            if (humidity == -2){
+
+            }
+            else if (humidity == -1){
+
+            }
+            else if (humidity == 0){
+
+            }
+            else if (humidity == 1){
+
+            }
+            else if (humidity == 2){
+
+            }
+        }
+        else if (temperature == 1){
+            if (humidity == -2){
+
+            }
+            else if (humidity == -1){
+
+            }
+            else if (humidity == 0){
+
+            }
+            else if (humidity == 1){
+
+            }
+            else if (humidity == 2){
+
+            }
+        }
+        else if (temperature == 2){
+            if (humidity == -2){
+
+            }
+            else if (humidity == -1){
+
+            }
+            else if (humidity == 0){
+
+            }
+            else if (humidity == 1){
+
+            }
+            else if (humidity == 2){
+
+            }
+        }
+
+
+
         if (temperature == 2 && humidity == 2)
         {
             GetComponentInChildren<MeshRenderer>().material = GameObject.Find("Planet").GetComponent<Planet>().biome1;
@@ -55,6 +157,10 @@ public class Hexagon : MonoBehaviour
             GetComponentInChildren<MeshRenderer>().material = GameObject.Find("Planet").GetComponent<Planet>().biome5;
 
         }
+    }
+
+    void applyBiomeChanges(int biome){
+
     }
 
     public int getTemperatur() {
