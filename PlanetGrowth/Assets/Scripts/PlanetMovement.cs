@@ -26,16 +26,16 @@ public class PlanetMovement : MonoBehaviour
         {
             dragging = false;
             if (Input.GetKey("w")) {
-                transform.rotation *= Quaternion.Euler(0.1f * rotationSpeed, 0, 0);
+                transform.rotation *= Quaternion.Euler(10 * rotationSpeed * Time.deltaTime , 0, 0);
             }
             else if (Input.GetKey("s")){
-                transform.rotation *= Quaternion.Euler(-0.1f * rotationSpeed, 0, 0);
+                transform.rotation *= Quaternion.Euler(-10 * rotationSpeed * Time.deltaTime, 0, 0);
             }
             if (Input.GetKey("a")) {
-                transform.position += new Vector3(-1 * horizontalSpeed, 0, 0);
+                transform.position += new Vector3(50 * horizontalSpeed * Time.deltaTime, 0, 0);
             }
             else if (Input.GetKey("d")) {
-                transform.position += new Vector3(horizontalSpeed, 0, 0);
+                transform.position += new Vector3(-50 * horizontalSpeed * Time.deltaTime, 0, 0);
             }
         }
         else
