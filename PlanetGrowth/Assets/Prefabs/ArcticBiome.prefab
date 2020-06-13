@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1047092077886566775
+--- !u!1 &554193514199188721
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,7 +8,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7190052047852693408}
+  - component: {fileID: 7705890533644866086}
   m_Layer: 0
   m_Name: Rota Parent
   m_TagString: Untagged
@@ -16,22 +16,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7190052047852693408
+--- !u!4 &7705890533644866086
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1047092077886566775}
+  m_GameObject: {fileID: 554193514199188721}
   m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: 0, z: 0.001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4018748736858835431}
-  m_Father: {fileID: 8484127104222690096}
+  - {fileID: 1597626894277912022}
+  m_Father: {fileID: 8972661414536810166}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: -90}
---- !u!1 &4424561599587695451
+--- !u!1 &3773968074687172317
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -39,106 +39,101 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8484127104222690096}
+  - component: {fileID: 8972661414536810166}
   m_Layer: 0
-  m_Name: ArcticBiome
+  m_Name: ArcticBiome 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8484127104222690096
+--- !u!4 &8972661414536810166
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4424561599587695451}
+  m_GameObject: {fileID: 3773968074687172317}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 7190052047852693408}
+  - {fileID: 7705890533644866086}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &8268541165286777597
+--- !u!1001 &6003683117801541324
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 7190052047852693408}
+    m_TransformParent: {fileID: 7705890533644866086}
     m_Modifications:
-    - target: {fileID: -4216859302048453862, guid: 1e02f88ffb837114d837ad6a19cd52ca,
+    - target: {fileID: -4216859302048453862, guid: 1d1baf4aa206fd348a646d8e6e42af58,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 1e02f88ffb837114d837ad6a19cd52ca,
+    - target: {fileID: -4216859302048453862, guid: 1d1baf4aa206fd348a646d8e6e42af58,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 1e02f88ffb837114d837ad6a19cd52ca,
+    - target: {fileID: -4216859302048453862, guid: 1d1baf4aa206fd348a646d8e6e42af58,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 1e02f88ffb837114d837ad6a19cd52ca,
+    - target: {fileID: -4216859302048453862, guid: 1d1baf4aa206fd348a646d8e6e42af58,
         type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 1e02f88ffb837114d837ad6a19cd52ca,
+    - target: {fileID: -4216859302048453862, guid: 1d1baf4aa206fd348a646d8e6e42af58,
         type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 1e02f88ffb837114d837ad6a19cd52ca,
+    - target: {fileID: -4216859302048453862, guid: 1d1baf4aa206fd348a646d8e6e42af58,
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 1e02f88ffb837114d837ad6a19cd52ca,
+    - target: {fileID: -4216859302048453862, guid: 1d1baf4aa206fd348a646d8e6e42af58,
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 1e02f88ffb837114d837ad6a19cd52ca,
+    - target: {fileID: -4216859302048453862, guid: 1d1baf4aa206fd348a646d8e6e42af58,
         type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 1e02f88ffb837114d837ad6a19cd52ca,
+    - target: {fileID: -4216859302048453862, guid: 1d1baf4aa206fd348a646d8e6e42af58,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 1e02f88ffb837114d837ad6a19cd52ca,
+    - target: {fileID: -4216859302048453862, guid: 1d1baf4aa206fd348a646d8e6e42af58,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: 1e02f88ffb837114d837ad6a19cd52ca,
+    - target: {fileID: -4216859302048453862, guid: 1d1baf4aa206fd348a646d8e6e42af58,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 1e02f88ffb837114d837ad6a19cd52ca,
+    - target: {fileID: -927199367670048503, guid: 1d1baf4aa206fd348a646d8e6e42af58,
         type: 3}
       propertyPath: m_Name
-      value: arctic
-      objectReference: {fileID: 0}
-    - target: {fileID: 8320745930592524824, guid: 1e02f88ffb837114d837ad6a19cd52ca,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.266
+      value: biome_arctic
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1e02f88ffb837114d837ad6a19cd52ca, type: 3}
---- !u!4 &4018748736858835431 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: 1d1baf4aa206fd348a646d8e6e42af58, type: 3}
+--- !u!4 &1597626894277912022 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 1e02f88ffb837114d837ad6a19cd52ca,
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 1d1baf4aa206fd348a646d8e6e42af58,
     type: 3}
-  m_PrefabInstance: {fileID: 8268541165286777597}
+  m_PrefabInstance: {fileID: 6003683117801541324}
   m_PrefabAsset: {fileID: 0}
