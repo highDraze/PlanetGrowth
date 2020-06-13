@@ -10,10 +10,7 @@ public class Biome
     private int[] temperatureRange = new int[2];
     private int[] humidRange = new int[2];
     private String biome_name;
-
-
-    private int material;
-    private int texture;
+    private GameObject biomePrefab;
 
 
 
@@ -24,15 +21,13 @@ public class Biome
     }
 
     public void InitBiome(int _id, int[] _tempetemperatureRanges, 
-        int[] _humidRanges, String _name, int _material = 0, int _texture = 0) 
+        int[] _humidRanges, String _name, GameObject _biomePrefab) 
     {
         id = _id;
         temperatureRange = _tempetemperatureRanges;
         humidRange = _humidRanges;
         biome_name = _name;
-        material = _material;
-        texture = _texture;
-
+        biomePrefab = _biomePrefab;
     }
     
     public bool MatchBiome(int _temperature, int _humidity) {
@@ -53,4 +48,9 @@ public class Biome
     {
         
     }
+
+    public GameObject getPrefab() {
+        return biomePrefab;
+    }
+
 }
