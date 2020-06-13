@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.XR.WSA.Input;
+//using UnityEngine.XR.WSA.Input;
 
 public abstract class Card : MonoBehaviour
 {
