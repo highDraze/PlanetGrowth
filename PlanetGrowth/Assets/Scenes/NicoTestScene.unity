@@ -654,7 +654,7 @@ MonoBehaviour:
   biome3: {fileID: 2100000, guid: 01ade7a67254a124caf1d4b330fe9c12, type: 2}
   biome4: {fileID: 2100000, guid: 972e6327eb635424daf1441bef986104, type: 2}
   biome5: {fileID: 2100000, guid: 20d398af6a9b7ac4ebbe1c0a5aa1c1f2, type: 2}
-  hexPrefab: {fileID: 4341543263165541772, guid: b862b0f4ce9cac647a7caca876bc0168,
+  hexPrefab: {fileID: 2872072023232757229, guid: 7cf44ee6af0236b4aa485b0a3682599b,
     type: 3}
   gridWidth: 10
   gridHeigth: 10
