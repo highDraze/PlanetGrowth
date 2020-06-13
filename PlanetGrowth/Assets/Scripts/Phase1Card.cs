@@ -28,8 +28,6 @@ public class Phase1Card : Card
     public override void Effects()
     {
         ExecuteEffects();
-        Debug.Log("Example card played");
-     //   Destroy(gameObject, 0.5f);
     }
 
     private void ExecuteEffects()

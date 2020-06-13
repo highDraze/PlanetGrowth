@@ -10,7 +10,9 @@ public class Hexagon : MonoBehaviour
     public GameObject model1;
     public GameObject model2;
     public GameObject model3;
+
     private GameObject currentModel;
+    private int biome;
 
     int temperature;
     int humidity;
@@ -41,7 +43,13 @@ public class Hexagon : MonoBehaviour
 
     void updateMaterial()
     {
-
+        Biome newBiome = GameObject.Find("Planet").GetComponent<Planet>().DetermineMatchingBiome(temperature, humidity);
+        if(newBiome != null) {
+            // succes - assign new prefab
+        } else {
+            // Fail - no match was found
+        }
+/*
         if (temperature == -2){
             if(humidity == -2){
 
@@ -156,7 +164,7 @@ public class Hexagon : MonoBehaviour
         if (temperature != -2 && temperature != 2) {
             GetComponentInChildren<MeshRenderer>().material = GameObject.Find("Planet").GetComponent<Planet>().biome5;
 
-        }
+        }*/
     }
 
     void applyBiomeChanges(int biome){
