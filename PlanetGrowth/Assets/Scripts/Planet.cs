@@ -35,9 +35,9 @@ public class Planet : MonoBehaviour
         return -1;
     }
 
-    public void highlightBiome(int hexIndex, Material material)
+    public void highlightBiome(int hexIndex, bool isHovered)
     {
-        surfaceHexagons[hexIndex].GetChild(0).GetComponent<MeshRenderer>().material = material;
+        // surfaceHexagons[hexIndex].GetChild(0).GetComponent<MeshRenderer>().material = material;
     }
 
     // Start is called before the first frame update

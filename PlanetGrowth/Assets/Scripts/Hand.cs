@@ -11,13 +11,13 @@ public struct CardInfo
 
 public class Hand : MonoBehaviour
 {
-<<<<<<< HEAD
+
     public int phase = 1;
-=======
+
     public Material highlightedHex;
     public Material normalHex;
 
->>>>>>> 677e36a4fa7a9788822da02dabf9be9b2a51f244
+
     public int handSize = 5;
     public float handWidth = 2.0f;
     public float cardDragHeight = 0.2f;
@@ -202,8 +202,8 @@ public class Hand : MonoBehaviour
 
     private void selectSingle(int new_index)
     {
-        GameObject.Find("Planet").GetComponent<Planet>().highlightBiome(new_index, highlightedHex);
-        GameObject.Find("Planet").GetComponent<Planet>().highlightBiome(hoveredHex, normalHex);
+        GameObject.Find("Planet").GetComponent<Planet>().highlightBiome(new_index, true);
+        GameObject.Find("Planet").GetComponent<Planet>().highlightBiome(hoveredHex, false);
     }
 
     private void selectSeven(int new_index)
@@ -222,7 +222,7 @@ public class Hand : MonoBehaviour
 
         foreach (int ele in hovereredList)
         {
-            planet.highlightBiome(ele, normalHex);
+            planet.highlightBiome(ele, false);
         }
 
         hovereredList = new List<int>();
@@ -264,7 +264,7 @@ public class Hand : MonoBehaviour
 
         foreach ( int ele in hovereredList)
         {
-            planet.highlightBiome(ele, highlightedHex);
+            planet.highlightBiome(ele, true);
         }
 
     }
