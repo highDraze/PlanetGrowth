@@ -7,10 +7,12 @@ public class Planet : MonoBehaviour
 {
     public List<Transform> surfaceHexagons;
     public float temperature;
+    public float humidity;
+    public float airquality;
 
     public GameObject hexPrefab;
     public int gridWidth = 12;
-    public int gridHeigth = 12;
+    public int gridHeigth = 6;
 
     float hexWidth = 1.732f;
     float hexHeigth = 2.0f;

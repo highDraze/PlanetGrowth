@@ -110,7 +110,7 @@ public class Hand : MonoBehaviour
         heldCard = null;
         energy -= card.cost;
 
-        card.Effect();
+        card.Effects();
 
         handCards.Remove(card);
         DrawCard();
