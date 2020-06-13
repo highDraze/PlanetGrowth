@@ -254,7 +254,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 972e6327eb635424daf1441bef986104, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -449,7 +449,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 972e6327eb635424daf1441bef986104, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -530,7 +530,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 972e6327eb635424daf1441bef986104, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -609,9 +609,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 1
-  targetPosition: {x: 0, y: 0, z: 0}
-  wasClicked: 0
   moveSpeed: 10
+  rotationSpeed: 10
+  scaleSpeed: 10
+  targetAngle: 0
+  targetPosition: {x: 0, y: 0, z: 0}
+  targetScale: {x: 1, y: 1, z: 1}
+  wasClicked: 0
 --- !u!65 &896414664462318846
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -706,7 +710,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c13143abaa29da842b6184b50190f8c8, type: 2}
+      objectReference: {fileID: 2100000, guid: 972e6327eb635424daf1441bef986104, type: 2}
     - target: {fileID: -927199367670048503, guid: 530b65af971d1d34db4776de243c4a71,
         type: 3}
       propertyPath: m_Name
