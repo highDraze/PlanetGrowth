@@ -152,7 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   surfaceHexagons: []
   temperature: 0
-  hexPrefab: {fileID: -4216859302048453862, guid: 19981a45db9ef1c4fbc15984572ba098,
+  hexPrefab: {fileID: -4216859302048453862, guid: 7763d5c3138c0f3408af1c9f92a2cec5,
     type: 3}
   gridWidth: 11
   gridHeigth: 11
@@ -348,9 +348,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b670131e2283894784c4ad3c5eb8abe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 1
-  moveSpeed: 5
-  targetPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1103389318
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,6 +474,12 @@ MonoBehaviour:
   maxEnergy: 3
   energy: 3
   energyPerSecond: 1
+  mouseColliderLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  hexLayer:
+    serializedVersion: 2
+    m_Bits: 0
   cardLayoutParent: {fileID: 0}
   cardInfos: []
 --- !u!4 &1859668423
