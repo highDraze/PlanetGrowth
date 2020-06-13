@@ -618,11 +618,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   surfaceHexagons: []
   temperature: 0
+  humidity: 0
+  airquality: 0
   hexPrefab: {fileID: 4341543263165541772, guid: b862b0f4ce9cac647a7caca876bc0168,
     type: 3}
-  gridWidth: 11
-  gridHeigth: 11
-  gap: 0.01
+  gridWidth: 10
+  gridHeigth: 10
+  gapHeight: 0.3
+  gapWidth: -0.2
 --- !u!4 &956219444
 Transform:
   m_ObjectHideFlags: 0
@@ -656,6 +659,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   rotationSpeed: 10
+  horizontalSpeed: 0.1
   minY: -11.75
   maxY: 1
 --- !u!1 &1010674623

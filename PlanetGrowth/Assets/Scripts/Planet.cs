@@ -11,12 +11,13 @@ public class Planet : MonoBehaviour
     public float airquality;
 
     public GameObject hexPrefab;
-    public int gridWidth = 12;
-    public int gridHeigth = 6;
+    public int gridWidth;
+    public int gridHeigth;
 
     float hexWidth = 1.732f;
     float hexHeigth = 2.0f;
-    public float gap = 0.0f;
+    public float gapHeight;
+    public float gapWidth;
 
     Vector3 startPos = Vector3.zero;
 
@@ -37,8 +38,8 @@ public class Planet : MonoBehaviour
 
     void AddGap()
     {
-        hexHeigth += hexHeigth * gap;
-        hexWidth += hexWidth * gap;
+        hexHeigth += hexHeigth * gapHeight;
+        hexWidth += hexWidth * gapWidth;
     }
 
 
@@ -64,13 +65,13 @@ public class Planet : MonoBehaviour
     Vector3 CalcWorldPos(Vector2 gridPos)
     {
 
-        float radius = 3.5f;
+        float radius = hexWidth * 2;
         float offset = 0;
-        if (gridPos.y % 2 != 0)
+        if (gridPos.x % 2 != 0)
         {
             offset = 0.5f;
         }
-        float ang = (360 / gridHeigth) * (gridPos.x + offset);
+        float ang = (360 / gridHeigth) * (gridPos.x);
         Vector3 pos;
         pos.z = startPos.z + radius * Mathf.Sin(ang * Mathf.Deg2Rad);
         pos.y = startPos.y + radius * Mathf.Cos(ang * Mathf.Deg2Rad);
@@ -78,7 +79,7 @@ public class Planet : MonoBehaviour
 
 
 
-        pos.x = startPos.x + gridPos.y * hexHeigth * 0.75f;
+        pos.x = startPos.x + (gridPos.y + offset)* (hexHeigth)*0.75f;
         return pos;
     }
     private Quaternion CalcRotation(Vector2 gridPos)
@@ -86,7 +87,7 @@ public class Planet : MonoBehaviour
         float offset = 0;
         if (gridPos.y % 2 != 0)
         {
-            offset = 0.5f;
+   //         offset = 0.5f;
         }
         return Quaternion.Euler((gridPos.x + offset) * 360 / gridHeigth+90, 0, 0);
     }

@@ -18,43 +18,15 @@ public abstract class Card : MonoBehaviour
     public Vector3 targetPosition;
     public Vector3 targetScale = new Vector3(1, 1, 1);
     public bool wasClicked = false;
-    Effect effects;
-    TMPro.TextMeshPro cardText;
+    public TextMeshPro cardText;
+    
 
-    struct Effect {
-       public int temperature;
-        public int humidity;
-        public int airquality;
-    }
-
-    private void Start()
-    {
+    public void Start()
+    {     
         cardText = transform.Find("Visuals/Text").GetComponent<TextMeshPro>();
-        generateNewPhase1Card();
-
     }
 
-    private void generateNewPhase1Card()
-    {
-        String effectText = "Effect: \n";
-        if (0 == UnityEngine.Random.Range(0, 2)) {
-            effects.temperature = UnityEngine.Random.Range(1, 4);
-            effectText += "Temperatur + " + effects.temperature+ "\n";
-        }
-        if (0 == UnityEngine.Random.Range(0, 2))
-        {
-            effects.humidity = UnityEngine.Random.Range(1, 4);
-            effectText += "Humidity + " + effects.humidity + "\n";
-        }
-        if (0 == UnityEngine.Random.Range(0, 2))
-        {
-            effects.airquality = UnityEngine.Random.Range(1, 4);
-            effectText += "Airquality + " + effects.airquality + "\n";
-        }
-        cost = effects.temperature + effects.humidity + effects.airquality;
-        effectText += "Cost: " + cost;
-        cardText.text = effectText;
-    }
+  
 
     public abstract void Effects();
 
