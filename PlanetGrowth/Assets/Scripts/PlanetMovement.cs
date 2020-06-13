@@ -6,6 +6,9 @@ public class PlanetMovement : MonoBehaviour
 {
     public LayerMask mouseDragLayer;
     public LayerMask cardLayer;
+    public float rotationSpeed = 1.0f;
+    public float minY = 1.5f;
+    public float maxY = 12.5f;
 
     private Vector3 originalPosition;
     private Vector3 lastPosition;
@@ -34,8 +37,11 @@ public class PlanetMovement : MonoBehaviour
             {
                 var delta = hit.point - lastPosition;
                 transform.position += new Vector3(0, delta.y, 0);
+                transform.rotation *= Quaternion.Euler(0, -delta.x * rotationSpeed, 0);
                 lastPosition = hit.point;
             }
         }
+
+        transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, minY, maxY), transform.position.z);
     }
 }

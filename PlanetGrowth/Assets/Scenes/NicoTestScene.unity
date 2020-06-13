@@ -655,6 +655,9 @@ MonoBehaviour:
   cardLayer:
     serializedVersion: 2
     m_Bits: 1
+  rotationSpeed: 10
+  minY: -11.75
+  maxY: 1
 --- !u!1 &1010674623
 GameObject:
   m_ObjectHideFlags: 0
