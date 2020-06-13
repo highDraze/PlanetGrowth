@@ -31,8 +31,101 @@ public class Hexagon : MonoBehaviour
 
         updateMaterial();
     }
+
     void updateMaterial()
     {
+
+        if (temperature == -2){
+            if(humidity == -2){
+
+            }
+            else if(humidity == -1){
+
+            }
+            else if (humidity == 0){
+
+            }
+            else if (humidity == 1){
+
+            }
+            else if (humidity == 2){
+
+            }
+        }
+        else if (temperature == -1){
+            if (humidity == -2){
+
+            }
+            else if (humidity == -1){
+
+            }
+            else if (humidity == -1){
+
+            }
+            else if (humidity == 0){
+
+            }
+            else if (humidity == 1){
+
+            }
+            else if (humidity == 2){
+
+            }
+        }
+        else if (temperature == 0){
+            if (humidity == -2){
+
+            }
+            else if (humidity == -1){
+
+            }
+            else if (humidity == 0){
+
+            }
+            else if (humidity == 1){
+
+            }
+            else if (humidity == 2){
+
+            }
+        }
+        else if (temperature == 1){
+            if (humidity == -2){
+
+            }
+            else if (humidity == -1){
+
+            }
+            else if (humidity == 0){
+
+            }
+            else if (humidity == 1){
+
+            }
+            else if (humidity == 2){
+
+            }
+        }
+        else if (temperature == 2){
+            if (humidity == -2){
+
+            }
+            else if (humidity == -1){
+
+            }
+            else if (humidity == 0){
+
+            }
+            else if (humidity == 1){
+
+            }
+            else if (humidity == 2){
+
+            }
+        }
+
+
+
         if (temperature == 2 && humidity == 2)
         {
             GetComponentInChildren<MeshRenderer>().material = GameObject.Find("Planet").GetComponent<Planet>().biome1;
@@ -57,6 +150,10 @@ public class Hexagon : MonoBehaviour
             GetComponentInChildren<MeshRenderer>().material = GameObject.Find("Planet").GetComponent<Planet>().biome5;
 
         }
+    }
+
+    void applyBiomeChanges(int biome){
+
     }
 
     public int getTemperatur() {
