@@ -7,6 +7,21 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Desert_Kaktus
+    second: {fileID: 2100000, guid: 64b9c345c2ff42843b61a2b6e8927f37, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Desert_Sand
+    second: {fileID: 2100000, guid: c5503cd7e035afa48aefd1d930d65fae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Desert_Tile
+    second: {fileID: 2100000, guid: 72a729ce3cb7429498bfa6cc52a15a2d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Kaktus
     second: {fileID: 2100000, guid: 64b9c345c2ff42843b61a2b6e8927f37, type: 2}
   - first:
