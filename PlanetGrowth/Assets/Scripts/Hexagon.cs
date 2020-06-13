@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 
 
@@ -7,13 +8,19 @@ public class Hexagon : MonoBehaviour
 {
     public Color color;
     public GameObject model1;
-     int temperature;
-     int humidity;
+    public GameObject model2;
+    public GameObject model3;
+    private GameObject currentModel;
+
+    int temperature;
+    int humidity;
 
     // Start is called before the first frame update
     void Start()
     {
-        model1.SetActive(true);
+       
+
+
         transform.GetChild(0).GetChild(0).GetComponent<ParticleSystem>().Stop();
         int a = Random.Range(0, 2);
         
