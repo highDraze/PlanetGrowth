@@ -18,6 +18,19 @@ public class Planet : MonoBehaviour
 
 
     public GameObject hexPrefab;
+
+    public GameObject desertPrefab;
+    public GameObject articPrefab;
+    public GameObject oceanPrefab;
+    public GameObject wastePrefab;
+    public GameObject forestPrefab;
+    public GameObject meadowPrefab;
+    public GameObject dschunglePrefab;
+    public GameObject swampPrefab;
+
+
+
+
     public int gridWidth;
     public int gridHeigth;
 
@@ -32,22 +45,24 @@ public class Planet : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
-        AddGap();
-        CreateGrid();
+        
 
 
         for (int i = 0; i < 8; i++) {
             biomes.Add(new Biome());
         }
 
-        biomes[0].InitBiome(0, new int[] { -2, 1 }, new int[] { -2, -1 }, "Oedland");
-        biomes[1].InitBiome(1, new int[] { 1, 2 }, new int[] { -2, -1 }, "Wueste");
-        biomes[2].InitBiome(2, new int[] { -2, -1 }, new int[] { -1, 1 }, "Arktis");
-        biomes[3].InitBiome(3, new int[] { 0, 1 }, new int[] { 0, 1 }, "Wiese");
-        biomes[4].InitBiome(4, new int[] { -1, 0 }, new int[] { 0, 1 }, "Wald");
-        biomes[5].InitBiome(5, new int[] { 1, 2 }, new int[] { 1, 2 }, "Sumpf");
-        biomes[6].InitBiome(6, new int[] { 2, 2 }, new int[] { 1, 2 }, "Dschungel");
-        biomes[7].InitBiome(7, new int[] { -2, 0 }, new int[] { 1, 2 }, "Ozean");
+        biomes[0].InitBiome(0, new int[] { -2, 1 }, new int[] { -2, -1 }, "Oedland", wastePrefab);
+        biomes[1].InitBiome(1, new int[] { 1, 2 }, new int[] { -2, -1 }, "Wueste", desertPrefab);
+        biomes[2].InitBiome(2, new int[] { -2, -1 }, new int[] { -1, 1 }, "Arktis", articPrefab);
+        biomes[3].InitBiome(3, new int[] { 0, 1 }, new int[] { 0, 1 }, "Wiese", meadowPrefab);
+        biomes[4].InitBiome(4, new int[] { -1, 0 }, new int[] { 0, 1 }, "Wald", forestPrefab);
+        biomes[5].InitBiome(5, new int[] { 1, 2 }, new int[] { 1, 2 }, "Sumpf", swampPrefab);
+        biomes[6].InitBiome(6, new int[] { 2, 2 }, new int[] { 1, 2 }, "Dschungel", dschunglePrefab);
+        biomes[7].InitBiome(7, new int[] { -2, 0 }, new int[] { 1, 2 }, "Ozean", oceanPrefab);
+
+        AddGap();
+        CreateGrid();
 
     }
 
@@ -102,14 +117,19 @@ public class Planet : MonoBehaviour
     }
 
 
-
+    
     void CreateGrid()
     {
         for (int i = 0; i < gridHeigth; i++)
         {
             for (int j = 0; j < gridWidth; j++)
             {
-                Transform hex = Instantiate(hexPrefab).transform;
+                int temperature = UnityEngine.Random.Range(-2,0);
+                int humidity = UnityEngine.Random.Range(0,2);
+                Debug.Log(temperature + " | " + humidity);
+                Biome b = DetermineMatchingBiome(temperature, humidity);
+
+                Transform hex = Instantiate(b.getPrefab()).transform;
                 Vector2 gridPos = new Vector2(i, j);
                 hex.position = CalcWorldPos(gridPos);
                 hex.rotation = CalcRotation(gridPos);
