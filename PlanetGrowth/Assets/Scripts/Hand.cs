@@ -17,6 +17,9 @@ public class Hand : MonoBehaviour
     public Material highlightedHex;
     public Material normalHex;
 
+    private AudioSource audio_playCard;
+
+
 
     public int handSize = 5;
     public float handWidth = 2.0f;
@@ -49,6 +52,8 @@ public class Hand : MonoBehaviour
 
     void Start()
     {
+        audio_playCard = GetComponent<AudioSource>();
+
         energy = maxEnergy;
 
         foreach (var cardInfo in cardInfos)
@@ -178,7 +183,7 @@ public class Hand : MonoBehaviour
 
     private void PlayCard(Card card)
     {
-
+        audio_playCard.Play();
         Debug.Log("card played");
         heldCard = null;
         energy -= card.cost;
