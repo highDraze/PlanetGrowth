@@ -12,7 +12,9 @@ public class Hexagon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        transform.GetChild(0).GetChild(0).GetComponent<ParticleSystem>().Stop();
         int a = Random.Range(0, 2);
+        
         if (a == 0)
         {
             temperature = 2;

@@ -343,8 +343,8 @@ Camera:
   m_GameObject: {fileID: 295342473}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.13857244, g: 0.15072088, b: 0.16981131, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -654,7 +654,7 @@ MonoBehaviour:
   biome3: {fileID: 2100000, guid: 01ade7a67254a124caf1d4b330fe9c12, type: 2}
   biome4: {fileID: 2100000, guid: 972e6327eb635424daf1441bef986104, type: 2}
   biome5: {fileID: 2100000, guid: 20d398af6a9b7ac4ebbe1c0a5aa1c1f2, type: 2}
-  hexPrefab: {fileID: 4341543263165541772, guid: b862b0f4ce9cac647a7caca876bc0168,
+  hexPrefab: {fileID: 2872072023232757229, guid: 7cf44ee6af0236b4aa485b0a3682599b,
     type: 3}
   gridWidth: 10
   gridHeigth: 10
@@ -1120,6 +1120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f8a6bafcb2a37c42bb3b8061465407a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  phase: 1
+  highlightedHex: {fileID: 2100000, guid: 51c2ae44dd16049419b963522a0a57b8, type: 2}
+  normalHex: {fileID: 2100000, guid: 1cae0ef05e256604abca5c1e352da473, type: 2}
   handSize: 5
   handWidth: 1.6
   cardDragHeight: 0.2
