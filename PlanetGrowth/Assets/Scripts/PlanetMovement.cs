@@ -32,10 +32,10 @@ public class PlanetMovement : MonoBehaviour
                 transform.rotation *= Quaternion.Euler(-0.1f * rotationSpeed, 0, 0);
             }
             if (Input.GetKey("a")) {
-                transform.position += new Vector3(-1 * horizontalSpeed, 0, 0);
+                transform.position += new Vector3(1 * horizontalSpeed, 0, 0);
             }
             else if (Input.GetKey("d")) {
-                transform.position += new Vector3(horizontalSpeed, 0, 0);
+                transform.position += new Vector3(-1 * horizontalSpeed, 0, 0);
             }
         }
         else

@@ -11,11 +11,13 @@ public struct CardInfo
 
 public class Hand : MonoBehaviour
 {
+    public Material highlightedHex;
+
     public int handSize = 5;
     public float handWidth = 2.0f;
     public float cardDragHeight = 0.2f;
 
-    public float maxEnergy = 3;
+    public float maxEnergy;
     public float energy = 0;
     public float energyPerSecond = 1;
 
@@ -29,6 +31,8 @@ public class Hand : MonoBehaviour
 
     private List<Card> handCards = new List<Card>();
     private Card heldCard = null;
+
+    private Hexagon hoveredHex;
 
     // Start is called before the first frame update
     void Start()
@@ -81,6 +85,8 @@ public class Hand : MonoBehaviour
             if (card.wasClicked)
                 heldCard = card;
         UpdateCardLayoutPosition();
+
+        // Select Card
         if (heldCard != null)
         {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -91,12 +97,37 @@ public class Hand : MonoBehaviour
                 heldCard.targetPosition = target;
             }
         }
+        // Hover with Card
+        if (heldCard != null && Input.GetMouseButtonDown(0))
+        {
+            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Physics.Raycast(ray, out var hitPoint, 1000, hexLayer.value);
 
-        if (heldCard != null && Input.GetMouseButtonUp(0))
+          //  if ( hoveredHex.Equals(hitPoint.transform.gameObject))
+          //  {
+          //      Debug.Log("true");
+          //  }
+          //  else
+          //  {
+          //      Debug.Log("false");
+          //  }
+
+            Hexagon hex = hitPoint.transform.gameObject.GetComponent<Hexagon>();
+            if (hex != null) hoveredHex = hex;
+        }
+
+
+
+            // Release Card
+            if (heldCard != null && Input.GetMouseButtonUp(0))
         {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (energy > heldCard.cost && Physics.Raycast(ray, out var hitPoint, 1000, hexLayer.value))
             {
+                // Debug.Log(hitPoint.transform.gameObject);
+                MeshRenderer hex = hitPoint.transform.gameObject.GetComponent<MeshRenderer>();
+                if (hex != null) hex.material = highlightedHex;
+                //Destroy(hitPoint.transform.gameObject); // Get Hexagon the ray cast hit when releasing the card
                 PlayCard(heldCard);
             }
 
