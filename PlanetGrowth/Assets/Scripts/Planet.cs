@@ -6,7 +6,9 @@ using UnityEngine;
 public class Planet : MonoBehaviour
 {
     public List<Transform> surfaceHexagons;
-  
+    public List<Biome> biomes = new List<Biome>();
+
+
     public Material biome1;
     public Material biome2;
     public Material biome3;
@@ -26,38 +28,71 @@ public class Planet : MonoBehaviour
 
     Vector3 startPos = Vector3.zero;
 
-    public int getHexagonIndex(Transform selectedHex)
-    {
-        for (int index = 0; index < surfaceHexagons.Count; index++)
-        {
-            if (selectedHex.parent.name == surfaceHexagons[index].name) return index;
-        }
-        return -1;
-    }
 
-    public void highlightBiome(int hexIndex, bool isHovered)
-    {
-        if (isHovered)
-        {
-            surfaceHexagons[hexIndex].GetChild(0).GetChild(0).GetComponent<ParticleSystem>().Play();
-        }
-        else {
-            surfaceHexagons[hexIndex].GetChild(0).GetChild(0).GetComponent<ParticleSystem>().Stop();
-        }
-    }
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         AddGap();
         CreateGrid();
+
+
+        for (int i = 0; i < 8; i++) {
+            biomes.Add(new Biome());
+        }
+
+        biomes[0].InitBiome(0, new int[] { -2, 1 }, new int[] { -2, -1 }, "Oedland");
+        biomes[1].InitBiome(1, new int[] { 1, 2 }, new int[] { -2, -1 }, "Wueste");
+        biomes[2].InitBiome(2, new int[] { -2, -1 }, new int[] { -1, 1 }, "Arktis");
+        biomes[3].InitBiome(3, new int[] { 0, 1 }, new int[] { 0, 1 }, "Wiese");
+        biomes[4].InitBiome(4, new int[] { -1, 0 }, new int[] { 0, 1 }, "Wald");
+        biomes[5].InitBiome(5, new int[] { 1, 2 }, new int[] { 1, 2 }, "Sumpf");
+        biomes[6].InitBiome(6, new int[] { 2, 2 }, new int[] { 1, 2 }, "Dschungel");
+        biomes[7].InitBiome(7, new int[] { -2, 0 }, new int[] { 1, 2 }, "Ozean");
+
     }
+
+
+
 
     // Update is called once per frame
     void Update()
     {
 
     }
+
+    public Biome DetermineMatchingBiome(int _temperature, int _humidity) {
+
+        List<Biome> matchingBiomes = new List<Biome>();
+        foreach (Biome biome in biomes) {
+            if (biome.MatchBiome(_temperature, _humidity)) matchingBiomes.Add(biome);
+        }
+
+        if(matchingBiomes.Count == 0) {
+            return null;
+        } else {
+            int index = UnityEngine.Random.Range(0, matchingBiomes.Count);
+            return biomes[index];
+        }
+
+
+    }
+
+
+    public int getHexagonIndex(Transform selectedHex) {
+        for (int index = 0; index < surfaceHexagons.Count; index++) {
+            if (selectedHex.parent.name == surfaceHexagons[index].name) return index;
+        }
+        return -1;
+    }
+
+    public void highlightBiome(int hexIndex, bool isHovered) {
+        if (isHovered) {
+            surfaceHexagons[hexIndex].GetChild(0).GetChild(0).GetComponent<ParticleSystem>().Play();
+        } else {
+            surfaceHexagons[hexIndex].GetChild(0).GetChild(0).GetComponent<ParticleSystem>().Stop();
+        }
+    }
+
 
 
     void AddGap()
