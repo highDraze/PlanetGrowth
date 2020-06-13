@@ -9,15 +9,20 @@ public class ExampleCard : Card
 
      struct Effect
     {
-        public int temperature;
-        public int humidity;
-        public int airquality;
+        public int temperatureAdd;
+        public int humidityAdd; 
+        public int temperatureSub;
+        public int humiditySub;
     }
 
 
-    private void Start()
+    private new void  Start()
     {
         base.Start();
+        effects.humidityAdd =0;
+        effects.humiditySub = 0;
+        effects.temperatureAdd = 0;
+        effects.temperatureSub = 0;
         generateNewPhase1Card();
     }
     public override void Effects()
@@ -29,42 +34,58 @@ public class ExampleCard : Card
 
     private void ExecuteEffects()
     {
-        if (effects.temperature != 0) {
+        if (effects.temperatureAdd != 0) {
            Planet planet = GameObject.Find("Planet").GetComponent<Planet>();
-            planet.temperature += effects.temperature;    
+            planet.raiseTempOfXRandomHex(effects.temperatureAdd);
         }
-        if (effects.humidity != 0)
+        if (effects.humidityAdd != 0)
         {
             Planet planet = GameObject.Find("Planet").GetComponent<Planet>();
-            planet.humidity += effects.humidity;
+            planet.raiseHumidOfXRandomHex(effects.humidityAdd);
         }
-        if (effects.airquality != 0)
+        if (effects.temperatureSub != 0)
         {
             Planet planet = GameObject.Find("Planet").GetComponent<Planet>();
-            planet.airquality += effects.airquality;
+            planet.lowerTempOfXRandomHex(effects.temperatureSub);
+        }
+        if (effects.humiditySub != 0)
+        {
+            Planet planet = GameObject.Find("Planet").GetComponent<Planet>();
+            planet.lowerHumidOfXRandomHex(effects.humiditySub);
         }
     }
 
     private void generateNewPhase1Card()
     {
-        String effectText = "Effect: \n";
-        if (0 == UnityEngine.Random.Range(0, 2))
+        String effectText = "Cost: " + cost + "\n";
+        effectText += "Effekt auf Planet: \n";
+        int numberOfEffects = UnityEngine.Random.Range(1, 4);
+        while (numberOfEffects > 0) {
+            numberOfEffects -= 1;
+            int whichEffect = UnityEngine.Random.Range(0, 4);
+            if (whichEffect == 0 && effects.temperatureAdd == 0)
         {
-            effects.temperature = UnityEngine.Random.Range(1, 4);
-            effectText += "Temperatur + " + effects.temperature + "\n";
+            effects.temperatureAdd = UnityEngine.Random.Range(1, 30);
+            effectText += "Temperatur + " + effects.temperatureAdd + "\n";
         }
-        if (0 == UnityEngine.Random.Range(0, 2))
+        if (whichEffect == 1 && effects.humidityAdd == 0)
         {
-            effects.humidity = UnityEngine.Random.Range(1, 4);
-            effectText += "Humidity + " + effects.humidity + "\n";
+            effects.humidityAdd = UnityEngine.Random.Range(1, 30);
+            effectText += "Humidity + " + effects.humidityAdd + "\n";
         }
-        if (0 == UnityEngine.Random.Range(0, 2))
+        if (whichEffect == 2 && effects.temperatureSub == 0)
         {
-            effects.airquality = UnityEngine.Random.Range(1, 4);
-            effectText += "Airquality + " + effects.airquality + "\n";
+            effects.temperatureSub = UnityEngine.Random.Range(1, 30);
+            effectText += "Temperatur - " + effects.temperatureSub + "\n";
         }
-        cost = effects.temperature + effects.humidity + effects.airquality;
-        effectText += "Cost: " + cost;
+        if (whichEffect == 3 && effects.humiditySub == 0)
+            {effects.humiditySub = UnityEngine.Random.Range(1, 30);
+            effectText += "Humidity - " + effects.humiditySub + "\n";
+        }
+    }
+        //  cost = effects.temperatureAdd + effects.humidityAdd + effects.humiditySub + effects.temperatureSub;
+        cost = 1;
+      
         cardText.text = effectText;
     }
 }

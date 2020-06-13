@@ -649,9 +649,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   surfaceHexagons: []
-  temperature: 0
-  humidity: 0
-  airquality: 0
+  biome1: {fileID: 2100000, guid: 51c2ae44dd16049419b963522a0a57b8, type: 2}
+  biome2: {fileID: 2100000, guid: 1cae0ef05e256604abca5c1e352da473, type: 2}
+  biome3: {fileID: 2100000, guid: 01ade7a67254a124caf1d4b330fe9c12, type: 2}
+  biome4: {fileID: 2100000, guid: 972e6327eb635424daf1441bef986104, type: 2}
+  biome5: {fileID: 2100000, guid: 20d398af6a9b7ac4ebbe1c0a5aa1c1f2, type: 2}
   hexPrefab: {fileID: 4341543263165541772, guid: b862b0f4ce9cac647a7caca876bc0168,
     type: 3}
   gridWidth: 10
@@ -1133,7 +1135,7 @@ MonoBehaviour:
   cardLayoutParent: {fileID: 1626375682}
   cardSpawnLocation: {fileID: 1092020377}
   cardInfos:
-  - card: {fileID: 5174942427829452989, guid: 86caaec2253b9bc4e8ddc4effa4f29b5, type: 3}
+  - card: {fileID: 5174942427829452989, guid: 34821ed6cde35bb47b3a1afd55bbe151, type: 3}
     amount: 1
 --- !u!4 &1425091840
 Transform:

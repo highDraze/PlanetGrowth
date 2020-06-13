@@ -6,9 +6,14 @@ using UnityEngine;
 public class Planet : MonoBehaviour
 {
     public List<Transform> surfaceHexagons;
-    public float temperature;
-    public float humidity;
-    public float airquality;
+  
+    public Material biome1;
+    public Material biome2;
+    public Material biome3;
+    public Material biome4;
+    public Material biome5;
+
+
 
     public GameObject hexPrefab;
     public int gridWidth;
@@ -103,5 +108,36 @@ public class Planet : MonoBehaviour
             offset = 0.5f;
         }
         return Quaternion.Euler((gridPos.x + offset) * 360 / gridHeigth+90, 0, 0);
+    }
+
+    public void raiseTempOfXRandomHex(int x) {
+        for (int i = 0; i < x; i++) {
+            Hexagon hex  = surfaceHexagons[UnityEngine.Random.Range(0, surfaceHexagons.Count)].GetComponent<Hexagon>();
+            hex.setTemperatur(hex.getTemperatur() + 1);
+        }
+    }
+    public void lowerTempOfXRandomHex(int x)
+    {
+        for (int i = 0; i < x; i++)
+        {
+            Hexagon hex = surfaceHexagons[UnityEngine.Random.Range(0, surfaceHexagons.Count)].GetComponent<Hexagon>();
+            hex.setTemperatur(hex.getTemperatur() - 1);
+        }
+    }
+    public void raiseHumidOfXRandomHex(int x)
+    {
+        for (int i = 0; i < x; i++)
+        {
+            Hexagon hex = surfaceHexagons[UnityEngine.Random.Range(0, surfaceHexagons.Count)].GetComponent<Hexagon>();
+            hex.setHumidity(hex.getHumidity() + 1);
+        }
+    }
+    public void lowerHumidOfXRandomHex(int x)
+    {
+        for (int i = 0; i < x; i++)
+        {
+            Hexagon hex = surfaceHexagons[UnityEngine.Random.Range(0, surfaceHexagons.Count)].GetComponent<Hexagon>();
+            hex.setHumidity(hex.getHumidity() - 1);
+        }
     }
 }
