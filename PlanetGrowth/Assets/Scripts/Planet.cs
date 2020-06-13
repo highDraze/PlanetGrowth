@@ -26,6 +26,19 @@ public class Planet : MonoBehaviour
 
     Vector3 startPos = Vector3.zero;
 
+    public int getHexagonIndex(Transform selectedHex)
+    {
+        for (int index = 0; index < surfaceHexagons.Count; index++)
+        {
+            if (selectedHex.parent.name == surfaceHexagons[index].name) return index;
+        }
+        return -1;
+    }
+
+    public void highlightBiome(int hexIndex, Material material)
+    {
+        surfaceHexagons[hexIndex].GetChild(0).GetComponent<MeshRenderer>().material = material;
+    }
 
     // Start is called before the first frame update
     void Start()
