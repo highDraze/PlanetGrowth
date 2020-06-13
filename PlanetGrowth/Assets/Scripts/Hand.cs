@@ -52,7 +52,7 @@ public class Hand : MonoBehaviour
 
     void Start()
     {
-        audio_playCard = GetComponent<AudioSource>();
+        //audio_playCard = GetComponent<AudioSource>();
 
         energy = maxEnergy;
 
@@ -165,12 +165,13 @@ public class Hand : MonoBehaviour
             // Release Card
         if (heldCard != null && Input.GetMouseButtonUp(0))
         {
+            Debug.Log(energy + " | " + heldCard.cost);
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (energy > heldCard.cost && Physics.Raycast(ray, out var hitPoint, 1000, hexLayer.value))
+            if (energy > heldCard.cost && Physics.Raycast(ray, out var hitPoint, 100000, hexLayer.value))
             {
-                // Debug.Log(hitPoint.transform.gameObject);
-                MeshRenderer hex = hitPoint.transform.gameObject.GetComponent<MeshRenderer>();
-                if (hex != null) hex.material = highlightedHex;
+                Debug.Log("testtest");
+                //MeshRenderer hex = hitPoint.transform.gameObject.GetComponent<MeshRenderer>();
+                //if (hex != null) hex.material = highlightedHex;
                 //Destroy(hitPoint.transform.gameObject); // Get Hexagon the ray cast hit when releasing the card
                 PlayCard(heldCard);
             }
@@ -183,7 +184,7 @@ public class Hand : MonoBehaviour
 
     private void PlayCard(Card card)
     {
-        audio_playCard.Play();
+        //audio_playCard.Play();
         Debug.Log("card played");
         heldCard = null;
         energy -= card.cost;
