@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Material
+  m_Name: Water
   m_Shader: {fileID: -6465566751694194690, guid: 27b042674da390c46a1ff4cc2317d5f2,
     type: 3}
   m_ShaderKeywords: 
@@ -62,14 +62,21 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_29A8EAB: 1.31
-    - Vector1_3C2CF0EB: 0.0153
-    - Vector1_53B9698E: 0.8
-    - Vector1_6D9DC178: 87.3
-    - Vector1_93DCFAA9: 0.76
+    - Vector1_160C787: 23.37
+    - Vector1_1DF8F020: 13.72
+    - Vector1_29A8EAB: 2
+    - Vector1_37E74F75: 0.43
+    - Vector1_3C2CF0EB: 0.03
+    - Vector1_53B9698E: 0.29
+    - Vector1_6D9DC178: 18.23
+    - Vector1_93DCFAA9: 0.1
     - Vector1_95BBCBE0: 30.3
-    - Vector1_C5543ECF: 1.11
-    - Vector1_E23798DE: 0.608
+    - Vector1_B0151E67: 7.83
+    - Vector1_C5543ECF: 3.97
+    - Vector1_E23798DE: 1.2
+    - Vector1_E6E778DF: 0.2
+    - Vector1_F17DD54C: 0.16
+    - Vector1_FD76F2A5: 2.5
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -92,9 +99,11 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_A271762B: {r: 0, g: 0.04231142, b: 0.1682695, a: 0.9215686}
+    - Color_76323B0A: {r: 1, g: 1, b: 1, a: 0}
+    - Color_A271762B: {r: 0.0039215707, g: 0.074517794, b: 0.28235295, a: 0.9215686}
     - Color_AFFD055F: {r: 0.7454045, g: 0.7454045, b: 0.7454045, a: 1}
-    - Color_E0824245: {r: 0.05126947, g: 0.1912017, b: 0.4341537, a: 0.4823529}
+    - Color_E0824245: {r: 0.17221434, g: 0.6115083, b: 0.8113208, a: 0.4823529}
+    - Vector2_49B115A6: {r: 5, g: 10, b: 0.5, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
