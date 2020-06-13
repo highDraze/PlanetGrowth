@@ -11,6 +11,7 @@ public struct CardInfo
 
 public class Hand : MonoBehaviour
 {
+    public int phase = 1;
     public int handSize = 5;
     public float handWidth = 2.0f;
     public float cardDragHeight = 0.2f;
@@ -111,9 +112,16 @@ public class Hand : MonoBehaviour
         energy -= card.cost;
 
         card.Effects();
-
+        Destroy(card.gameObject, 0.5f);
         handCards.Remove(card);
-        DrawCard();
+        if (phase == 1) {
+            foreach (Card c in handCards) {
+                Destroy(c.gameObject, 0f); 
+            }
+            handCards = new List<Card>();
+        }
+        while (handCards.Count < handSize)
+            DrawCard();
         UpdateCardLayoutPosition();
     }
 
