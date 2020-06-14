@@ -28,8 +28,7 @@ public class Turns : MonoBehaviour
     void Update()
     {
         time -= Time.deltaTime;
-        Mathf.Round(time);
-        currentTimeText.text = time.ToString();
+        currentTimeText.text = time.ToString("#0.0");
         if (0 > time)
             nextTurn();
     }
