@@ -3018,6 +3018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phase: 1
+  turnsScript: {fileID: 0}
   highlightedHex: {fileID: 2100000, guid: 51c2ae44dd16049419b963522a0a57b8, type: 2}
   normalHex: {fileID: 2100000, guid: 1cae0ef05e256604abca5c1e352da473, type: 2}
   Sounds:
@@ -4074,7 +4075,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 33.6981, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1986153869}
     characterCount: 1
