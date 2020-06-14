@@ -11,6 +11,7 @@ public class Biome
     private int[] temperatureRange = new int[2];
     private int[] humidRange = new int[2];
     private String biome_name;
+    private GameObject biomeModell;
     private GameObject biomePrefab;
 
     public int LiveAbilityScore => liveAbilityScore;
@@ -22,12 +23,13 @@ public class Biome
     }
 
     public void InitBiome(int _id, int[] _tempetemperatureRanges,
-        int[] _humidRanges, String _name, GameObject _biomePrefab, int _score)
+        int[] _humidRanges, String _name, GameObject _biomeModell, int _score, GameObject _biomePrefab)
     {
         id = _id;
         temperatureRange = _tempetemperatureRanges;
         humidRange = _humidRanges;
         biome_name = _name;
+        biomeModell = _biomeModell;
         biomePrefab = _biomePrefab;
         liveAbilityScore = _score;
     }
@@ -51,7 +53,11 @@ public class Biome
         
     }
 
-    public GameObject getPrefab() {
+    public GameObject getModell() {
+        return biomeModell;
+    }
+    public GameObject getPrefab()
+    {
         return biomePrefab;
     }
 

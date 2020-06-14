@@ -34,9 +34,13 @@ public class Hexagon : MonoBehaviour
 
         if(newBiome != null) {
             score = newBiome.LiveAbilityScore;
+            UnityEngine.Quaternion cRotation = transform.GetChild(0).rotation;
             foreach (Transform obj in transform.GetChild(0))
+            {
                 Destroy(obj.gameObject);
-            Instantiate(newBiome.getPrefab(), transform.position, transform.rotation, transform.GetChild(0));
+            }
+            Instantiate(newBiome.getModell(), transform.position, cRotation, transform.GetChild(0));
+            
         }
     }
 

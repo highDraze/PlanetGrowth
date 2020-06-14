@@ -7,7 +7,7 @@ public class Turns : MonoBehaviour
 {
     [SerializeField] private Hand hand;
     [SerializeField] private Planet planet;
-    [SerializeField] private float timePerTurn = 20000;
+    [SerializeField] private float timePerTurn;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI currentTimeText;
     [SerializeField] private TextMeshProUGUI turnText;
@@ -43,6 +43,7 @@ public class Turns : MonoBehaviour
             hand.SetPhase(2);
             turnCounter = 0;
             hand.SetHandSize(5);
+            timePerTurn = 20;
         }
             hand.restockHand();
             hand.refillEnergy();

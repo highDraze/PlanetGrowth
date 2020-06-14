@@ -9,12 +9,7 @@ public class Planet : MonoBehaviour
     public List<Biome> biomes = new List<Biome>();
 
 
-    public Material biome1;
-    public Material biome2;
-    public Material biome3;
-    public Material biome4;
-    public Material biome5;
-
+   
 
 
     public GameObject hexPrefab;
@@ -28,6 +23,14 @@ public class Planet : MonoBehaviour
     public GameObject dschunglePrefab;
     public GameObject swampPrefab;
 
+    public GameObject desertBiom;
+    public GameObject articBiom;
+    public GameObject oceanBiom;
+    public GameObject wasteBiom;
+    public GameObject forestBiom;
+    public GameObject meadowBiom;
+    public GameObject dschungleBiom;
+    public GameObject swampBiom;
 
 
 
@@ -54,14 +57,14 @@ public class Planet : MonoBehaviour
             biomes.Add(new Biome());
         }
 
-        biomes[0].InitBiome(0, new int[] {-2, 1}, new int[] {-2, -1}, "Oedland", wastePrefab, -10);
-        biomes[1].InitBiome(1, new int[] {1, 2}, new int[] {-2, -1}, "Wueste", desertPrefab, -5);
-        biomes[2].InitBiome(2, new int[] {-2, -1}, new int[] {-1, 1}, "Arktis", articPrefab, 0);
-        biomes[3].InitBiome(3, new int[] {0, 1}, new int[] {0, 1}, "Wiese", meadowPrefab, 30);
-        biomes[4].InitBiome(4, new int[] {-1, 0}, new int[] {0, 1}, "Wald", forestPrefab, 40);
-        biomes[5].InitBiome(5, new int[] {1, 2}, new int[] {1, 2}, "Sumpf", swampPrefab, 10);
-        biomes[6].InitBiome(6, new int[] {2, 2}, new int[] {1, 2}, "Dschungel", dschunglePrefab, 50);
-        biomes[7].InitBiome(7, new int[] {-2, 0}, new int[] {1, 2}, "Ozean", oceanPrefab, 10);
+        biomes[0].InitBiome(0, new int[] {-2, 1}, new int[] {-2, -1}, "Oedland", wasteBiom, 200, wastePrefab);
+        biomes[1].InitBiome(1, new int[] {1, 2}, new int[] {-2, -1}, "Wueste", desertBiom, -10, desertPrefab);
+        biomes[2].InitBiome(2, new int[] {-2, -1}, new int[] {-1, 1}, "Arktis", articBiom, -5, articPrefab);
+        biomes[3].InitBiome(3, new int[] {0, 1}, new int[] {0, 1}, "Wiese", meadowBiom, 30, meadowPrefab);
+        biomes[4].InitBiome(4, new int[] {-1, 0}, new int[] {0, 1}, "Wald", forestBiom, 40, forestPrefab);
+        biomes[5].InitBiome(5, new int[] {1, 2}, new int[] {1, 2}, "Sumpf", swampBiom, 10, swampPrefab);
+        biomes[6].InitBiome(6, new int[] {2, 2}, new int[] {1, 2}, "Dschungel", dschungleBiom, 50, dschunglePrefab);
+        biomes[7].InitBiome(7, new int[] {-2, 0}, new int[] {1, 2}, "Ozean", oceanBiom, 10, oceanPrefab);
 
         AddGap();
         CreateGrid();
@@ -153,6 +156,10 @@ public class Planet : MonoBehaviour
         }
 
     }
+
+ 
+    
+
     Vector3 CalcWorldPos(Vector2 gridPos)
     {
 
