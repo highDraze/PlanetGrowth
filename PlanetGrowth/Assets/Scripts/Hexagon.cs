@@ -21,14 +21,13 @@ public class Hexagon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("start of hexagon: " + this.transform.name);
+     
         gameObject.GetComponentInChildren<ParticleSystem>().Stop();
        // transform.GetChild(0).GetChild(0).GetComponent<ParticleSystem>().Stop(); 
     }
 
     void updateBiomePrefab()
     {
-        Debug.Log("test");
         Planet planet = GameObject.Find("Planet").GetComponent<Planet>();
         Biome newBiome = planet.DetermineMatchingBiome(temperature, humidity);
 
