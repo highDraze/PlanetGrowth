@@ -20,31 +20,33 @@ public class Hexagon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
-
-
-        transform.GetChild(0).GetChild(0).GetComponent<ParticleSystem>().Stop();
-        int a = Random.Range(0, 2);
-        
-        if (a == 0)
-        {
-            temperature = 2;
-        }
-        else { temperature = -2; }
-         a = Random.Range(0, 2);
-        if (a == 0)
-        {
-            humidity = 2;
-        }
-        else { humidity = -2; }
-
-        updateMaterial();
+       // transform.GetChild(0).GetChild(0).GetComponent<ParticleSystem>().Stop(); 
     }
 
-    void updateMaterial()
+    void updateBiomePrefab()
     {
-        Biome newBiome = GameObject.Find("Planet").GetComponent<Planet>().DetermineMatchingBiome(temperature, humidity);
+        Debug.Log("test");
+        Planet planet = GameObject.Find("Planet").GetComponent<Planet>();
+        Biome newBiome = planet.DetermineMatchingBiome(temperature, humidity);
+
         if(newBiome != null) {
+
+            Destroy(transform.GetChild(0).GetChild(0).gameObject);
+
+            var hex_clone = Instantiate(newBiome.getPrefab(), transform.position, transform.rotation, transform.GetChild(0));
+            
+
+           // hex_clone.name = transform.name;
+           // hex_clone.transform.parent = GameObject.Find("Planet").transform;
+           // int index = planet.getHexagonIndex(transform);
+           // if(index != -1) {
+           //     planet.surfaceHexagons[index] = hex_clone.transform;
+           // } else {
+           //     Debug.Log(transform.name);
+           // }
+            
+            //Destroy(this.gameObject);
+            
             // succes - assign new prefab
         } else {
             // Fail - no match was found
@@ -181,12 +183,12 @@ public class Hexagon : MonoBehaviour
     public void setTemperatur(int temp)
     {
         temperature = temp;
-        updateMaterial();
+        updateBiomePrefab();
     }
 
     public void setHumidity(int humid)
     {
         humidity = humid;
-        updateMaterial();
+        updateBiomePrefab();
     }
 }

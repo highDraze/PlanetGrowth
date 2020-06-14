@@ -192,6 +192,7 @@ public class Hand : MonoBehaviour
         card.Effects();
         Destroy(card.gameObject, 0.5f);
         handCards.Remove(card);
+
         if (phase == 1) {
             foreach (Card c in handCards) {
                 Destroy(c.gameObject, 0f); 

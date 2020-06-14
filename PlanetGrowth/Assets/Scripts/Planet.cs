@@ -126,7 +126,7 @@ public class Planet : MonoBehaviour
             {
                 int temperature = UnityEngine.Random.Range(-2,0);
                 int humidity = UnityEngine.Random.Range(0,2);
-                Debug.Log(temperature + " | " + humidity);
+              
                 Biome b = DetermineMatchingBiome(temperature, humidity);
 
                 Transform hex = Instantiate(b.getPrefab()).transform;
