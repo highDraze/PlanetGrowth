@@ -26,8 +26,6 @@ public abstract class Card : MonoBehaviour
         cardText = transform.Find("Visuals/Text").GetComponent<TextMeshPro>();
     }
 
-  
-
     public abstract void Effects();
 
     void Update()

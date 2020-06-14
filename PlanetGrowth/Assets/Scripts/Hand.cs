@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [System.Serializable]
 public struct CardInfo
@@ -62,10 +65,7 @@ public class Hand : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
-        while (handCards.Count < handSize)
-            DrawCard();
-        UpdateCardLayoutPosition();
+        redraw();
     }
 
     private void DrawCard()
@@ -75,8 +75,23 @@ public class Hand : MonoBehaviour
         card.transform.localPosition = cardSpawnLocation.localPosition;
         card.transform.localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
         card.transform.localScale = new Vector3(0, 0, 0);
+        var ca = card.GetComponent<ExampleCard>();
         handCards.Add(card.GetComponent<Card>());
+        play_auto_card(ca);
     }
+
+    private void play_auto_card(ExampleCard ca)
+    {
+        if (!ca.autoPlay) return;
+        StartCoroutine(startPlayinAuto(ca));
+    }
+
+    private IEnumerator startPlayinAuto(ExampleCard ca)
+    {
+        yield return new WaitForSeconds(.5f);
+        PlayCard(ca);
+    }
+
 
     // Update is called once per frame
     void Update()
