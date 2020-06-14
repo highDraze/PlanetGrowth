@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: c6dd2492c8e9f464ba6d0c0f5d2fc2f9,
     type: 2}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -460,7 +460,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tilled Tilds
+  m_text: PlaneTGRowtH
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 45f8cdf899c18814d84cb449f3fffae9, type: 2}
   m_sharedMaterial: {fileID: 710064874599810838, guid: 45f8cdf899c18814d84cb449f3fffae9,
@@ -532,8 +532,8 @@ MonoBehaviour:
     textComponent: {fileID: 705410382}
     characterCount: 12
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 0
+    wordCount: 1
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -961,8 +961,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 17ab94f84271a374385a0e12ffc60da8, type: 3}
 --- !u!4 &936230894 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 1623370260598993283, guid: 17ab94f84271a374385a0e12ffc60da8,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 936230893}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &943452459
