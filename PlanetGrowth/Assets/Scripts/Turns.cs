@@ -8,10 +8,10 @@ public class Turns : MonoBehaviour
     [SerializeField] private Hand hand;
     [SerializeField] private Planet planet;
     [SerializeField] private float timePerTurn = 20000;
-    [SerializeField] private TextMeshPro scoreText;
-    [SerializeField] private TextMeshPro currentTimeText;
-    [SerializeField] private TextMeshPro turnText;
-    [SerializeField] private TextMeshPro currentScoreText;
+    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI currentTimeText;
+    [SerializeField] private TextMeshProUGUI turnText;
+    [SerializeField] private TextMeshProUGUI currentScoreText;
 
     private int turnCounter;
 
