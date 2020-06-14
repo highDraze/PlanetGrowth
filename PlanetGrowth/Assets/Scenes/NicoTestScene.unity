@@ -658,7 +658,7 @@ MonoBehaviour:
     type: 3}
   desertPrefab: {fileID: 613126778735181467, guid: b42792099a3beaf41865a8ac03359e9b,
     type: 3}
-  articPrefab: {fileID: 4153684115001201254, guid: 2c758c1b3d1c80a48b7dd2521e96ebe0,
+  articPrefab: {fileID: 4687815857527443299, guid: df47e9160bba6234a8c8a801c0323935,
     type: 3}
   oceanPrefab: {fileID: 4153684115001201254, guid: 2c758c1b3d1c80a48b7dd2521e96ebe0,
     type: 3}
@@ -668,7 +668,7 @@ MonoBehaviour:
     type: 3}
   meadowPrefab: {fileID: 6430209531214425709, guid: 9d7e6301145e9bb4a92444de3f60608b,
     type: 3}
-  dschunglePrefab: {fileID: 8850523404257888737, guid: c6bec3fdab762834ab2659489a1a51cc,
+  dschunglePrefab: {fileID: 2950926789261106585, guid: 9485232725a65c34884f724a27286dcd,
     type: 3}
   swampPrefab: {fileID: 8850523404257888737, guid: c6bec3fdab762834ab2659489a1a51cc,
     type: 3}
