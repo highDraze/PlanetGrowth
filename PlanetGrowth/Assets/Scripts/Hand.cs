@@ -104,10 +104,13 @@ public class Hand : MonoBehaviour
             if (card.wasClicked)
                 heldCard = card;
         UpdateCardLayoutPosition();
+        selectCard();
+        hoverWithCard();
+        releaseCard();
+    }
 
-
-       
-        // Select Card
+    private void selectCard()
+    {
         if (heldCard != null)
         {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -118,15 +121,18 @@ public class Hand : MonoBehaviour
                 heldCard.targetPosition = target;
             }
 
-             // get selection method
+            // get selection method
         }
-        // Hover with Card
+    }
+
+    private void hoverWithCard()
+    {
         if (heldCard != null && Input.GetMouseButton(0))
         {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             Physics.Raycast(ray, out var hitPoint, 1000, hexLayer.value);
 
-           
+
             if (hitPoint.transform != null)
             {
                 MeshRenderer hex = hitPoint.transform.gameObject.GetComponent<MeshRenderer>();
@@ -136,50 +142,41 @@ public class Hand : MonoBehaviour
                     // selection cases
 
                     // single
-                    
-                        int new_index = GameObject.Find("Planet").GetComponent<Planet>().getHexagonIndex(hitPoint.transform);
-                        Debug.Log(new_index);
+
+                    int new_index = GameObject.Find("Planet").GetComponent<Planet>()
+                        .getHexagonIndex(hitPoint.transform);
+                    Debug.Log(new_index);
                     //hex.material = highlightedHex;
                     if (new_index != hoveredHex)
                     {
-
                         if (phase == 1)
-                        { 
+                        {
                             selectSingle(new_index);
                         }
+
                         if (phase == 2)
-                        { 
+                        {
                             selectSeven(new_index);
                         }
-                            hoveredHex = new_index;
-                      
 
-                        }
-               
+                        hoveredHex = new_index;
+                    }
                 }
             }
-                
-               
         }
+    }
 
-            // Release Card
-        if (heldCard != null && Input.GetMouseButtonUp(0))
-        {
-            Debug.Log(energy + " | " + heldCard.cost);
-            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (energy > heldCard.cost && Physics.Raycast(ray, out var hitPoint, 100000, hexLayer.value))
-            {
-                Debug.Log("testtest");
-                //MeshRenderer hex = hitPoint.transform.gameObject.GetComponent<MeshRenderer>();
-                //if (hex != null) hex.material = highlightedHex;
-                //Destroy(hitPoint.transform.gameObject); // Get Hexagon the ray cast hit when releasing the card
-                PlayCard(heldCard);
-            }
+    private void releaseCard()
+    {
+        if (heldCard == null || !Input.GetMouseButtonUp(0)) return;
 
-            heldCard = null;
-            UpdateCardLayoutPosition();
-
-        }
+        Debug.Log(energy + " | " + heldCard.cost);
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (energy > heldCard.cost &&
+            Physics.Raycast(ray, out var hitPoint, 100000, hexLayer.value))
+            PlayCard(heldCard);
+        heldCard = null;
+        UpdateCardLayoutPosition();
     }
 
     private void PlayCard(Card card)
