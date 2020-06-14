@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public struct CardInfo
@@ -21,10 +22,10 @@ public class Hand : MonoBehaviour
     public Material normalHex;
 
     public AudioSource[] Sounds;
-        public AudioSource hand;
-        public AudioSource draw;
-        public AudioSource shuffle;
 
+    private AudioSource draw;
+    private AudioSource hand;
+    private AudioSource shuffle;
 
     public int handSize = 5;
     public float handWidth = 2.0f;
@@ -55,9 +56,10 @@ public class Hand : MonoBehaviour
     {
         Sounds = GetComponents<AudioSource>();
 
-        hand = Sounds [1];
-        draw = Sounds [0];
-        shuffle = Sounds [2];
+        draw = Sounds[0];
+        hand = Sounds[1];
+        shuffle = Sounds[2];
+
         energy = maxEnergy;
 
         foreach (var cardInfo in cardInfos)
@@ -80,9 +82,9 @@ public class Hand : MonoBehaviour
         card.transform.localPosition = cardSpawnLocation.localPosition;
         card.transform.localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
         card.transform.localScale = new Vector3(0, 0, 0);
-     //   var ca = card.GetComponent<ExampleCard>();
+        //var ca = card.GetComponent<ExampleCard>();
         handCards.Add(card.GetComponent<Card>());
-   //     play_auto_card(ca);
+        //play_auto_card(ca);
     }
 
     private void play_auto_card(ExampleCard ca)
@@ -101,6 +103,10 @@ public class Hand : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            SceneManager.LoadScene("StartMenu");
+        }
 
         //passiveEnergyRefill();
 
@@ -154,31 +160,27 @@ private void selectCard()
         if (heldCard != null && Input.GetMouseButton(0))
         {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            
-            Physics.Raycast(ray, out var hitPoint, 10000, hexLayer.value);
+            Physics.Raycast(ray, out var hitPoint, 1000, hexLayer.value);
+
 
             if (hitPoint.transform != null)
             {
-          
                 MeshRenderer hex = hitPoint.transform.gameObject.GetComponent<MeshRenderer>();
-                
+
                 if (hex != null)
                 {
-                    
                     // selection cases
 
                     // single
 
                     int new_index = GameObject.Find("Planet").GetComponent<Planet>()
-                        .getHexagonIndex(hitPoint.transform.GetComponentInParent<Hexagon>().transform);
-                   
+                        .getHexagonIndex(hitPoint.transform);
+                    Debug.Log(new_index);
                     //hex.material = highlightedHex;
-
                     if (new_index != hoveredHex)
                     {
                         if (phase == 1)
                         {
-                            Debug.Log("phase 1 select single");
                             selectSingle(new_index);
                         }
 
@@ -198,14 +200,11 @@ private void selectCard()
     {
         if (heldCard == null || !Input.GetMouseButtonUp(0)) return;
 
-    
+        Debug.Log(energy + " | " + heldCard.cost);
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (energy >= heldCard.cost &&
-            Physics.Raycast(ray,out _, 10000, hexLayer.value))
-        {
-            Debug.Log("Ray hit!1");
+            Physics.Raycast(ray, out var hitPoint, 100000, hexLayer.value))
             PlayCard(heldCard);
-        }
         heldCard = null;
         UpdateCardLayoutPosition();
     }
@@ -260,7 +259,6 @@ private void selectCard()
 
     private void selectSingle(int new_index)
     {
-        Debug.Log("Hoevered: " + new_index);
         GameObject.Find("Planet").GetComponent<Planet>().highlightBiome(new_index, true);
         GameObject.Find("Planet").GetComponent<Planet>().highlightBiome(hoveredHex, false);
     }
