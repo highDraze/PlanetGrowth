@@ -49,7 +49,7 @@ public class PlanetMovement : MonoBehaviour
 
     private void dragWorld()
     {
-        //   Debug.Log("dragif; mous: " + Input.GetMouseButton(0) + " card: " + (hand.HeldCard == null)+ " dragging: "+dragging);
+      
         
           if (Input.GetMouseButton(0) && (hand.HeldCard == null))
         {
@@ -70,17 +70,17 @@ public class PlanetMovement : MonoBehaviour
         {
             dragging = false;
         }
-    //    Debug.Log("drag: " + dragging + " Mouse: " + Input.GetMouseButton(0));
+   
         if (dragging && Input.GetMouseButton(0))
         {
-            Debug.Log("test1");
+          
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out var hit, 1000.0f, mouseDragLayer) &&
                 hit.transform.gameObject.CompareTag("MouseControl"))
             {
                 
                 var delta = hit.point - lastPosition;
-                Debug.Log("test2deltea: "+delta+" hitpoint: "+hit.point+" lp "+lastPosition);
+                
                 // Upwards and downward movement of Cursor while dragging if no card is selected
                 transform.rotation *= Quaternion.Euler(delta.y * rotationSpeed, 0, 0);
 
