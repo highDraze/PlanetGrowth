@@ -44,13 +44,12 @@ public class Planet : MonoBehaviour
 
     Vector3 startPos = Vector3.zero;
 
-
+    public int[] catastropheChances = new int[3];
 
     // Start is called before the first frame update
     void Start()
     {
    
-
 
         for (int i = 0; i < 8; i++)
         {
@@ -225,6 +224,19 @@ public class Planet : MonoBehaviour
         {
             Hexagon hex = surfaceHexagons[UnityEngine.Random.Range(0, surfaceHexagons.Count)].GetComponent<Hexagon>();
             hex.setHumidity(hex.getHumidity() - 1);
+        }
+    }
+
+    public void increaseCatastrophe(int CatNumber, int increase)
+    {
+        if(CatNumber == catastropheChances[1]){
+            catastropheChances[1] = increase;
+        }
+        if(CatNumber == catastropheChances[2]){
+            catastropheChances[2] = increase;
+        }
+        if(CatNumber == catastropheChances[3]){
+            catastropheChances[2] = increase;
         }
     }
 }

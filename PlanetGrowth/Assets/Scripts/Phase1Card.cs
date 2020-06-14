@@ -10,14 +10,25 @@ public class Phase1Card : Card
     public Sprite[] artList;
     public Biomes[,] arts;
 
+    public Sprite meteor;
+    public Sprite iceAge;
+    public Sprite volcano;
+
+    int MeteorChance;
+    int IceAgeChance;
+    int VolcanoChance;
+
+    int whichCat;
+    
     public struct Effect
     {
         public int temperatureAdd;
         public int humidityAdd;
         public int temperatureSub;
         public int humiditySub;
+        public int CatNumber;
+        public int CatChance;
     }
-
 
     private new void Start()
     {
@@ -26,9 +37,9 @@ public class Phase1Card : Card
         effects.humiditySub = 0;
         effects.temperatureAdd = 0;
         effects.temperatureSub = 0;
+        effects.CatNumber = 0;
+        effects.CatChance = 0;
         generateNewCard();
-
-
     }
     public override void Effects()
     {
@@ -57,6 +68,18 @@ public class Phase1Card : Card
             Planet planet = GameObject.Find("Planet").GetComponent<Planet>();
             planet.lowerHumidOfXRandomHex(effects.humiditySub);
         }
+        if(effects.CatNumber == 1){
+            Planet planet = GameObject.Find("Planet").GetComponent<Planet>();
+            planet.increaseCatastrophe(effects.CatNumber, MeteorChance);
+        }
+        if(effects.CatNumber == 2){
+            Planet planet = GameObject.Find("Planet").GetComponent<Planet>();
+            planet.increaseCatastrophe(effects.CatNumber, IceAgeChance);
+        }
+        if(effects.CatNumber == 3){
+            Planet planet = GameObject.Find("Planet").GetComponent<Planet>();
+            planet.increaseCatastrophe(effects.CatNumber, VolcanoChance);
+        }
     }
 
     public void generateNewCard()
@@ -75,34 +98,87 @@ public class Phase1Card : Card
         String effectText = "Cost: " + cost + "\n";
         effectText += "Effekt auf Planet: \n";
         int numberOfEffects = UnityEngine.Random.Range(1, 4);
+        
+        MeteorChance = UnityEngine.Random.Range(5,15);
+        IceAgeChance = UnityEngine.Random.Range(5,15);
+        VolcanoChance = UnityEngine.Random.Range(5,15);
+
         while (numberOfEffects > 0)
         {
             numberOfEffects -= 1;
             int whichEffect = UnityEngine.Random.Range(0, 4);
+            whichCat = UnityEngine.Random.Range(1,3);
+            int rareEffect = UnityEngine.Random.Range(1,20);
+
+            //Catastrophs
+            if (whichCat == 1 && rareEffect == 5){
+                effectText += "Meteor % + " + MeteorChance + "\n";
+                effects.CatNumber = 1;
+                effects.CatChance = MeteorChance;
+                effects.humidityAdd += 5;
+                effects.humiditySub += 5;
+                effects.temperatureAdd += 5;
+                effects.temperatureSub += 5; 
+                effects.humiditySub = (int)((double)effects.humiditySub*1.5);
+                effects.humidityAdd = (int)((double)effects.humidityAdd*1.5);
+                effects.temperatureSub = (int)((double)effects.temperatureSub*1.5);
+                effects.temperatureAdd = (int)((double)effects.temperatureAdd*1.5);
+            }
+             if (whichCat == 2 && rareEffect == 7){
+                effectText += "IceAge % + " + IceAgeChance + "\n";
+                effects.CatNumber = 2;
+                effects.CatChance = MeteorChance;
+                effects.humidityAdd += 5;
+                effects.humiditySub += 5;
+                effects.temperatureAdd += 5;
+                effects.temperatureSub += 5; 
+                effects.humiditySub = (int)((double)effects.humiditySub*1.5);
+                effects.humidityAdd = (int)((double)effects.humidityAdd*1.5);
+                effects.temperatureSub = (int)((double)effects.temperatureSub*1.5);
+                effects.temperatureAdd = (int)((double)effects.temperatureAdd*1.5); 
+            }
+             if (whichCat == 3 && rareEffect == 11){
+                effectText += "Volcano % + " + VolcanoChance + "\n";
+                effects.CatNumber = 3;
+                effects.CatChance = MeteorChance;
+                effects.humidityAdd += 5;
+                effects.humiditySub += 5;
+                effects.temperatureAdd += 5;
+                effects.temperatureSub += 5; 
+                effects.humiditySub = (int)((double)effects.humiditySub*1.5);
+                effects.humidityAdd = (int)((double)effects.humidityAdd*1.5);
+                effects.temperatureSub = (int)((double)effects.temperatureSub*1.5);
+                effects.temperatureAdd = (int)((double)effects.temperatureAdd*1.5); 
+            }
+
             if (whichEffect == 0 && effects.temperatureAdd == 0)
             {
-                effects.temperatureAdd = UnityEngine.Random.Range(5, 20);
+                effects.temperatureAdd += UnityEngine.Random.Range(5, 20);
                 effectText += "Temperatur + " + effects.temperatureAdd + "\n";
             }
             if (whichEffect == 1 && effects.humidityAdd == 0)
             {
-                effects.humidityAdd = UnityEngine.Random.Range(5, 20);
+                effects.humidityAdd += UnityEngine.Random.Range(5, 20);
                 effectText += "Humidity + " + effects.humidityAdd + "\n";
             }
             if (whichEffect == 2 && effects.temperatureSub == 0)
             {
-                effects.temperatureSub = UnityEngine.Random.Range(5, 20);
+                effects.temperatureSub += UnityEngine.Random.Range(5, 20);
                 effectText += "Temperatur - " + effects.temperatureSub + "\n";
             }
             if (whichEffect == 3 && effects.humiditySub == 0)
             {
-                effects.humiditySub = UnityEngine.Random.Range(5, 20);
+                effects.humiditySub += UnityEngine.Random.Range(5, 20);
                 effectText += "Humidity - " + effects.humiditySub + "\n";
             }
+            effects.temperatureAdd = 0;
+            effects.temperatureSub = 0;
+            effects.humidityAdd = 0;
+            effects.humiditySub = 0;
+
         }
         //  cost = effects.temperatureAdd + effects.humidityAdd + effects.humiditySub + effects.temperatureSub;
         cost = 1;
-
         int tempSum = effects.temperatureAdd + effects.temperatureSub;
         int humidSum = effects.humidityAdd + effects.humiditySub;
 
@@ -136,6 +212,16 @@ public class Phase1Card : Card
 
         //sr.sprite = artList[(int)arts[x,y]];
         sr.sprite = artList[UnityEngine.Random.Range(0, artList.Length)];
+        if(whichCat == 1){
+            sr.sprite = meteor;
+        }
+        if(whichCat == 2){
+            sr.sprite = iceAge;
+        }
+        if(whichCat == 3){
+            sr.sprite = volcano;
+        }
         cardText.text = effectText;
+
     }
 }

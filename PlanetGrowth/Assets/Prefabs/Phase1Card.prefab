@@ -636,9 +636,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 459262f6d23ab7e43a3942d2d5c37e54, type: 3}
   - {fileID: 21300000, guid: 315cd8186747e3b428a80f0a82192d07, type: 3}
   - {fileID: 21300000, guid: c0b65a35f795c9e499ab305581fd5668, type: 3}
-  - {fileID: 21300000, guid: 137206f841b6bca4bb0fb506622da0ea, type: 3}
+  - {fileID: 21300000, guid: ab82270a03f7f584ba93c69b805d2482, type: 3}
   - {fileID: 21300000, guid: 18595635760cae94b856237a39b07ac0, type: 3}
   - {fileID: 21300000, guid: 51ac5cba4d66e1e4ba26efe2e021e761, type: 3}
+  meteor: {fileID: 21300000, guid: 5aff90a0a78946a4d96523923f8e258d, type: 3}
+  iceAge: {fileID: 21300000, guid: b5526eb10c36342409cb148693b5a5c1, type: 3}
+  volcano: {fileID: 21300000, guid: 137206f841b6bca4bb0fb506622da0ea, type: 3}
 --- !u!1001 &2514458983716542263
 PrefabInstance:
   m_ObjectHideFlags: 0
