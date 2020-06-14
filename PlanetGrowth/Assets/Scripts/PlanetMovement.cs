@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlanetMovement : MonoBehaviour
 {
+    [SerializeField] private Hand hand;
+
     public LayerMask mouseDragLayer;
     public LayerMask cardLayer;
     public float rotationSpeed = 1.0f;
@@ -40,37 +42,46 @@ public class PlanetMovement : MonoBehaviour
         }
         else
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out var hit, 1000.0f, mouseDragLayer | cardLayer) && hit.transform.gameObject.CompareTag("MouseControl"))
-                {
-                    // start dragging
-                    lastPosition = hit.point;
-                    dragging = true;
-                }
-            }
-            if (Input.GetMouseButtonUp(0))
-                dragging = false;
-            if (dragging && Input.GetMouseButton(0))
-            {
-                var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out var hit, 1000.0f, mouseDragLayer) && hit.transform.gameObject.CompareTag("MouseControl"))
-                {
-                    var delta = hit.point - lastPosition;
-
-                    // Upwards and downward movement of Cursor while dragging if no card is selected
-                    transform.rotation *= Quaternion.Euler(delta.y * rotationSpeed, 0, 0);
-
-                    //transform.position += new Vector3(0, delta.y, 0);
-                    // Horizontal movement of Cursor while dragging if no card is selected
-                    //transform.rotation *= Quaternion.Euler(0, -delta.x * rotationSpeed, 0);
-                    transform.position += new Vector3(delta.x, 0, 0);
-                    lastPosition = hit.point;
-                }
-            }
-
-            transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, minY, maxY), transform.position.z);
+            //dragWorld();
         }
+    }
+
+    private void dragWorld()
+    {
+        if (Input.GetMouseButtonDown(0) || (hand.HeldCard == null))
+        {
+            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out var hit, 1000.0f, mouseDragLayer | cardLayer) &&
+                hit.transform.gameObject.CompareTag("MouseControl"))
+            {
+                // start dragging
+                lastPosition = hit.point;
+                dragging = true;
+            }
+        }
+
+        if (Input.GetMouseButtonUp(0))
+            dragging = false;
+        if (dragging && Input.GetMouseButton(0))
+        {
+            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out var hit, 1000.0f, mouseDragLayer) &&
+                hit.transform.gameObject.CompareTag("MouseControl"))
+            {
+                var delta = hit.point - lastPosition;
+
+                // Upwards and downward movement of Cursor while dragging if no card is selected
+                transform.rotation *= Quaternion.Euler(delta.y * rotationSpeed, 0, 0);
+
+                //transform.position += new Vector3(0, delta.y, 0);
+                // Horizontal movement of Cursor while dragging if no card is selected
+                //transform.rotation *= Quaternion.Euler(0, -delta.x * rotationSpeed, 0);
+                transform.position += new Vector3(delta.x, 0, 0);
+                lastPosition = hit.point;
+            }
+        }
+
+        transform.position = new Vector3(transform.position.x,
+            Mathf.Clamp(transform.position.y, minY, maxY), transform.position.z);
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine;
 public class ExampleCard : Card
 {
      Effect effects;
+     public bool autoPlay = false;
 
      struct Effect
     {
@@ -63,26 +64,27 @@ public class ExampleCard : Card
         while (numberOfEffects > 0) {
             numberOfEffects -= 1;
             int whichEffect = UnityEngine.Random.Range(0, 4);
-            if (whichEffect == 0 && effects.temperatureAdd == 0)
-        {
-            effects.temperatureAdd = UnityEngine.Random.Range(1, 30);
-            effectText += "Temperatur + " + effects.temperatureAdd + "\n";
+            switch (whichEffect)
+            {
+                case 0 when effects.temperatureAdd == 0:
+                    effects.temperatureAdd = UnityEngine.Random.Range(1, 30);
+                    effectText += "Temperatur + " + effects.temperatureAdd + "\n";
+                    break;
+                case 1 when effects.humidityAdd == 0:
+                    effects.humidityAdd = UnityEngine.Random.Range(1, 30);
+                    effectText += "Humidity + " + effects.humidityAdd + "\n";
+                    break;
+                case 2 when effects.temperatureSub == 0:
+                    effects.temperatureSub = UnityEngine.Random.Range(1, 30);
+                    effectText += "Temperatur - " + effects.temperatureSub + "\n";
+                    break;
+                case 3 when effects.humiditySub == 0:
+                    effects.humiditySub = UnityEngine.Random.Range(1, 30);
+                    effectText += "Humidity - " + effects.humiditySub + "\n";
+                    autoPlay = true;
+                    break;
+            }
         }
-        if (whichEffect == 1 && effects.humidityAdd == 0)
-        {
-            effects.humidityAdd = UnityEngine.Random.Range(1, 30);
-            effectText += "Humidity + " + effects.humidityAdd + "\n";
-        }
-        if (whichEffect == 2 && effects.temperatureSub == 0)
-        {
-            effects.temperatureSub = UnityEngine.Random.Range(1, 30);
-            effectText += "Temperatur - " + effects.temperatureSub + "\n";
-        }
-        if (whichEffect == 3 && effects.humiditySub == 0)
-            {effects.humiditySub = UnityEngine.Random.Range(1, 30);
-            effectText += "Humidity - " + effects.humiditySub + "\n";
-        }
-    }
         //  cost = effects.temperatureAdd + effects.humidityAdd + effects.humiditySub + effects.temperatureSub;
         cost = 1;
       

@@ -13,6 +13,7 @@ public class Hexagon : MonoBehaviour
 
     private GameObject currentModel;
     private int biome;
+    public int score;
 
     int temperature;
     int humidity;
@@ -20,151 +21,21 @@ public class Hexagon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
-
-
-        transform.GetChild(0).GetChild(0).GetComponent<ParticleSystem>().Stop();
-        int a = Random.Range(0, 2);
-        
-        if (a == 0)
-        {
-            temperature = 2;
-        }
-        else { temperature = -2; }
-         a = Random.Range(0, 2);
-        if (a == 0)
-        {
-            humidity = 2;
-        }
-        else { humidity = -2; }
-
-        updateMaterial();
+       // transform.GetChild(0).GetChild(0).GetComponent<ParticleSystem>().Stop(); 
     }
 
-    void updateMaterial()
+    void updateBiomePrefab()
     {
-        Biome newBiome = GameObject.Find("Planet").GetComponent<Planet>().DetermineMatchingBiome(temperature, humidity);
+        Debug.Log("test");
+        Planet planet = GameObject.Find("Planet").GetComponent<Planet>();
+        Biome newBiome = planet.DetermineMatchingBiome(temperature, humidity);
+
         if(newBiome != null) {
-            // succes - assign new prefab
-        } else {
-            // Fail - no match was found
+            score = newBiome.LiveAbilityScore;
+            foreach (Transform obj in transform.GetChild(0))
+                Destroy(obj.gameObject);
+            Instantiate(newBiome.getPrefab(), transform.position, transform.rotation, transform.GetChild(0));
         }
-/*
-        if (temperature == -2){
-            if(humidity == -2){
-
-            }
-            else if(humidity == -1){
-
-            }
-            else if (humidity == 0){
-
-            }
-            else if (humidity == 1){
-
-            }
-            else if (humidity == 2){
-
-            }
-        }
-        else if (temperature == -1){
-            if (humidity == -2){
-
-            }
-            else if (humidity == -1){
-
-            }
-            else if (humidity == -1){
-
-            }
-            else if (humidity == 0){
-
-            }
-            else if (humidity == 1){
-
-            }
-            else if (humidity == 2){
-
-            }
-        }
-        else if (temperature == 0){
-            if (humidity == -2){
-
-            }
-            else if (humidity == -1){
-
-            }
-            else if (humidity == 0){
-
-            }
-            else if (humidity == 1){
-
-            }
-            else if (humidity == 2){
-
-            }
-        }
-        else if (temperature == 1){
-            if (humidity == -2){
-
-            }
-            else if (humidity == -1){
-
-            }
-            else if (humidity == 0){
-
-            }
-            else if (humidity == 1){
-
-            }
-            else if (humidity == 2){
-
-            }
-        }
-        else if (temperature == 2){
-            if (humidity == -2){
-
-            }
-            else if (humidity == -1){
-
-            }
-            else if (humidity == 0){
-
-            }
-            else if (humidity == 1){
-
-            }
-            else if (humidity == 2){
-
-            }
-        }
-
-
-
-        if (temperature == 2 && humidity == 2)
-        {
-            GetComponentInChildren<MeshRenderer>().material = GameObject.Find("Planet").GetComponent<Planet>().biome1;
-
-        }
-        if (temperature == -2 && humidity == 2)
-        {
-            GetComponentInChildren<MeshRenderer>().material = GameObject.Find("Planet").GetComponent<Planet>().biome2;
-
-        }
-        if (temperature == 2 && humidity == -2)
-        {
-            GetComponentInChildren<MeshRenderer>().material = GameObject.Find("Planet").GetComponent<Planet>().biome3;
-
-        }
-        if (temperature == -2 && humidity == -2)
-        {
-            GetComponentInChildren<MeshRenderer>().material = GameObject.Find("Planet").GetComponent<Planet>().biome4;
-
-        }
-        if (temperature != -2 && temperature != 2) {
-            GetComponentInChildren<MeshRenderer>().material = GameObject.Find("Planet").GetComponent<Planet>().biome5;
-
-        }*/
     }
 
     void applyBiomeChanges(int biome){
@@ -181,12 +52,12 @@ public class Hexagon : MonoBehaviour
     public void setTemperatur(int temp)
     {
         temperature = temp;
-        updateMaterial();
+        updateBiomePrefab();
     }
 
     public void setHumidity(int humid)
     {
         humidity = humid;
-        updateMaterial();
+        updateBiomePrefab();
     }
 }

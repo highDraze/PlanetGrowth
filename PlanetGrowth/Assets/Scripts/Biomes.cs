@@ -6,28 +6,30 @@ using UnityEngine;
 public class Biome
 {
     private int id;
-    
+
+    private int liveAbilityScore;
     private int[] temperatureRange = new int[2];
     private int[] humidRange = new int[2];
     private String biome_name;
     private GameObject biomePrefab;
 
-
+    public int LiveAbilityScore => liveAbilityScore;
 
     // Start is called before the first frame update
     void Start()
     {
-            
+
     }
 
-    public void InitBiome(int _id, int[] _tempetemperatureRanges, 
-        int[] _humidRanges, String _name, GameObject _biomePrefab) 
+    public void InitBiome(int _id, int[] _tempetemperatureRanges,
+        int[] _humidRanges, String _name, GameObject _biomePrefab, int _score)
     {
         id = _id;
         temperatureRange = _tempetemperatureRanges;
         humidRange = _humidRanges;
         biome_name = _name;
         biomePrefab = _biomePrefab;
+        liveAbilityScore = _score;
     }
     
     public bool MatchBiome(int _temperature, int _humidity) {

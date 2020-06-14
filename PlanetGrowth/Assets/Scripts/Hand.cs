@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [System.Serializable]
 public struct CardInfo
@@ -44,11 +47,7 @@ public class Hand : MonoBehaviour
     private int hoveredHex;
 
     // Start is called before the first frame update
-
-
-    
-    
-
+    public Card HeldCard => heldCard;
 
     void Start()
     {
@@ -66,10 +65,7 @@ public class Hand : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
-        while (handCards.Count < handSize)
-            DrawCard();
-        UpdateCardLayoutPosition();
+        redraw();
     }
 
     private void DrawCard()
@@ -79,16 +75,29 @@ public class Hand : MonoBehaviour
         card.transform.localPosition = cardSpawnLocation.localPosition;
         card.transform.localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
         card.transform.localScale = new Vector3(0, 0, 0);
+        var ca = card.GetComponent<ExampleCard>();
         handCards.Add(card.GetComponent<Card>());
+        play_auto_card(ca);
     }
+
+    private void play_auto_card(ExampleCard ca)
+    {
+        if (!ca.autoPlay) return;
+        StartCoroutine(startPlayinAuto(ca));
+    }
+
+    private IEnumerator startPlayinAuto(ExampleCard ca)
+    {
+        yield return new WaitForSeconds(.5f);
+        PlayCard(ca);
+    }
+
 
     // Update is called once per frame
     void Update()
     {
-        
-        energy += energyPerSecond * Time.deltaTime;
-        if (energy > maxEnergy)
-            energy = maxEnergy;
+
+        //passiveEnergyRefill();
 
         for (int i = 0; i < handCards.Count; i++)
         {
@@ -104,10 +113,23 @@ public class Hand : MonoBehaviour
             if (card.wasClicked)
                 heldCard = card;
         UpdateCardLayoutPosition();
+        selectCard();
+        hoverWithCard();
+        releaseCard();
+    }
 
+    private void passiveEnergyRefill()
+    {
+        energy += energyPerSecond * Time.deltaTime;
+    }
 
-       
-        // Select Card
+    public void refillEnergy()
+    {
+        energy = maxEnergy;
+    }
+
+private void selectCard()
+    {
         if (heldCard != null)
         {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -118,15 +140,18 @@ public class Hand : MonoBehaviour
                 heldCard.targetPosition = target;
             }
 
-             // get selection method
+            // get selection method
         }
-        // Hover with Card
+    }
+
+    private void hoverWithCard()
+    {
         if (heldCard != null && Input.GetMouseButton(0))
         {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             Physics.Raycast(ray, out var hitPoint, 1000, hexLayer.value);
 
-           
+
             if (hitPoint.transform != null)
             {
                 MeshRenderer hex = hitPoint.transform.gameObject.GetComponent<MeshRenderer>();
@@ -136,50 +161,41 @@ public class Hand : MonoBehaviour
                     // selection cases
 
                     // single
-                    
-                        int new_index = GameObject.Find("Planet").GetComponent<Planet>().getHexagonIndex(hitPoint.transform);
-                        Debug.Log(new_index);
+
+                    int new_index = GameObject.Find("Planet").GetComponent<Planet>()
+                        .getHexagonIndex(hitPoint.transform);
+                    Debug.Log(new_index);
                     //hex.material = highlightedHex;
                     if (new_index != hoveredHex)
                     {
-
                         if (phase == 1)
-                        { 
+                        {
                             selectSingle(new_index);
                         }
+
                         if (phase == 2)
-                        { 
+                        {
                             selectSeven(new_index);
                         }
-                            hoveredHex = new_index;
-                      
 
-                        }
-               
+                        hoveredHex = new_index;
+                    }
                 }
             }
-                
-               
         }
+    }
 
-            // Release Card
-        if (heldCard != null && Input.GetMouseButtonUp(0))
-        {
-            Debug.Log(energy + " | " + heldCard.cost);
-            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (energy > heldCard.cost && Physics.Raycast(ray, out var hitPoint, 100000, hexLayer.value))
-            {
-                Debug.Log("testtest");
-                //MeshRenderer hex = hitPoint.transform.gameObject.GetComponent<MeshRenderer>();
-                //if (hex != null) hex.material = highlightedHex;
-                //Destroy(hitPoint.transform.gameObject); // Get Hexagon the ray cast hit when releasing the card
-                PlayCard(heldCard);
-            }
+    private void releaseCard()
+    {
+        if (heldCard == null || !Input.GetMouseButtonUp(0)) return;
 
-            heldCard = null;
-            UpdateCardLayoutPosition();
-
-        }
+        Debug.Log(energy + " | " + heldCard.cost);
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (energy >= heldCard.cost &&
+            Physics.Raycast(ray, out var hitPoint, 100000, hexLayer.value))
+            PlayCard(heldCard);
+        heldCard = null;
+        UpdateCardLayoutPosition();
     }
 
     private void PlayCard(Card card)
@@ -192,15 +208,32 @@ public class Hand : MonoBehaviour
         card.Effects();
         Destroy(card.gameObject, 0.5f);
         handCards.Remove(card);
-        if (phase == 1) {
-            foreach (Card c in handCards) {
-                Destroy(c.gameObject, 0f); 
-            }
-            handCards = new List<Card>();
+
+        if (phase == 1)
+        {
+            removeCards();
         }
+        redraw();
+    }
+
+    private void redraw()
+    {
         while (handCards.Count < handSize)
             DrawCard();
         UpdateCardLayoutPosition();
+    }
+
+    private void removeCards()
+    {
+        foreach (Card c in handCards)
+            Destroy(c.gameObject, 0f);
+        handCards = new List<Card>();
+    }
+
+    public void restockHand()
+    {
+        removeCards();
+        redraw();
     }
 
     private void UpdateCardLayoutPosition()
@@ -227,8 +260,6 @@ public class Hand : MonoBehaviour
             indexMods[4] = -9;
             indexMods[6] = -11;
         }
-          
-
 
         int hex_end = planet.surfaceHexagons.Count;
 
@@ -239,11 +270,8 @@ public class Hand : MonoBehaviour
 
         hovereredList = new List<int>();
 
-
-
         for (int i = 0; i < indexMods.Length; i++)
         {
-
 
             if (new_index % planet.gridWidth == 0)
             {
@@ -272,22 +300,16 @@ public class Hand : MonoBehaviour
             
         }
 
-        
-
         foreach ( int ele in hovereredList)
         {
             planet.highlightBiome(ele, true);
         }
-
     }
 
     public void changeLocalTemperature(int value)
     {
-
     }
     public void changeLocalHumidity(int value)
     {
-
     }
-
 }
