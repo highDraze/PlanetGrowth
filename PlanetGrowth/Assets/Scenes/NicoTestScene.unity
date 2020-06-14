@@ -3026,7 +3026,7 @@ MonoBehaviour:
   cardLayoutParent: {fileID: 1626375682}
   cardSpawnLocation: {fileID: 1092020377}
   cardInfos:
-  - card: {fileID: 5174942427829452989, guid: 86caaec2253b9bc4e8ddc4effa4f29b5, type: 3}
+  - card: {fileID: 8616778566310346810, guid: c594b21b00433194da7a6031af68a902, type: 3}
     amount: 5
 --- !u!4 &1425091840
 Transform:
