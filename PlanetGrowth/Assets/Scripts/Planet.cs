@@ -64,7 +64,7 @@ public class Planet : MonoBehaviour
         meadowBiom.layer = 9;
         dschungleBiom.layer = 9;
         swampBiom.layer = 9;
-        biomes[0].InitBiome(0, new int[] {-2, 1}, new int[] {-2, -1}, "Oedland", wasteBiom, 200, wastePrefab);
+        biomes[0].InitBiome(0, new int[] {-2, 1}, new int[] {-2, -1}, "Oedland", wasteBiom, -20, wastePrefab);
         biomes[1].InitBiome(1, new int[] {1, 2}, new int[] {-2, -1}, "Wueste", desertBiom, -10, desertPrefab);
         biomes[2].InitBiome(2, new int[] {-2, -1}, new int[] {-1, 1}, "Arktis", articBiom, -5, articPrefab);
         biomes[3].InitBiome(3, new int[] {0, 1}, new int[] {0, 1}, "Wiese", meadowBiom, 30, meadowPrefab);

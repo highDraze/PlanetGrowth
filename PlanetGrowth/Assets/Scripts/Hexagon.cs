@@ -34,7 +34,8 @@ public class Hexagon : MonoBehaviour
 
         if(newBiome != null) {
             score = newBiome.LiveAbilityScore;
-            UnityEngine.Quaternion cRotation = transform.GetChild(0).rotation;
+            Debug.Log("IMPORTANT: " + transform.Find("Rota Parent").name);
+            UnityEngine.Quaternion cRotation = transform.Find("Rota Parent").rotation;
             foreach (Transform obj in transform.GetChild(0))
             {
                 Destroy(obj.gameObject);
