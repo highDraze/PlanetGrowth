@@ -5,7 +5,10 @@ using UnityEngine;
 
 public class Phase1Card : Card
 {
+    public enum Biomes {Arktis, Forest, Jungle, Ocean, Swamp, Ödland, Wiese, Wüste}
     public Effect effects;
+    public Sprite[] artList;
+    public Biomes[,] arts;
 
     public struct Effect
     {
@@ -24,6 +27,8 @@ public class Phase1Card : Card
         effects.temperatureAdd = 0;
         effects.temperatureSub = 0;
         generateNewCard();
+
+
     }
     public override void Effects()
     {
@@ -56,6 +61,17 @@ public class Phase1Card : Card
 
     public void generateNewCard()
     {
+        arts = new Biomes[5, 5] {
+                                { Biomes.Ödland, Biomes.Ödland, Biomes.Ödland, Biomes.Wüste, Biomes.Wüste},
+                                { Biomes.Arktis, Biomes.Arktis, Biomes.Ödland, Biomes.Wüste, Biomes.Wüste},
+                                { Biomes.Arktis, Biomes.Forest, Biomes.Wiese, Biomes.Wiese, Biomes.Wüste},
+                                { Biomes.Ocean, Biomes.Forest, Biomes.Wiese, Biomes.Wiese, Biomes.Jungle},
+                                { Biomes.Ocean, Biomes.Ocean, Biomes.Ocean, Biomes.Jungle, Biomes.Swamp }
+                                };
+
+        SpriteRenderer sr = transform.Find("Visuals").transform.Find("Art").gameObject.GetComponent<SpriteRenderer>();
+
+
         String effectText = "Cost: " + cost + "\n";
         effectText += "Effekt auf Planet: \n";
         int numberOfEffects = UnityEngine.Random.Range(1, 4);
@@ -87,6 +103,39 @@ public class Phase1Card : Card
         //  cost = effects.temperatureAdd + effects.humidityAdd + effects.humiditySub + effects.temperatureSub;
         cost = 1;
 
+        int tempSum = effects.temperatureAdd + effects.temperatureSub;
+        int humidSum = effects.humidityAdd + effects.humiditySub;
+
+        int x;
+        int y;
+
+
+
+        if (tempSum < -17)
+            x = -2;
+        else if (tempSum < -13)
+            x = -1;
+        else if (tempSum < 13)
+            x = 0;
+        else if (tempSum < 17)
+            x = 1;
+        else
+            x = 2;
+
+        if (humidSum < -17)
+            y = -2;
+        else if (humidSum < -13)
+            y = -1;
+        else if (humidSum < 13)
+            y = 0;
+        else if (humidSum < 17)
+            y = 1;
+        else
+            y = 2;
+
+
+        //sr.sprite = artList[(int)arts[x,y]];
+        sr.sprite = artList[UnityEngine.Random.Range(0, artList.Length)];
         cardText.text = effectText;
     }
 }
