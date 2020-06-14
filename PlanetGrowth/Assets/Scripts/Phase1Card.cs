@@ -110,6 +110,11 @@ public class Phase1Card : Card
             whichCat = UnityEngine.Random.Range(1,3);
             int rareEffect = UnityEngine.Random.Range(1,20);
 
+            effects.temperatureAdd = 0;
+            effects.temperatureSub = 0;
+            effects.humidityAdd = 0;
+            effects.humiditySub = 0;
+
             //Catastrophs
             if (whichCat == 1 && rareEffect == 5){
                 effectText += "Meteor % + " + MeteorChance + "\n";
@@ -171,10 +176,7 @@ public class Phase1Card : Card
                 effects.humiditySub += UnityEngine.Random.Range(5, 20);
                 effectText += "Humidity - " + effects.humiditySub + "\n";
             }
-            effects.temperatureAdd = 0;
-            effects.temperatureSub = 0;
-            effects.humidityAdd = 0;
-            effects.humiditySub = 0;
+
 
         }
         //  cost = effects.temperatureAdd + effects.humidityAdd + effects.humiditySub + effects.temperatureSub;
