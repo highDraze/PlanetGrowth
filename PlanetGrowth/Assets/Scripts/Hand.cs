@@ -197,7 +197,7 @@ private void selectCard()
     {
         if (heldCard == null || !Input.GetMouseButtonUp(0)) return;
 
-        Debug.Log("Energy vs Cost: "+energy + " | " + heldCard.cost);
+    
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (energy >= heldCard.cost &&
             Physics.Raycast(ray,out _, 10000, hexLayer.value))
