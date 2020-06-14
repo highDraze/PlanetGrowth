@@ -75,9 +75,9 @@ public class Hand : MonoBehaviour
         card.transform.localPosition = cardSpawnLocation.localPosition;
         card.transform.localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
         card.transform.localScale = new Vector3(0, 0, 0);
-        var ca = card.GetComponent<ExampleCard>();
+     //   var ca = card.GetComponent<ExampleCard>();
         handCards.Add(card.GetComponent<Card>());
-        play_auto_card(ca);
+   //     play_auto_card(ca);
     }
 
     private void play_auto_card(ExampleCard ca)
@@ -149,23 +149,26 @@ private void selectCard()
         if (heldCard != null && Input.GetMouseButton(0))
         {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Physics.Raycast(ray, out var hitPoint, 1000, hexLayer.value);
-
+            
+            Physics.Raycast(ray, out var hitPoint, 10000, hexLayer.value);
 
             if (hitPoint.transform != null)
             {
+                
                 MeshRenderer hex = hitPoint.transform.gameObject.GetComponent<MeshRenderer>();
-
+                
                 if (hex != null)
                 {
+                    
                     // selection cases
 
                     // single
 
                     int new_index = GameObject.Find("Planet").GetComponent<Planet>()
                         .getHexagonIndex(hitPoint.transform);
-                    Debug.Log(new_index);
+
                     //hex.material = highlightedHex;
+                    
                     if (new_index != hoveredHex)
                     {
                         if (phase == 1)
@@ -189,11 +192,14 @@ private void selectCard()
     {
         if (heldCard == null || !Input.GetMouseButtonUp(0)) return;
 
-        Debug.Log(energy + " | " + heldCard.cost);
+        Debug.Log("Energy vs Cost: "+energy + " | " + heldCard.cost);
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (energy >= heldCard.cost &&
-            Physics.Raycast(ray, out var hitPoint, 100000, hexLayer.value))
+            Physics.Raycast(ray,out _, 10000, hexLayer.value))
+        {
+            Debug.Log("Ray hit!1");
             PlayCard(heldCard);
+        }
         heldCard = null;
         UpdateCardLayoutPosition();
     }
@@ -247,6 +253,7 @@ private void selectCard()
 
     private void selectSingle(int new_index)
     {
+        Debug.Log("Hoevered: " + new_index);
         GameObject.Find("Planet").GetComponent<Planet>().highlightBiome(new_index, true);
         GameObject.Find("Planet").GetComponent<Planet>().highlightBiome(hoveredHex, false);
     }

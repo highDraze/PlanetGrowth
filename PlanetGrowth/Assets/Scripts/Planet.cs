@@ -112,9 +112,9 @@ public class Planet : MonoBehaviour
 
     public void highlightBiome(int hexIndex, bool isHovered) {
         if (isHovered) {
-            surfaceHexagons[hexIndex].GetChild(0).GetChild(0).GetComponent<ParticleSystem>().Play();
+            surfaceHexagons[hexIndex].GetComponent<Hexagon>().GetComponentInChildren<ParticleSystem>().Play();
         } else {
-            surfaceHexagons[hexIndex].GetChild(0).GetChild(0).GetComponent<ParticleSystem>().Stop();
+            surfaceHexagons[hexIndex].GetComponent<Hexagon>().GetComponentInChildren<ParticleSystem>().Stop();
         }
     }
 

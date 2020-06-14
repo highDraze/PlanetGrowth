@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8763299946582119188}
   - component: {fileID: 6100228080332799301}
   - component: {fileID: 8349845504540709860}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,7 +215,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1916837549464210401}
   - component: {fileID: 3153653196382850678}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,7 +295,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4335066468302268562}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332,7 +332,7 @@ GameObject:
   - component: {fileID: 1891721040855461680}
   - component: {fileID: 8709090683798278555}
   - component: {fileID: 2384130264706934304}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,7 +410,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5344090463491313775}
   - component: {fileID: 5989967283503062885}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Art
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -491,7 +491,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2927002314511542531}
   - component: {fileID: 9096843775156573384}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -573,7 +573,7 @@ GameObject:
   - component: {fileID: 3148949938982596462}
   - component: {fileID: 1404538169483144902}
   - component: {fileID: 896414664462318846}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: EmptyCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -617,6 +617,7 @@ MonoBehaviour:
   targetScale: {x: 1, y: 1, z: 1}
   wasClicked: 0
   cardText: {fileID: 0}
+  autoPlay: 0
 --- !u!65 &896414664462318846
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -700,7 +701,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 7db1dc2172f7d6241a7a957815a99e73,
         type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7db1dc2172f7d6241a7a957815a99e73, type: 3}
