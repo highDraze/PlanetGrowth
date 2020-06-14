@@ -33,15 +33,21 @@ public class Hexagon : MonoBehaviour
         Biome newBiome = planet.DetermineMatchingBiome(temperature, humidity);
 
         if(newBiome != null) {
+            
             score = newBiome.LiveAbilityScore;
-            Debug.Log("IMPORTANT: " + transform.Find("Rota Parent").name);
-            UnityEngine.Quaternion cRotation = transform.Find("Rota Parent").rotation;
+          
+            UnityEngine.Quaternion cRotation = UnityEngine.Quaternion.Euler(0, 0, 0);
             foreach (Transform obj in transform.GetChild(0))
             {
                 Destroy(obj.gameObject);
             }
+
             Instantiate(newBiome.getModell(), transform.position, cRotation, transform.GetChild(0));
-            
+            if (newBiome.biome_name == "Arktis")
+            {
+                transform.Find("Rota Parent").rotation = UnityEngine.Quaternion.Euler(0, 0, -90);
+            }
+            else { transform.Find("Rota Parent").rotation = UnityEngine.Quaternion.Euler(0, 90, -90); }
         }
     }
 

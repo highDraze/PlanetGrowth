@@ -10,7 +10,7 @@ public class Biome
     private int liveAbilityScore;
     private int[] temperatureRange = new int[2];
     private int[] humidRange = new int[2];
-    private String biome_name;
+    public String biome_name;
     private GameObject biomeModell;
     private GameObject biomePrefab;
 

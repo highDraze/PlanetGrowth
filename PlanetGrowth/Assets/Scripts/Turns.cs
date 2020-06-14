@@ -22,6 +22,7 @@ public class Turns : MonoBehaviour
     void Start()
     {
         time = timePerTurn;
+        turnText.text = turnCounter.ToString();
     }
 
     // Update is called once per frame

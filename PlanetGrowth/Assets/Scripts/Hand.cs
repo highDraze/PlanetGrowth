@@ -174,7 +174,7 @@ private void selectCard()
                    
                     int new_index = GameObject.Find("Planet").GetComponent<Planet>()
                         .getHexagonIndex(hitPoint.transform.GetComponentInParent<Hexagon>().transform);
-                    Debug.Log("Index: " + new_index + " name: " + hitPoint.transform.GetComponentInParent<Hexagon>().transform.name);
+                  
                     //hex.material = highlightedHex;
 
                     if (new_index != hoveredHex)
@@ -206,7 +206,7 @@ private void selectCard()
         if (energy >= heldCard.cost &&
             Physics.Raycast(ray,out _, 10000, hexLayer.value))
         {
-            Debug.Log("Ray hit!1");
+
             PlayCard(heldCard);
         }
         heldCard = null;
@@ -216,7 +216,7 @@ private void selectCard()
     private void PlayCard(Card card)
     {
         draw.Play();
-        Debug.Log("card played");
+      
         heldCard = null;
         energy -= card.cost;
 
@@ -263,7 +263,7 @@ private void selectCard()
 
     private void selectSingle(int new_index)
     {
-        Debug.Log("Hoevered: " + new_index);
+  
         GameObject.Find("Planet").GetComponent<Planet>().highlightBiome(new_index, true);
         GameObject.Find("Planet").GetComponent<Planet>().highlightBiome(hoveredHex, false);
     }
