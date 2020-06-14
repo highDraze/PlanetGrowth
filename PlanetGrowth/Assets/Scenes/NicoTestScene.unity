@@ -2330,8 +2330,8 @@ MonoBehaviour:
     type: 3}
   gridWidth: 10
   gridHeigth: 10
-  gapHeight: 0.2
-  gapWidth: 0
+  gapHeight: 0
+  gapWidth: -0.2
   catastropheChances: 000000000000000000000000
 --- !u!4 &956219444
 Transform:
