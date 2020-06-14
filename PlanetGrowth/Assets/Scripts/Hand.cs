@@ -22,7 +22,7 @@ public class Hand : MonoBehaviour
 
     public AudioSource[] Sounds;
         public AudioSource hand;
-        public AUdioSource draw;
+        public AudioSource draw;
 
 
     public int handSize = 5;
@@ -54,6 +54,8 @@ public class Hand : MonoBehaviour
     {
         Sounds = GetComponents<AudioSource>();
 
+        hand = Sounds [1];
+        draw = Sounds [0];
         energy = maxEnergy;
 
         foreach (var cardInfo in cardInfos)
@@ -201,7 +203,7 @@ private void selectCard()
 
     private void PlayCard(Card card)
     {
-        audio_playCard.Play();
+        draw.Play();
         Debug.Log("card played");
         heldCard = null;
         energy -= card.cost;
