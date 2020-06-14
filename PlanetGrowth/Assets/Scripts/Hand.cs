@@ -20,8 +20,9 @@ public class Hand : MonoBehaviour
     public Material highlightedHex;
     public Material normalHex;
 
-    private AudioSource audio_playCard;
-
+    public AudioSource[] Sounds;
+        public AudioSource hand;
+        public AUdioSource draw;
 
 
     public int handSize = 5;
@@ -51,7 +52,7 @@ public class Hand : MonoBehaviour
 
     void Start()
     {
-        //audio_playCard = GetComponent<AudioSource>();
+        Sounds = GetComponents<AudioSource>();
 
         energy = maxEnergy;
 
