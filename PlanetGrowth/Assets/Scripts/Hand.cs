@@ -159,7 +159,7 @@ private void selectCard()
 
             if (hitPoint.transform != null)
             {
-                
+          
                 MeshRenderer hex = hitPoint.transform.gameObject.GetComponent<MeshRenderer>();
                 
                 if (hex != null)
@@ -170,14 +170,15 @@ private void selectCard()
                     // single
 
                     int new_index = GameObject.Find("Planet").GetComponent<Planet>()
-                        .getHexagonIndex(hitPoint.transform);
-
+                        .getHexagonIndex(hitPoint.transform.GetComponentInParent<Hexagon>().transform);
+                   
                     //hex.material = highlightedHex;
-                    
+
                     if (new_index != hoveredHex)
                     {
                         if (phase == 1)
                         {
+                            Debug.Log("phase 1 select single");
                             selectSingle(new_index);
                         }
 

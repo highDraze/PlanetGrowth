@@ -105,7 +105,7 @@ public class Planet : MonoBehaviour
 
     public int getHexagonIndex(Transform selectedHex) {
         for (int index = 0; index < surfaceHexagons.Count; index++) {
-            if (selectedHex.parent.name == surfaceHexagons[index].name) return index;
+            if (selectedHex == surfaceHexagons[index]) return index;
         }
         return -1;
     }
