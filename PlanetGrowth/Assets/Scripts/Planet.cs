@@ -86,7 +86,7 @@ public class Planet : MonoBehaviour
             return null;
         } else {
             int index = UnityEngine.Random.Range(0, matchingBiomes.Count);
-            return biomes[index];
+            return matchingBiomes[index];
         }
 
 
@@ -124,8 +124,8 @@ public class Planet : MonoBehaviour
         {
             for (int j = 0; j < gridWidth; j++)
             {
-                int temperature = UnityEngine.Random.Range(-2,0);
-                int humidity = UnityEngine.Random.Range(0,2);
+                int temperature = UnityEngine.Random.Range(-2,2);
+                int humidity = UnityEngine.Random.Range(-2,2);
               
                 Biome b = DetermineMatchingBiome(temperature, humidity);
 
