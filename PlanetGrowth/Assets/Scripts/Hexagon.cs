@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
@@ -54,6 +55,20 @@ public class Hexagon : MonoBehaviour
     {
         temperature = temp;
         updateBiomePrefab();
+    }
+    public void changeTemperatur(int temp)
+    {
+
+        temperature = Math.Min((temperature + temp), 2);
+        temperature = Math.Max(-2, temperature);
+
+    }
+    public void changeHumidity(int humid)
+    {
+
+        humidity = Math.Min((humidity + humid), 2);
+        humidity = Math.Max(-2, humidity);
+
     }
 
     public void setHumidity(int humid)
