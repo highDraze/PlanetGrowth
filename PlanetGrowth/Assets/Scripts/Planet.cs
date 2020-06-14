@@ -44,32 +44,42 @@ public class Planet : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start() {
-        
+    void Start()
+    {
 
 
-        for (int i = 0; i < 8; i++) {
+
+        for (int i = 0; i < 8; i++)
+        {
             biomes.Add(new Biome());
         }
 
-        biomes[0].InitBiome(0, new int[] { -2, 1 }, new int[] { -2, -1 }, "Oedland", wastePrefab);
-        biomes[1].InitBiome(1, new int[] { 1, 2 }, new int[] { -2, -1 }, "Wueste", desertPrefab);
-        biomes[2].InitBiome(2, new int[] { -2, -1 }, new int[] { -1, 1 }, "Arktis", articPrefab);
-        biomes[3].InitBiome(3, new int[] { 0, 1 }, new int[] { 0, 1 }, "Wiese", meadowPrefab);
-        biomes[4].InitBiome(4, new int[] { -1, 0 }, new int[] { 0, 1 }, "Wald", forestPrefab);
-        biomes[5].InitBiome(5, new int[] { 1, 2 }, new int[] { 1, 2 }, "Sumpf", swampPrefab);
-        biomes[6].InitBiome(6, new int[] { 2, 2 }, new int[] { 1, 2 }, "Dschungel", dschunglePrefab);
-        biomes[7].InitBiome(7, new int[] { -2, 0 }, new int[] { 1, 2 }, "Ozean", oceanPrefab);
+        biomes[0].InitBiome(0, new int[] {-2, 1}, new int[] {-2, -1}, "Oedland", wastePrefab, -30);
+        biomes[1].InitBiome(1, new int[] {1, 2}, new int[] {-2, -1}, "Wueste", desertPrefab, -10);
+        biomes[2].InitBiome(2, new int[] {-2, -1}, new int[] {-1, 1}, "Arktis", articPrefab, 0);
+        biomes[3].InitBiome(3, new int[] {0, 1}, new int[] {0, 1}, "Wiese", meadowPrefab, 30);
+        biomes[4].InitBiome(4, new int[] {-1, 0}, new int[] {0, 1}, "Wald", forestPrefab, 40);
+        biomes[5].InitBiome(5, new int[] {1, 2}, new int[] {1, 2}, "Sumpf", swampPrefab, 10);
+        biomes[6].InitBiome(6, new int[] {2, 2}, new int[] {1, 2}, "Dschungel", dschunglePrefab, 50);
+        biomes[7].InitBiome(7, new int[] {-2, 0}, new int[] {1, 2}, "Ozean", oceanPrefab, 10);
 
         AddGap();
         CreateGrid();
 
     }
 
+    public int getLivabilityScore()
+    {
+        int value = 0;
+        foreach (var hexagon in surfaceHexagons)
+        {
+            value += hexagon.GetComponent<Hexagon>().score;
+        }
+        return value;
+    }
 
 
-
-    // Update is called once per frame
+// Update is called once per frame
     void Update()
     {
 
@@ -124,9 +134,9 @@ public class Planet : MonoBehaviour
         {
             for (int j = 0; j < gridWidth; j++)
             {
-                int temperature = UnityEngine.Random.Range(-2,2);
-                int humidity = UnityEngine.Random.Range(-2,2);
-              
+                int temperature = UnityEngine.Random.Range(-2, 2);
+                int humidity = UnityEngine.Random.Range(-2, 2);
+
                 Biome b = DetermineMatchingBiome(temperature, humidity);
 
                 Transform hex = Instantiate(b.getPrefab()).transform;
@@ -135,6 +145,7 @@ public class Planet : MonoBehaviour
                 hex.rotation = CalcRotation(gridPos);
                 hex.parent = this.transform;
                 hex.name = "Hexagon" + i + "|" + j;
+                hex.GetComponent<Hexagon>().score = b.LiveAbilityScore;
                 surfaceHexagons.Add(hex);
             }
 

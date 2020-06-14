@@ -13,6 +13,7 @@ public class Hexagon : MonoBehaviour
 
     private GameObject currentModel;
     private int biome;
+    public int score;
 
     int temperature;
     int humidity;
@@ -28,6 +29,7 @@ public class Hexagon : MonoBehaviour
         Debug.Log("test");
         Planet planet = GameObject.Find("Planet").GetComponent<Planet>();
         Biome newBiome = planet.DetermineMatchingBiome(temperature, humidity);
+        score = newBiome.LiveAbilityScore;
 
         if(newBiome != null) {
             foreach (Transform obj in transform.GetChild(0))
