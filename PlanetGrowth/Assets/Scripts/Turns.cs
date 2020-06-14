@@ -42,6 +42,7 @@ public class Turns : MonoBehaviour
         {
             hand.SetPhase(2);
             turnCounter = 0;
+            hand.SetHandSize(5);
         }
             hand.restockHand();
             hand.refillEnergy();

@@ -15,7 +15,7 @@ public struct CardInfo
 public class Hand : MonoBehaviour
 {
 
-    int phase = 1;
+   public int phase = 1;
 
     public Material highlightedHex;
     public Material normalHex;
@@ -55,14 +55,17 @@ public class Hand : MonoBehaviour
     {
         Sounds = GetComponents<AudioSource>();
 
-        hand = Sounds [1];
-        draw = Sounds [0];
-        shuffle = Sounds [2];
+        hand = Sounds[1];
+        draw = Sounds[0];
+        shuffle = Sounds[2];
         energy = maxEnergy;
 
-        foreach (var cardInfo in cardInfos)
-            for (int i = 0; i < cardInfo.amount; i++)
-                possibleCardsToDraw.Add(cardInfo.card);
+        //     foreach (var cardInfo in cardInfos)
+        //         for (int i = 0; i < cardInfo.amount; i++) { 
+        //    possibleCardsToDraw.Add(cardInfo.card); }
+        possibleCardsToDraw.Add(cardInfos[0].card);
+
+
 
         if (possibleCardsToDraw.Count == 0)
         {
@@ -322,11 +325,27 @@ private void selectCard()
 
     public void changeLocalTemperature(int value)
     {
+        foreach (int i in hovereredList) {
+            GameObject.Find("Planet").GetComponent<Planet>().surfaceHexagons[i].GetComponent<Hexagon>().changeTemperatur(value);
+        }
     }
     public void changeLocalHumidity(int value)
     {
+        foreach (int i in hovereredList)
+        {
+            GameObject.Find("Planet").GetComponent<Planet>().surfaceHexagons[i].GetComponent<Hexagon>().changeHumidity(value);
+        }
     }
 
     public int GetPhase() { return phase; }
-    public void SetPhase(int newPhase) { phase = newPhase; }
+    public void SetPhase(int newPhase)
+    { 
+        phase = newPhase;
+        if (phase == 2) { 
+        possibleCardsToDraw = new List<GameObject>();
+            possibleCardsToDraw.Add(cardInfos[1].card);
+        }
+    }
+
+    public void SetHandSize(int newHandSize) { handSize = newHandSize; }
 }
