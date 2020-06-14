@@ -23,6 +23,7 @@ public class Hand : MonoBehaviour
     public AudioSource[] Sounds;
         public AudioSource hand;
         public AudioSource draw;
+        public AudioSource shuffle;
 
 
     public int handSize = 5;
@@ -56,6 +57,7 @@ public class Hand : MonoBehaviour
 
         hand = Sounds [1];
         draw = Sounds [0];
+        shuffle = Sounds [2];
         energy = maxEnergy;
 
         foreach (var cardInfo in cardInfos)
@@ -241,6 +243,7 @@ private void selectCard()
 
     public void restockHand()
     {
+        shuffle.Play();
         removeCards();
         redraw();
     }

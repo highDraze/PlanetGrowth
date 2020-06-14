@@ -2983,8 +2983,8 @@ GameObject:
   - component: {fileID: 1425091840}
   - component: {fileID: 1425091839}
   - component: {fileID: 1425091841}
-  - component: {fileID: 1425091842}
   - component: {fileID: 1425091843}
+  - component: {fileID: 1425091842}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Untagged
