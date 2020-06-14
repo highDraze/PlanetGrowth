@@ -11,7 +11,7 @@ public class Turns : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI currentTimeText;
     [SerializeField] private TextMeshProUGUI turnText;
-    [SerializeField] private TextMeshProUGUI currentScoreText;
+    [SerializeField] public TextMeshProUGUI currentScoreText;
 
     private int turnCounter = 10;
 
@@ -37,8 +37,7 @@ public class Turns : MonoBehaviour
     private void nextTurn()
     {
         int score = planet.getLivabilityScore();
-        currentScoreText.text = score.ToString();
-        if (score < 0) gameOver();
+        if (score < 0 && hand.phase == 3) gameOver();
         if (hand.GetPhase() == 1 && turnCounter == 0)
         {
             hand.SetPhase(2);
@@ -62,5 +61,6 @@ public class Turns : MonoBehaviour
     
     private void gameOver()
     {
+        Debug.Log("Planet not livable, game over");
     }
 }

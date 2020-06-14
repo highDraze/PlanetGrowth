@@ -17,6 +17,8 @@ public class Hand : MonoBehaviour
 
    public int phase = 1;
 
+    public Turns turnsScript;
+
     public Material highlightedHex;
     public Material normalHex;
 
@@ -54,7 +56,7 @@ public class Hand : MonoBehaviour
     void Start()
     {
         Sounds = GetComponents<AudioSource>();
-
+        turnsScript = transform.GetComponent<Turns>();
         hand = Sounds[1];
         draw = Sounds[0];
         shuffle = Sounds[2];
@@ -236,7 +238,8 @@ private void selectCard()
         {
             removeCards();
         }
-       
+        
+        turnsScript.currentScoreText.text = GameObject.Find("Planet").GetComponent<Planet>().getLivabilityScore().ToString();
     }
 
     private void redraw()

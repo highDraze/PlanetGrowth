@@ -55,14 +55,7 @@ public class Planet : MonoBehaviour
         {
             biomes.Add(new Biome());
         }
-        desertBiom.layer = 9;
-        articBiom.layer = 9;
-        oceanBiom.layer = 9;
-        wasteBiom.layer = 9;
-        forestBiom.layer = 9;
-        meadowBiom.layer = 9;
-        dschungleBiom.layer = 9;
-        swampBiom.layer = 9;
+        
         biomes[0].InitBiome(0, new int[] {-2, 1}, new int[] {-2, -1}, "Oedland", wasteBiom, -20, wastePrefab);
         biomes[1].InitBiome(1, new int[] {1, 2}, new int[] {-2, -1}, "Wueste", desertBiom, -10, desertPrefab);
         biomes[2].InitBiome(2, new int[] {-2, -1}, new int[] {-1, 1}, "Arktis", articBiom, -5, articPrefab);
@@ -79,6 +72,7 @@ public class Planet : MonoBehaviour
 
     public int getLivabilityScore()
     {
+        
         int value = 0;
         foreach (var hexagon in surfaceHexagons)
         {
