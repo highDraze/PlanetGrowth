@@ -200,7 +200,7 @@ private void selectCard()
 
     private void PlayCard(Card card)
     {
-        //audio_playCard.Play();
+        audio_playCard.Play();
         Debug.Log("card played");
         heldCard = null;
         energy -= card.cost;
