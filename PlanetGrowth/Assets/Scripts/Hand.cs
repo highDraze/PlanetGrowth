@@ -15,7 +15,7 @@ public struct CardInfo
 public class Hand : MonoBehaviour
 {
 
-    public int phase = 1;
+    int phase = 1;
 
     public Material highlightedHex;
     public Material normalHex;
@@ -26,7 +26,7 @@ public class Hand : MonoBehaviour
         public AudioSource shuffle;
 
 
-    public int handSize = 5;
+    int handSize = 3;
     public float handWidth = 2.0f;
     public float cardDragHeight = 0.2f;
 
@@ -168,17 +168,17 @@ private void selectCard()
                     // selection cases
 
                     // single
-
+                   
                     int new_index = GameObject.Find("Planet").GetComponent<Planet>()
                         .getHexagonIndex(hitPoint.transform.GetComponentInParent<Hexagon>().transform);
-                   
+                    Debug.Log("Index: " + new_index + " name: " + hitPoint.transform.GetComponentInParent<Hexagon>().transform.name);
                     //hex.material = highlightedHex;
 
                     if (new_index != hoveredHex)
                     {
                         if (phase == 1)
                         {
-                            Debug.Log("phase 1 select single");
+                          
                             selectSingle(new_index);
                         }
 
@@ -225,7 +225,7 @@ private void selectCard()
         {
             removeCards();
         }
-        redraw();
+       
     }
 
     private void redraw()
@@ -326,4 +326,7 @@ private void selectCard()
     public void changeLocalHumidity(int value)
     {
     }
+
+    public int GetPhase() { return phase; }
+    public void SetPhase(int newPhase) { phase = newPhase; }
 }

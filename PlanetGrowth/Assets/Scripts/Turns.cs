@@ -38,15 +38,25 @@ public class Turns : MonoBehaviour
         int score = planet.getLivabilityScore();
         currentScoreText.text = score.ToString();
         if (score < 0) gameOver();
-        hand.restockHand();
-        hand.refillEnergy();
-        currentScore += score;
-        turnCounter++;
-        scoreText.text = currentScore.ToString();
-        turnText.text = turnCounter.ToString();
-        time = timePerTurn;
-    }
+        if (hand.GetPhase() == 1 && turnCounter == 10)
+        {
+            hand.SetPhase(2);
+            turnCounter = 0;
+        }
+            hand.restockHand();
+            hand.refillEnergy();
+            currentScore += score;
+            turnCounter++;
 
+
+
+            scoreText.text = currentScore.ToString();
+            turnText.text = turnCounter.ToString();
+
+            time = timePerTurn;
+
+        }
+    
     private void gameOver()
     {
     }
