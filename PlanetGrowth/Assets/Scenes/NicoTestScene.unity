@@ -2294,11 +2294,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   surfaceHexagons: []
-  biome1: {fileID: 2100000, guid: 51c2ae44dd16049419b963522a0a57b8, type: 2}
-  biome2: {fileID: 2100000, guid: 1cae0ef05e256604abca5c1e352da473, type: 2}
-  biome3: {fileID: 2100000, guid: 01ade7a67254a124caf1d4b330fe9c12, type: 2}
-  biome4: {fileID: 2100000, guid: 972e6327eb635424daf1441bef986104, type: 2}
-  biome5: {fileID: 2100000, guid: 20d398af6a9b7ac4ebbe1c0a5aa1c1f2, type: 2}
   hexPrefab: {fileID: 4341543263165541772, guid: b862b0f4ce9cac647a7caca876bc0168,
     type: 3}
   desertPrefab: {fileID: 613126778735181467, guid: b42792099a3beaf41865a8ac03359e9b,
@@ -2317,10 +2312,27 @@ MonoBehaviour:
     type: 3}
   swampPrefab: {fileID: 8850523404257888737, guid: c6bec3fdab762834ab2659489a1a51cc,
     type: 3}
+  desertBiom: {fileID: -927199367670048503, guid: 32fd18895c76f7643897688c6ced0844,
+    type: 3}
+  articBiom: {fileID: -927199367670048503, guid: 1d1baf4aa206fd348a646d8e6e42af58,
+    type: 3}
+  oceanBiom: {fileID: 7846281044174263284, guid: 97a203d0f29515141aa8119afe355bd1,
+    type: 3}
+  wasteBiom: {fileID: -927199367670048503, guid: 83c6bcc75cd8b144d8207f9bacdc83b2,
+    type: 3}
+  forestBiom: {fileID: -927199367670048503, guid: c3f25200fac92ce40b8baef0189f0fe5,
+    type: 3}
+  meadowBiom: {fileID: -927199367670048503, guid: d666890675288ce498e5536e72b2cbb3,
+    type: 3}
+  dschungleBiom: {fileID: -927199367670048503, guid: 0cac301b7261a324391a676a4411a886,
+    type: 3}
+  swampBiom: {fileID: -927199367670048503, guid: 1cf87318c800c154186c0af9c499249a,
+    type: 3}
   gridWidth: 10
   gridHeigth: 10
   gapHeight: 0.2
   gapWidth: 0
+  catastropheChances: 000000000000000000000000
 --- !u!4 &956219444
 Transform:
   m_ObjectHideFlags: 0
@@ -3030,7 +3042,9 @@ MonoBehaviour:
   cardSpawnLocation: {fileID: 1092020377}
   cardInfos:
   - card: {fileID: 8616778566310346810, guid: c594b21b00433194da7a6031af68a902, type: 3}
-    amount: 5
+    amount: 1
+  - card: {fileID: 8616778566310346810, guid: 8254f8b12b8e51f4ca93b1d05612d76d, type: 3}
+    amount: 1
 --- !u!4 &1425091840
 Transform:
   m_ObjectHideFlags: 0
@@ -3155,7 +3169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hand: {fileID: 1425091839}
   planet: {fileID: 956219443}
-  timePerTurn: 10
+  timePerTurn: 5
   scoreText: {fileID: 380208668}
   currentTimeText: {fileID: 1889097811}
   turnText: {fileID: 910204880}

@@ -13,7 +13,7 @@ public class Turns : MonoBehaviour
     [SerializeField] private TextMeshProUGUI turnText;
     [SerializeField] private TextMeshProUGUI currentScoreText;
 
-    private int turnCounter;
+    private int turnCounter = 10;
 
     private int currentScore = 0;
     private float time;
@@ -38,17 +38,17 @@ public class Turns : MonoBehaviour
         int score = planet.getLivabilityScore();
         currentScoreText.text = score.ToString();
         if (score < 0) gameOver();
-        if (hand.GetPhase() == 1 && turnCounter == 10)
+        if (hand.GetPhase() == 1 && turnCounter == 0)
         {
             hand.SetPhase(2);
-            turnCounter = 0;
+            turnCounter = 100;
             hand.SetHandSize(5);
             timePerTurn = 20;
         }
             hand.restockHand();
             hand.refillEnergy();
             currentScore += score;
-            turnCounter++;
+            turnCounter--;
 
 
 
