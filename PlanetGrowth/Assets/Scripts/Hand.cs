@@ -123,7 +123,11 @@ public class Hand : MonoBehaviour
         UpdateCardLayoutPosition();
         selectCard();
         hoverWithCard();
-        releaseCard();
+
+        if (heldCard != null && Input.GetMouseButtonUp(0))
+        {
+            releaseCard();
+        }
     }
 
     private void passiveEnergyRefill()
@@ -199,12 +203,15 @@ private void selectCard()
 
     private void releaseCard()
     {
-        if (heldCard == null || !Input.GetMouseButtonUp(0)) return;
 
-    
+
+
+
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+       
+
         if (energy >= heldCard.cost &&
-            Physics.Raycast(ray,out _, 10000, hexLayer.value))
+            Physics.Raycast(ray,out _, 1000, hexLayer))
         {
 
             PlayCard(heldCard);
@@ -215,6 +222,7 @@ private void selectCard()
 
     private void PlayCard(Card card)
     {
+        Debug.Log("playCard");
         draw.Play();
       
         heldCard = null;

@@ -2312,26 +2312,26 @@ MonoBehaviour:
     type: 3}
   swampPrefab: {fileID: 8850523404257888737, guid: c6bec3fdab762834ab2659489a1a51cc,
     type: 3}
-  desertBiom: {fileID: -927199367670048503, guid: 32fd18895c76f7643897688c6ced0844,
+  desertBiom: {fileID: 8469241104574233245, guid: 36228173b90ade944b33bd9c5a3fe9b2,
     type: 3}
-  articBiom: {fileID: -927199367670048503, guid: 1d1baf4aa206fd348a646d8e6e42af58,
+  articBiom: {fileID: 8469241104574233245, guid: 7744f6d33ac523344bfc07e93a8a55f7,
     type: 3}
-  oceanBiom: {fileID: 7846281044174263284, guid: 97a203d0f29515141aa8119afe355bd1,
+  oceanBiom: {fileID: 8469241104574233245, guid: dda584411a86e3b479fda262127fc600,
     type: 3}
-  wasteBiom: {fileID: -927199367670048503, guid: 83c6bcc75cd8b144d8207f9bacdc83b2,
+  wasteBiom: {fileID: 8469241104574233245, guid: 3482069aa466ad548b20c9ea382fdfad,
     type: 3}
-  forestBiom: {fileID: -927199367670048503, guid: c3f25200fac92ce40b8baef0189f0fe5,
+  forestBiom: {fileID: 8469241104574233245, guid: 04d4a19d1f85d7443a96a0eca33096a7,
     type: 3}
-  meadowBiom: {fileID: -927199367670048503, guid: d666890675288ce498e5536e72b2cbb3,
+  meadowBiom: {fileID: 8469241104574233245, guid: db687bfe877c3674b840ddccdc948d4d,
     type: 3}
-  dschungleBiom: {fileID: -927199367670048503, guid: 0cac301b7261a324391a676a4411a886,
+  dschungleBiom: {fileID: 8469241104574233245, guid: 754e3e1a803c98e488caf5c6f14c7724,
     type: 3}
-  swampBiom: {fileID: -927199367670048503, guid: 1cf87318c800c154186c0af9c499249a,
+  swampBiom: {fileID: 8469241104574233245, guid: b1ae8faf012a33845b351f9eaacf1cc8,
     type: 3}
   gridWidth: 10
   gridHeigth: 10
-  gapHeight: 0
-  gapWidth: -0.2
+  gapHeight: 0.2
+  gapWidth: 0
   catastropheChances: 000000000000000000000000
 --- !u!4 &956219444
 Transform:
@@ -3029,8 +3029,8 @@ MonoBehaviour:
   shuffle: {fileID: 0}
   handWidth: 1.6
   cardDragHeight: 0.2
-  maxEnergy: 7
-  energy: 0
+  maxEnergy: 10
+  energy: 10
   energyPerSecond: 1
   mouseColliderLayer:
     serializedVersion: 2
