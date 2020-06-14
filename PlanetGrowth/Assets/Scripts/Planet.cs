@@ -49,14 +49,21 @@ public class Planet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+   
 
 
         for (int i = 0; i < 8; i++)
         {
             biomes.Add(new Biome());
         }
-
+        desertBiom.layer = 9;
+        articBiom.layer = 9;
+        oceanBiom.layer = 9;
+        wasteBiom.layer = 9;
+        forestBiom.layer = 9;
+        meadowBiom.layer = 9;
+        dschungleBiom.layer = 9;
+        swampBiom.layer = 9;
         biomes[0].InitBiome(0, new int[] {-2, 1}, new int[] {-2, -1}, "Oedland", wasteBiom, 200, wastePrefab);
         biomes[1].InitBiome(1, new int[] {1, 2}, new int[] {-2, -1}, "Wueste", desertBiom, -10, desertPrefab);
         biomes[2].InitBiome(2, new int[] {-2, -1}, new int[] {-1, 1}, "Arktis", articBiom, -5, articPrefab);
