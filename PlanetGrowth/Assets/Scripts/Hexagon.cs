@@ -21,6 +21,8 @@ public class Hexagon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("start of hexagon: " + this.transform.name);
+        gameObject.GetComponentInChildren<ParticleSystem>().Stop();
        // transform.GetChild(0).GetChild(0).GetComponent<ParticleSystem>().Stop(); 
     }
 
