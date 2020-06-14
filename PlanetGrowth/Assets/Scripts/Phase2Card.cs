@@ -24,7 +24,7 @@ public class Phase2Card : Card
 
     private void generateNewCard()
     {
-        String effectText = "Cost: " + cost + "\n";
+        String effectText = "";
         effectText += "Effekt auf Planet: \n";
         int numberOfEffects = UnityEngine.Random.Range(1, 3);
         while (numberOfEffects > 0)
@@ -54,7 +54,7 @@ public class Phase2Card : Card
 
         }
         cost = Math.Max(0, effects.temperatureAdd + effects.humidityAdd+UnityEngine.Random.Range(0,3));
-        
+        effectText = "Cost: " + cost + "\n";
 
         cardText.text = effectText;
 

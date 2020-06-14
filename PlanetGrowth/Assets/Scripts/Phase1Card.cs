@@ -95,7 +95,7 @@ public class Phase1Card : Card
         SpriteRenderer sr = transform.Find("Visuals").transform.Find("Art").gameObject.GetComponent<SpriteRenderer>();
 
 
-        String effectText = "Cost: " + cost + "\n";
+        String effectText = "";
         effectText += "Effekt auf Planet: \n";
         int numberOfEffects = UnityEngine.Random.Range(1, 4);
         
@@ -181,6 +181,7 @@ public class Phase1Card : Card
         }
         //  cost = effects.temperatureAdd + effects.humidityAdd + effects.humiditySub + effects.temperatureSub;
         cost = 1;
+        effectText += "Cost: " + cost + "\n";
         int tempSum = effects.temperatureAdd + effects.temperatureSub;
         int humidSum = effects.humidityAdd + effects.humiditySub;
 
