@@ -54,8 +54,8 @@ public class Planet : MonoBehaviour
             biomes.Add(new Biome());
         }
 
-        biomes[0].InitBiome(0, new int[] {-2, 1}, new int[] {-2, -1}, "Oedland", wastePrefab, -30);
-        biomes[1].InitBiome(1, new int[] {1, 2}, new int[] {-2, -1}, "Wueste", desertPrefab, -10);
+        biomes[0].InitBiome(0, new int[] {-2, 1}, new int[] {-2, -1}, "Oedland", wastePrefab, -10);
+        biomes[1].InitBiome(1, new int[] {1, 2}, new int[] {-2, -1}, "Wueste", desertPrefab, -5);
         biomes[2].InitBiome(2, new int[] {-2, -1}, new int[] {-1, 1}, "Arktis", articPrefab, 0);
         biomes[3].InitBiome(3, new int[] {0, 1}, new int[] {0, 1}, "Wiese", meadowPrefab, 30);
         biomes[4].InitBiome(4, new int[] {-1, 0}, new int[] {0, 1}, "Wald", forestPrefab, 40);

@@ -29,9 +29,9 @@ public class Hexagon : MonoBehaviour
         Debug.Log("test");
         Planet planet = GameObject.Find("Planet").GetComponent<Planet>();
         Biome newBiome = planet.DetermineMatchingBiome(temperature, humidity);
-        score = newBiome.LiveAbilityScore;
 
         if(newBiome != null) {
+            score = newBiome.LiveAbilityScore;
             foreach (Transform obj in transform.GetChild(0))
                 Destroy(obj.gameObject);
             Instantiate(newBiome.getPrefab(), transform.position, transform.rotation, transform.GetChild(0));
