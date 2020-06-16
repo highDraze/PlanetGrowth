@@ -3,8 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Biome
-{
+
+/// <summary>
+/// Contains information about the biome
+/// </summary>
+public class Biome {
+
+    /// <summary>
+    /// <see cref="id"/> has no purpose other than refer to it in the list that keeps biome instances
+    /// </summary>
     private int id;
 
     private int liveAbilityScore;
@@ -17,14 +24,14 @@ public class Biome
     public int LiveAbilityScore => liveAbilityScore;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
+         
+         
 
     }
 
     public void InitBiome(int _id, int[] _tempetemperatureRanges,
-        int[] _humidRanges, String _name, GameObject _biomeModell, int _score, GameObject _biomePrefab)
-    {
+        int[] _humidRanges, String _name, GameObject _biomeModell, int _score, GameObject _biomePrefab) {
         id = _id;
         temperatureRange = _tempetemperatureRanges;
         humidRange = _humidRanges;
@@ -33,10 +40,10 @@ public class Biome
         biomePrefab = _biomePrefab;
         liveAbilityScore = _score;
     }
-    
+
     public bool MatchBiome(int _temperature, int _humidity) {
         bool matchFound = false;
-        if(  _temperature >= temperatureRange[0] && _temperature <= temperatureRange[1]) {
+        if (_temperature >= temperatureRange[0] && _temperature <= temperatureRange[1]) {
             if (_humidity >= humidRange[0] && _humidity <= humidRange[1]) {
                 matchFound = true;
             }
@@ -45,19 +52,17 @@ public class Biome
 
         return matchFound;
     }
-    
+
 
     // Update is called once per frame
-    void Update()
-    {
-        
+    void Update() {
+
     }
 
     public GameObject getModell() {
         return biomeModell;
     }
-    public GameObject getPrefab()
-    {
+    public GameObject getPrefab() {
         return biomePrefab;
     }
 

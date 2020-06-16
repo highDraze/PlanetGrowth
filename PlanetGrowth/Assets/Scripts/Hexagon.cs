@@ -12,6 +12,9 @@ public class Hexagon : MonoBehaviour
     public GameObject model2;
     public GameObject model3;
 
+
+
+
     private GameObject currentModel;
     private int biome;
     public int score;
@@ -48,18 +51,14 @@ public class Hexagon : MonoBehaviour
         }
     }
 
-    void applyBiomeChanges(int biome){
+    void ApplyBiomeChanges(int biome){
 
     }
 
-    public int getTemperatur() {
-        return temperature;
-    }
-    public int getHumidity() {
-        return humidity;
-    }
+    public int Temperatur => temperature;
+    public int Humidity => humidity;
 
-    public void setTemperatur(int temp)
+    public void SetTemperatur(int temp)
     {
         temperature = temp;
         updateBiomePrefab();

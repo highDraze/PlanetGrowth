@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 6848684787766935675}
   - component: {fileID: 8820085611778746107}
   m_Layer: 9
-  m_Name: ArcticPrefab
+  m_Name: ArticPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

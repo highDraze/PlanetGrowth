@@ -5,12 +5,16 @@ using UnityEngine;
 
 public class Planet : MonoBehaviour
 {
-    public List<Transform> surfaceHexagons;
-    public List<Biome> biomes = new List<Biome>();
-
 
    
 
+    public string Name { get; set; }
+    public int age { get; set; }
+    public List<Transform> surfaceHexagons;
+    public List<Biome> biomes = new List<Biome>();
+
+    
+  
 
     public GameObject hexPrefab;
 
@@ -32,6 +36,8 @@ public class Planet : MonoBehaviour
     public GameObject dschungleBiom;
     public GameObject swampBiom;
 
+
+    
 
 
     public int gridWidth;
@@ -82,7 +88,8 @@ public class Planet : MonoBehaviour
     }
 
 
-// Update is called once per frame
+
+    // Update is called once per frame
     void Update()
     {
 
@@ -92,7 +99,7 @@ public class Planet : MonoBehaviour
 
         List<Biome> matchingBiomes = new List<Biome>();
         foreach (Biome biome in biomes) {
-            if (biome.MatchBiome(_temperature, _humidity)) matchingBiomes.Add(biome);
+             if (biome.MatchBiome(_temperature, _humidity)) matchingBiomes.Add(biome);
         }
 
         if(matchingBiomes.Count == 0) {
@@ -193,7 +200,7 @@ public class Planet : MonoBehaviour
     public void raiseTempOfXRandomHex(int x) {
         for (int i = 0; i < x; i++) {
             Hexagon hex  = surfaceHexagons[UnityEngine.Random.Range(0, surfaceHexagons.Count)].GetComponent<Hexagon>();
-            hex.setTemperatur(hex.getTemperatur() + 1);
+            hex.SetTemperatur(hex.Temperatur+ 1);
         }
     }
     public void lowerTempOfXRandomHex(int x)
@@ -201,7 +208,7 @@ public class Planet : MonoBehaviour
         for (int i = 0; i < x; i++)
         {
             Hexagon hex = surfaceHexagons[UnityEngine.Random.Range(0, surfaceHexagons.Count)].GetComponent<Hexagon>();
-            hex.setTemperatur(hex.getTemperatur() - 1);
+            hex.SetTemperatur(hex.Temperatur- 1);
         }
     }
     public void raiseHumidOfXRandomHex(int x)
@@ -209,7 +216,7 @@ public class Planet : MonoBehaviour
         for (int i = 0; i < x; i++)
         {
             Hexagon hex = surfaceHexagons[UnityEngine.Random.Range(0, surfaceHexagons.Count)].GetComponent<Hexagon>();
-            hex.setHumidity(hex.getHumidity() + 1);
+            hex.setHumidity(hex.Humidity+ 1);
         }
     }
     public void lowerHumidOfXRandomHex(int x)
@@ -217,7 +224,7 @@ public class Planet : MonoBehaviour
         for (int i = 0; i < x; i++)
         {
             Hexagon hex = surfaceHexagons[UnityEngine.Random.Range(0, surfaceHexagons.Count)].GetComponent<Hexagon>();
-            hex.setHumidity(hex.getHumidity() - 1);
+            hex.setHumidity(hex.Humidity- 1);
         }
     }
 
