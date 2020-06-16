@@ -7,8 +7,8 @@ using UnityEngine;
 /// <summary>
 /// Contains information about the biome
 /// </summary>
-public class Biome {
-
+public class Biome { 
+    
     /// <summary>
     /// <see cref="id"/> has no purpose other than refer to it in the list that keeps biome instances
     /// </summary>

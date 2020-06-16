@@ -2294,7 +2294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   surfaceHexagons: []
-  hexPrefab: {fileID: 4341543263165541772, guid: b862b0f4ce9cac647a7caca876bc0168,
+  hexPrefab: {fileID: 2775353832114693182, guid: eda9a79373f81734ebfbc67ef60e0b21,
     type: 3}
   desertPrefab: {fileID: 613126778735181467, guid: b42792099a3beaf41865a8ac03359e9b,
     type: 3}
