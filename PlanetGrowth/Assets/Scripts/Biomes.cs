@@ -14,30 +14,32 @@ public class Biome {
     /// </summary>
     private int id;
 
+    public string modelName { get; set; }
     private int liveAbilityScore;
     private int[] temperatureRange = new int[2];
     private int[] humidRange = new int[2];
-    public String biome_name;
-    private GameObject biomeModell;
-    private GameObject biomePrefab;
+
 
     public int LiveAbilityScore => liveAbilityScore;
 
+    public GameObject BiomeModel { get; set; }
+
+
+
     // Start is called before the first frame update
     void Start() {
-         
-         
+
+
 
     }
 
     public void InitBiome(int _id, int[] _tempetemperatureRanges,
-        int[] _humidRanges, String _name, GameObject _biomeModell, int _score, GameObject _biomePrefab) {
+        int[] _humidRanges, String _name, GameObject _biomeModell, int _score) {
         id = _id;
         temperatureRange = _tempetemperatureRanges;
         humidRange = _humidRanges;
-        biome_name = _name;
-        biomeModell = _biomeModell;
-        biomePrefab = _biomePrefab;
+        modelName = _name;
+        BiomeModel = _biomeModell;
         liveAbilityScore = _score;
     }
 
@@ -59,11 +61,5 @@ public class Biome {
 
     }
 
-    public GameObject getModell() {
-        return biomeModell;
-    }
-    public GameObject getPrefab() {
-        return biomePrefab;
-    }
 
 }
