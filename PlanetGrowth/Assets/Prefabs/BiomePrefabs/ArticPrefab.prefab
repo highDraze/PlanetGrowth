@@ -1,12 +1,43 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!65 &6539098199713215902
+--- !u!1 &4492542165766082683
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3801393287230908808}
+  - component: {fileID: 3145481743682915502}
+  m_Layer: 9
+  m_Name: Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3801393287230908808
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4492542165766082683}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6075279436135913004}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3145481743682915502
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 449871466088532763}
+  m_GameObject: {fileID: 4492542165766082683}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -58,11 +89,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7794acfde2441149a8030ae190ff0ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  model1: {fileID: 0}
-  model2: {fileID: 0}
-  model3: {fileID: 0}
-  score: 0
 --- !u!1001 &1821674791786761568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -135,12 +161,6 @@ PrefabInstance:
 --- !u!4 &6075279436135913004 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5550785390256200524, guid: 7744f6d33ac523344bfc07e93a8a55f7,
-    type: 3}
-  m_PrefabInstance: {fileID: 1821674791786761568}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &449871466088532763 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2268019969448035963, guid: 7744f6d33ac523344bfc07e93a8a55f7,
     type: 3}
   m_PrefabInstance: {fileID: 1821674791786761568}
   m_PrefabAsset: {fileID: 0}

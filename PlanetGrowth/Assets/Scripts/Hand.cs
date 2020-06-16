@@ -205,15 +205,11 @@ private void selectCard()
 
     private void releaseCard()
     {
-
-
-
-
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
        
 
         if (energy >= heldCard.cost &&
-            Physics.Raycast(ray,out _, 1000, hexLayer))
+            Physics.Raycast(ray,out var hit, 1000, hexLayer))
         {
 
             PlayCard(heldCard);

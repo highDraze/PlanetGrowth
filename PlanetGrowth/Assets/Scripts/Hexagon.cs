@@ -55,13 +55,21 @@ public class Hexagon : MonoBehaviour
         }
         else
         {
-           // UnityEngine.Quaternion cRotation = transform.rotation * newBiome.BiomeModel.transform.rotation ;
+            
             GameObject newBiomeModel = Instantiate(
                 newBiome.BiomeModel,
-                transform.position,
-                transform.rotation * newBiome.BiomeModel.transform.rotation);
+                transform, 
+                false);
+            
             newBiomeModel.transform.parent = transform;
+            newBiomeModel.name = newBiome.modelName;
+            Transform temp = newBiomeModel.transform.GetChild(0);
+                
+            
+                
+               // AddComponent<BoxCollider>();
             BiomeModel = newBiome;
+            
             return newBiome;
         }
         

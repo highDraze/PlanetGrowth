@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4071558298092088102}
   - component: {fileID: 2156453560428121510}
+  - component: {fileID: 6874630655829926915}
   m_Layer: 9
   m_Name: HexagonPrefab
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2775353832114693182}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -3.462}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 543977490429715729}
@@ -44,6 +45,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7794acfde2441149a8030ae190ff0ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &6874630655829926915
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2775353832114693182}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &4719363166457957151
 PrefabInstance:
   m_ObjectHideFlags: 0
