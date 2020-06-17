@@ -183,38 +183,45 @@ public class Planet : MonoBehaviour {
     }
 
     public void raiseTempOfXRandomHex(int x) {
+        if (x > surfaceHexagons.Count) x = surfaceHexagons.Count;
         for (int i = 0; i < x; i++) {
             Hexagon hex = surfaceHexagons[UnityEngine.Random.Range(0, surfaceHexagons.Count)].GetComponent<Hexagon>();
             hex.SetTemperatur(hex.Temperatur + 1);
         }
     }
     public void lowerTempOfXRandomHex(int x) {
-        for (int i = 0; i < x; i++) {
+        if (x > surfaceHexagons.Count) x = surfaceHexagons.Count;
+        for (int i = 0; i < x; i++)
+        {
             Hexagon hex = surfaceHexagons[UnityEngine.Random.Range(0, surfaceHexagons.Count)].GetComponent<Hexagon>();
             hex.SetTemperatur(hex.Temperatur - 1);
         }
     }
     public void raiseHumidOfXRandomHex(int x) {
-        for (int i = 0; i < x; i++) {
+        if (x > surfaceHexagons.Count) x = surfaceHexagons.Count;
+        for (int i = 0; i < x; i++)
+        {
             Hexagon hex = surfaceHexagons[UnityEngine.Random.Range(0, surfaceHexagons.Count)].GetComponent<Hexagon>();
             hex.setHumidity(hex.Humidity + 1);
         }
     }
     public void lowerHumidOfXRandomHex(int x) {
-        for (int i = 0; i < x; i++) {
+        if (x > surfaceHexagons.Count) x = surfaceHexagons.Count;
+        for (int i = 0; i < x; i++)
+        {
             Hexagon hex = surfaceHexagons[UnityEngine.Random.Range(0, surfaceHexagons.Count)].GetComponent<Hexagon>();
             hex.setHumidity(hex.Humidity - 1);
         }
     }
 
     public void increaseCatastrophe(int CatNumber, int increase) {
+        if (CatNumber == catastropheChances[0]) {
+            catastropheChances[0] = increase;
+        }
         if (CatNumber == catastropheChances[1]) {
             catastropheChances[1] = increase;
         }
         if (CatNumber == catastropheChances[2]) {
-            catastropheChances[2] = increase;
-        }
-        if (CatNumber == catastropheChances[3]) {
             catastropheChances[2] = increase;
         }
     }

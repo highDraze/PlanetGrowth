@@ -9,6 +9,7 @@ public class Hexagon : MonoBehaviour
 {
 
     public Biome BiomeModel { get; set; }
+    public string modelName { get; set; } = "init";
 
     public int Score { get; set; }
 
@@ -39,7 +40,7 @@ public class Hexagon : MonoBehaviour
     public void updateBiomePrefab()
     {
         if (getNewBiome() == null) return;
-        deleteBiomeModel();  
+        //deleteBiomeModel();  
     }
 
 
@@ -53,35 +54,47 @@ public class Hexagon : MonoBehaviour
         {
             return null;
         }
-        else
-        {
-            
-            GameObject newBiomeModel = Instantiate(
-                newBiome.BiomeModel,
-                transform, 
-                false);
-            
-            newBiomeModel.transform.parent = transform;
-            newBiomeModel.name = newBiome.modelName;
-            Transform temp = newBiomeModel.transform.GetChild(0);
-                
-            
-                
-               // AddComponent<BoxCollider>();
-            BiomeModel = newBiome;
-            
-            return newBiome;
-        }
-        
+
+        // deleteBiomeModel();
+
+
+        Transform t = transform.Find(modelName);
+        if (t != null) Destroy(t.gameObject);
+
+        GameObject newBiomeModel = Instantiate(
+            newBiome.BiomeModel,
+            transform,
+            false);
+
+        modelName = newBiomeModel.name;
+
+
+        //newBiomeModel.transform.parent = transform;
+        //newBiomeModel.name = newBiome.modelName;
+
+        // AddComponent<BoxCollider>();
+
+
+
+        // if (BiomeModel != null) deleteBiomeModel();
+        // BiomeModel = newBiome;
+
+        return newBiome;
+
+
 
     }
 
     private void deleteBiomeModel()
     {
-        if (BiomeModel != null)
-        {
-            Destroy(transform.Find(BiomeModel.modelName).gameObject);
-        }
+        //if (BiomeModel != null)
+        // {
+        Transform t = transform.Find(BiomeModel.modelName);
+        Destroy(t.gameObject);
+
+        //Debug.Log("t");
+        //Debug.Log(t.gameObject);
+        //}
     }
 
 
@@ -99,27 +112,25 @@ public class Hexagon : MonoBehaviour
 
     public void SetTemperatur(int temp)
     {
-        temperature = temp;
+        changeTemperatur(temp);
         updateBiomePrefab();
     }
     public void changeTemperatur(int temp)
     {
-
-        temperature = Math.Min((temperature + temp), 2);
+        temperature = temp;
+        temperature = Math.Min(temperature, 2);
         temperature = Math.Max(-2, temperature);
-
     }
     public void changeHumidity(int humid)
     {
-
-        humidity = Math.Min((humidity + humid), 2);
+        humidity = humid;
+        humidity = Math.Min(humidity, 2);
         humidity = Math.Max(-2, humidity);
-
     }
 
     public void setHumidity(int humid)
     {
-        humidity = humid;
+        changeHumidity(humid);
         updateBiomePrefab();
     }
 }
