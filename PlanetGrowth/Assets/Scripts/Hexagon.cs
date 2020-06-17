@@ -13,20 +13,25 @@ public class Hexagon : MonoBehaviour
 
     public int Score { get; set; }
 
+    private bool changed = false;
+
+
     int temperature;
     int humidity;
 
     // Start is called before the first frame update
     void Start()
     {
-
         gameObject.GetComponentInChildren<ParticleSystem>().Stop();
-        // transform.GetChild(0).GetChild(0).GetComponent<ParticleSystem>().Stop(); 
     }
 
     void Update()
     {
-
+        if (changed)
+        {
+            updateBiomePrefab();
+            changed = false;
+        }
     }
 
     public void setStartBiome()
@@ -58,9 +63,13 @@ public class Hexagon : MonoBehaviour
         // deleteBiomeModel();
 
 
-        Transform t = transform.Find(modelName);
-        if (t != null) Destroy(t.gameObject);
-
+        Transform currentModel = transform.Find(modelName);
+        if (currentModel != null)
+        {
+            GameObject obj = currentModel.gameObject;
+            Destroy(obj);
+            obj = null;
+        }
         GameObject newBiomeModel = Instantiate(
             newBiome.BiomeModel,
             transform,
@@ -97,7 +106,10 @@ public class Hexagon : MonoBehaviour
         //}
     }
 
-
+    private void changesRegistered()
+    {
+        changed = true;
+    }
 
     void ApplyBiomeChanges(int biome)
     {
@@ -113,7 +125,7 @@ public class Hexagon : MonoBehaviour
     public void SetTemperatur(int temp)
     {
         changeTemperatur(temp);
-        updateBiomePrefab();
+        changesRegistered();
     }
     public void changeTemperatur(int temp)
     {
@@ -131,6 +143,6 @@ public class Hexagon : MonoBehaviour
     public void setHumidity(int humid)
     {
         changeHumidity(humid);
-        updateBiomePrefab();
+        changesRegistered();
     }
 }

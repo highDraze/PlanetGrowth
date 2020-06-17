@@ -103,17 +103,17 @@ public class Phase1Card : Card
         IceAgeChance = UnityEngine.Random.Range(5,15);
         VolcanoChance = UnityEngine.Random.Range(5,15);
 
+        effects.temperatureAdd = 0;
+        effects.temperatureSub = 0;
+        effects.humidityAdd = 0;
+        effects.humiditySub = 0;
+
         while (numberOfEffects > 0)
         {
             numberOfEffects -= 1;
             int whichEffect = UnityEngine.Random.Range(0, 4);
             whichCat = UnityEngine.Random.Range(1,3);
             int rareEffect = UnityEngine.Random.Range(1,20);
-
-            effects.temperatureAdd = 0;
-            effects.temperatureSub = 0;
-            effects.humidityAdd = 0;
-            effects.humiditySub = 0;
 
             //Catastrophs
             if (whichCat == 1 && rareEffect == 5){

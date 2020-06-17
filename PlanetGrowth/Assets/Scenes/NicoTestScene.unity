@@ -2312,24 +2312,24 @@ MonoBehaviour:
     type: 3}
   swampPrefab: {fileID: 8850523404257888737, guid: c6bec3fdab762834ab2659489a1a51cc,
     type: 3}
-  desertBiom: {fileID: 8469241104574233245, guid: 36228173b90ade944b33bd9c5a3fe9b2,
+  desertBiom: {fileID: 8395665153351826635, guid: 0d0ba370c4cc1c347a274bdeb78f0df2,
     type: 3}
-  articBiom: {fileID: 8469241104574233245, guid: 7744f6d33ac523344bfc07e93a8a55f7,
+  articBiom: {fileID: 1055502088759920100, guid: d4e21d91a11c73b419cc72f78608d8ed,
     type: 3}
-  oceanBiom: {fileID: 8469241104574233245, guid: dda584411a86e3b479fda262127fc600,
+  oceanBiom: {fileID: 9046238324678588267, guid: 9783bffddbf04e149a078a4633c9a7aa,
     type: 3}
-  wasteBiom: {fileID: 8469241104574233245, guid: 3482069aa466ad548b20c9ea382fdfad,
+  wasteBiom: {fileID: 5235772050481821841, guid: 4ea1576adee1cb64f8abf38ec5878d0e,
     type: 3}
-  forestBiom: {fileID: 8469241104574233245, guid: 04d4a19d1f85d7443a96a0eca33096a7,
+  forestBiom: {fileID: 3324123522803589631, guid: 65936dfe3f36ecc44b13eafac55b9d68,
     type: 3}
-  meadowBiom: {fileID: 8469241104574233245, guid: db687bfe877c3674b840ddccdc948d4d,
+  meadowBiom: {fileID: 7249984507066549258, guid: a6edc45f8b843f6489d20dfb3b631678,
     type: 3}
-  dschungleBiom: {fileID: 8469241104574233245, guid: 754e3e1a803c98e488caf5c6f14c7724,
+  dschungleBiom: {fileID: 5979042640482031950, guid: 3d3b3426db8b87545ae7de6eea09c291,
     type: 3}
-  swampBiom: {fileID: 8469241104574233245, guid: b1ae8faf012a33845b351f9eaacf1cc8,
+  swampBiom: {fileID: 5608781878366849308, guid: b19f5b35caf528b419cf89a91a87bdac,
     type: 3}
-  gridWidth: 10
-  gridHeigth: 10
+  gridWidth: 1
+  gridHeigth: 1
   gapHeight: 0.2
   gapWidth: 0
   catastropheChances: 000000000000000000000000
