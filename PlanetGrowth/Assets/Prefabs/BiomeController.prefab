@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9089509946397186612
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9089509946397186615}
+  - component: {fileID: 4851874205664141624}
+  m_Layer: 0
+  m_Name: BiomeController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9089509946397186615
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9089509946397186612}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.2347193, y: 2.3807957, z: 0.9910624}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4851874205664141624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9089509946397186612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc3862a6ac448b49b5f0170734287a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_biomes:
+  - {fileID: 4778714505856470983, guid: d4e21d91a11c73b419cc72f78608d8ed, type: 3}
+  - {fileID: 4068974711215372008, guid: 0d0ba370c4cc1c347a274bdeb78f0df2, type: 3}
+  - {fileID: 7121645338046852060, guid: 65936dfe3f36ecc44b13eafac55b9d68, type: 3}
+  - {fileID: 2165476687141884781, guid: 3d3b3426db8b87545ae7de6eea09c291, type: 3}
+  - {fileID: 2912030672382758441, guid: a6edc45f8b843f6489d20dfb3b631678, type: 3}
+  - {fileID: 3566344971946491208, guid: 9783bffddbf04e149a078a4633c9a7aa, type: 3}
+  - {fileID: 81882204255765311, guid: b19f5b35caf528b419cf89a91a87bdac, type: 3}
+  - {fileID: 314602128205165234, guid: 4ea1576adee1cb64f8abf38ec5878d0e, type: 3}

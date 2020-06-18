@@ -220,7 +220,6 @@ private void selectCard()
 
     private void PlayCard(Card card)
     {
-        Debug.Log("playCard");
         draw.Play();
       
         heldCard = null;

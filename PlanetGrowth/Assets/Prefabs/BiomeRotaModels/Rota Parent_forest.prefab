@@ -1,11 +1,11 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3670720474209764427
+--- !u!1001 &2043834274085053809
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1630646894282981422}
+    m_TransformParent: {fileID: 4158329109137364704}
     m_Modifications:
     - target: {fileID: -4216859302048453862, guid: 459b8968ae466bd4f8e7d3b20b1a9970,
         type: 3}
@@ -45,7 +45,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 459b8968ae466bd4f8e7d3b20b1a9970,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 459b8968ae466bd4f8e7d3b20b1a9970,
         type: 3}
@@ -62,25 +62,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -1825994935081659989, guid: 459b8968ae466bd4f8e7d3b20b1a9970,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 459b8968ae466bd4f8e7d3b20b1a9970,
         type: 3}
       propertyPath: m_Name
-      value: biome_forest 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 459b8968ae466bd4f8e7d3b20b1a9970,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 3377703156825922461, guid: 459b8968ae466bd4f8e7d3b20b1a9970,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
+      value: biome_forest
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 459b8968ae466bd4f8e7d3b20b1a9970, type: 3}
@@ -95,6 +80,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rota Parent_forest
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365468962430569944, guid: 7210479f30c68f145a28f261da7ef940,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3075692721499425146, guid: 7210479f30c68f145a28f261da7ef940,
         type: 3}
@@ -151,11 +141,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 4412398214658702949, guid: 7210479f30c68f145a28f261da7ef940,
+        type: 3}
+      propertyPath: m_Name
+      value: Rota Parent_forest
+      objectReference: {fileID: 0}
+    - target: {fileID: 6835087895409713800, guid: 7210479f30c68f145a28f261da7ef940,
+        type: 3}
+      propertyPath: m_temperatureRange.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6835087895409713800, guid: 7210479f30c68f145a28f261da7ef940,
+        type: 3}
+      propertyPath: m_temperatureRange.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6835087895409713800, guid: 7210479f30c68f145a28f261da7ef940,
+        type: 3}
+      propertyPath: m_humidRange.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8200912830651675718, guid: 7210479f30c68f145a28f261da7ef940,
+        type: 3}
+      propertyPath: m_temperatureRange.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8200912830651675718, guid: 7210479f30c68f145a28f261da7ef940,
+        type: 3}
+      propertyPath: m_humidRange.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7210479f30c68f145a28f261da7ef940, type: 3}
---- !u!4 &1630646894282981422 stripped
+--- !u!4 &4158329109137364704 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 3075692721499425146, guid: 7210479f30c68f145a28f261da7ef940,
+  m_CorrespondingSourceObject: {fileID: 413043375367921588, guid: 7210479f30c68f145a28f261da7ef940,
     type: 3}
   m_PrefabInstance: {fileID: 4327456258030209364}
   m_PrefabAsset: {fileID: 0}

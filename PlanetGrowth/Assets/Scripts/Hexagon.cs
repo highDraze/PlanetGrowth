@@ -15,112 +15,86 @@ public class Hexagon : MonoBehaviour
 
     private bool changed = false;
 
-
-    int temperature;
-    int humidity;
+    [SerializeField] private BiomeController m_biomeController;
+     private GameObject m_biome = null;
+    [SerializeField] private int m_temperature;
+    [SerializeField] private int m_humidity;
+    
+    
 
     // Start is called before the first frame update
     void Start()
     {
+        m_biome = m_biomeController.assignBiome(m_temperature, m_humidity, transform);
         gameObject.GetComponentInChildren<ParticleSystem>().Stop();
     }
 
     void Update()
     {
-        if (changed)
-        {
-            updateBiomePrefab();
-            changed = false;
-        }
+        updateBiomePrefab();
     }
 
     public void setStartBiome()
     {
-        temperature = UnityEngine.Random.Range(-2, 2);
-        humidity = UnityEngine.Random.Range(-2, 2);
+        Temperature = UnityEngine.Random.Range(-2, 2);
+        m_humidity = UnityEngine.Random.Range(-2, 2);
 
-        getNewBiome();
+        updateBiomePrefab();
     }
 
     public void updateBiomePrefab()
     {
-        if (getNewBiome() == null) return;
-        //deleteBiomeModel();  
-    }
-
-
-
-    private Biome getNewBiome()
-    {
-        Planet planet = GameObject.Find("Planet").GetComponent<Planet>();
-        Biome newBiome = planet.DetermineMatchingBiome(temperature, humidity);
-
-        if (newBiome == null)
+        if (changed)
         {
-            return null;
+            m_biome = m_biomeController.assignBiome(
+                Temperature, 
+                m_humidity, 
+                m_biome);
+            changed = false;
         }
-
-        // deleteBiomeModel();
-
-
-        Transform currentModel = transform.Find(modelName);
-        if (currentModel != null)
-        {
-            GameObject obj = currentModel.gameObject;
-            Destroy(obj);
-            obj = null;
-        }
-        GameObject newBiomeModel = Instantiate(
-            newBiome.BiomeModel,
-            transform,
-            false);
-
-        modelName = newBiomeModel.name;
-
-
-        //newBiomeModel.transform.parent = transform;
-        //newBiomeModel.name = newBiome.modelName;
-
-        // AddComponent<BoxCollider>();
-
-
-
-        // if (BiomeModel != null) deleteBiomeModel();
-        // BiomeModel = newBiome;
-
-        return newBiome;
-
-
-
     }
 
-    private void deleteBiomeModel()
-    {
-        //if (BiomeModel != null)
-        // {
-        Transform t = transform.Find(BiomeModel.modelName);
-        Destroy(t.gameObject);
+    //private Biome addNewBiomeModel()
+    //{
+    //    Planet planet = GameObject.Find("Planet").GetComponent<Planet>();
+    //    Biome newBiome = planet.DetermineMatchingBiome(temperature, humidity);
 
-        //Debug.Log("t");
-        //Debug.Log(t.gameObject);
-        //}
-    }
+    //    if (newBiome == null)
+    //    {
+    //        return null;
+    //    }
+    //    GameObject newBiomeModel = Instantiate(
+    //        newBiome.BiomeModel,
+    //        transform,
+    //        false);
+
+
+    //    Biome oldBiome = BiomeModel;
+    //    BiomeModel = newBiome;
+    //    BiomeModel.m_modelName = newBiomeModel.name;
+    //    return oldBiome;
+    //}
+
+    //private void deleteOldBiomeModel(Biome _biome)
+    //{
+    //    Transform currentModel = transform.Find(_biome.m_modelName);
+    //    if (currentModel != null)
+    //    {
+    //        GameObject obj = currentModel.gameObject;
+    //        Destroy(obj);
+    //        obj = null;
+    //    }
+    //}
 
     private void changesRegistered()
     {
         changed = true;
     }
 
-    void ApplyBiomeChanges(int biome)
-    {
+    public int Temperatur => Temperature;
+    public int Humidity => m_humidity;
 
-    }
-
-    public int Temperatur => temperature;
-    public int Humidity => humidity;
-
-
-
+    public int Temperature { get => m_temperature; set => m_temperature = value; }
 
     public void SetTemperatur(int temp)
     {
@@ -129,15 +103,15 @@ public class Hexagon : MonoBehaviour
     }
     public void changeTemperatur(int temp)
     {
-        temperature = temp;
-        temperature = Math.Min(temperature, 2);
-        temperature = Math.Max(-2, temperature);
+        Temperature = temp;
+        Temperature = Math.Min(Temperature, 2);
+        Temperature = Math.Max(-2, Temperature);
     }
     public void changeHumidity(int humid)
     {
-        humidity = humid;
-        humidity = Math.Min(humidity, 2);
-        humidity = Math.Max(-2, humidity);
+        m_humidity = humid;
+        m_humidity = Math.Min(m_humidity, 2);
+        m_humidity = Math.Max(-2, m_humidity);
     }
 
     public void setHumidity(int humid)

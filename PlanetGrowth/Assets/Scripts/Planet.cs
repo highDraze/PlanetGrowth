@@ -9,39 +9,12 @@ public class Planet : MonoBehaviour {
 
     public string Name { get; set; }
     public int age { get; set; }
+
     public List<Transform> surfaceHexagons;
-    public List<Biome> biomes = new List<Biome>();
-
-
-
-
     public GameObject hexPrefab;
 
-    public GameObject desertPrefab;
-    public GameObject articPrefab;
-    public GameObject oceanPrefab;
-    public GameObject wastePrefab;
-    public GameObject forestPrefab;
-    public GameObject meadowPrefab;
-    public GameObject dschunglePrefab;
-    public GameObject swampPrefab;
-
-    public GameObject desertBiom;
-    public GameObject articBiom;
-    public GameObject oceanBiom;
-    public GameObject wasteBiom;
-    public GameObject forestBiom;
-    public GameObject meadowBiom;
-    public GameObject dschungleBiom;
-    public GameObject swampBiom;
-
-
-
-
-
-    public int gridWidth;
     public int gridHeigth;
-
+    public int gridWidth;
     float hexWidth = 1.732f;
     float hexHeigth = 2.0f;
     public float gapHeight;
@@ -53,20 +26,6 @@ public class Planet : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-
-
-        for (int i = 0; i < 8; i++) {
-            biomes.Add(new Biome());
-        }
-
-        biomes[0].InitBiome(0, new int[] { -2, 1 }, new int[] { -2, -1 }, wasteBiom.name, wasteBiom, -20);
-        biomes[1].InitBiome(1, new int[] { 1, 2 }, new int[] { -2, -1 }, desertBiom.name, desertBiom, -10);
-        biomes[2].InitBiome(2, new int[] { -2, -1 }, new int[] { -1, 1 }, articBiom.name, articBiom, -5);
-        biomes[3].InitBiome(3, new int[] { 0, 1 }, new int[] { 0, 1 }, meadowBiom.name, meadowBiom, 30);
-        biomes[4].InitBiome(4, new int[] { -1, 0 }, new int[] { 0, 1 }, forestBiom.name, forestBiom, 40);
-        biomes[5].InitBiome(5, new int[] { 1, 2 }, new int[] { 1, 2 }, swampBiom.name, swampBiom, 10);
-        biomes[6].InitBiome(6, new int[] { 2, 2 }, new int[] { 1, 2 }, dschungleBiom.name, dschungleBiom, 50);
-        biomes[7].InitBiome(7, new int[] { -2, 0 }, new int[] { 1, 2 }, oceanBiom.name, oceanBiom, 10);
 
         AddGap();
         CreateGrid();
@@ -88,24 +47,6 @@ public class Planet : MonoBehaviour {
     void Update() {
 
     }
-
-    public Biome DetermineMatchingBiome(int _temperature, int _humidity) {
-
-        List<Biome> matchingBiomes = new List<Biome>();
-        foreach (Biome biome in biomes) {
-            if (biome.MatchBiome(_temperature, _humidity)) matchingBiomes.Add(biome);
-        }
-
-        if (matchingBiomes.Count == 0) {
-            return null;
-        } else {
-            int index = UnityEngine.Random.Range(0, matchingBiomes.Count);
-            return matchingBiomes[index];
-        }
-
-
-    }
-
 
     public int getHexagonIndex(Transform selectedHex) {
         for (int index = 0; index < surfaceHexagons.Count; index++) {
@@ -142,8 +83,8 @@ public class Planet : MonoBehaviour {
                 hex.position = CalcWorldPos(gridPos);
                 hex.rotation = CalcRotation(gridPos);
                 hex.name = "Hexagon" + i + "|" + j;
-
-                hex.GetComponent<Hexagon>().setStartBiome();
+            
+                //hex.GetComponent<Hexagon>().setStartBiome();
                 hex.parent = this.transform;
 
                 surfaceHexagons.Add(hex);

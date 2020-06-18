@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!65 &7863798450142472499
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6074696310947547809}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.7320509, y: 0.19749999, z: 2}
-  m_Center: {x: 0, y: 0.09625001, z: 0}
 --- !u!1001 &2056592227817434447
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24,11 +11,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rota Parent_arctic
-      objectReference: {fileID: 0}
-    - target: {fileID: 1365468962430569944, guid: 7210479f30c68f145a28f261da7ef940,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3075692721499425146, guid: 7210479f30c68f145a28f261da7ef940,
         type: 3}
@@ -85,20 +67,60 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 4412398214658702949, guid: 7210479f30c68f145a28f261da7ef940,
+        type: 3}
+      propertyPath: m_Name
+      value: Rota Parent_arctic
+      objectReference: {fileID: 0}
+    - target: {fileID: 6835087895409713800, guid: 7210479f30c68f145a28f261da7ef940,
+        type: 3}
+      propertyPath: m_temperatureRange.Array.data[0]
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6835087895409713800, guid: 7210479f30c68f145a28f261da7ef940,
+        type: 3}
+      propertyPath: m_temperatureRange.Array.data[1]
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6835087895409713800, guid: 7210479f30c68f145a28f261da7ef940,
+        type: 3}
+      propertyPath: m_humidRange.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8200912830651675718, guid: 7210479f30c68f145a28f261da7ef940,
+        type: 3}
+      propertyPath: m_temperatureRange.Array.data[0]
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8200912830651675718, guid: 7210479f30c68f145a28f261da7ef940,
+        type: 3}
+      propertyPath: m_temperatureRange.Array.data[1]
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8200912830651675718, guid: 7210479f30c68f145a28f261da7ef940,
+        type: 3}
+      propertyPath: m_humidRange.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8200912830651675718, guid: 7210479f30c68f145a28f261da7ef940,
+        type: 3}
+      propertyPath: m_humidRange.Array.data[1]
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7210479f30c68f145a28f261da7ef940, type: 3}
---- !u!4 &3901653845437670453 stripped
+--- !u!4 &1815257958284604155 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 3075692721499425146, guid: 7210479f30c68f145a28f261da7ef940,
+  m_CorrespondingSourceObject: {fileID: 413043375367921588, guid: 7210479f30c68f145a28f261da7ef940,
     type: 3}
   m_PrefabInstance: {fileID: 2056592227817434447}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &3667455513918708490
+--- !u!1001 &5482684833162294390
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 3901653845437670453}
+    m_TransformParent: {fileID: 1815257958284604155}
     m_Modifications:
     - target: {fileID: -4216859302048453862, guid: 617fb1b46e567e94eb70a2ee33d6c372,
         type: 3}
@@ -138,7 +160,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 617fb1b46e567e94eb70a2ee33d6c372,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 617fb1b46e567e94eb70a2ee33d6c372,
         type: 3}
@@ -155,31 +177,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -1825994935081659989, guid: 617fb1b46e567e94eb70a2ee33d6c372,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 617fb1b46e567e94eb70a2ee33d6c372,
         type: 3}
       propertyPath: m_Name
-      value: biome_arctic 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 617fb1b46e567e94eb70a2ee33d6c372,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 8581879509101285722, guid: 617fb1b46e567e94eb70a2ee33d6c372,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
+      value: biome_arctic
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 617fb1b46e567e94eb70a2ee33d6c372, type: 3}
---- !u!1 &6074696310947547809 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -1825994935081659989, guid: 617fb1b46e567e94eb70a2ee33d6c372,
-    type: 3}
-  m_PrefabInstance: {fileID: 3667455513918708490}
-  m_PrefabAsset: {fileID: 0}

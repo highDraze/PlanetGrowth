@@ -2296,40 +2296,8 @@ MonoBehaviour:
   surfaceHexagons: []
   hexPrefab: {fileID: 2775353832114693182, guid: eda9a79373f81734ebfbc67ef60e0b21,
     type: 3}
-  desertPrefab: {fileID: 613126778735181467, guid: b42792099a3beaf41865a8ac03359e9b,
-    type: 3}
-  articPrefab: {fileID: 4687815857527443299, guid: df47e9160bba6234a8c8a801c0323935,
-    type: 3}
-  oceanPrefab: {fileID: 4153684115001201254, guid: 2c758c1b3d1c80a48b7dd2521e96ebe0,
-    type: 3}
-  wastePrefab: {fileID: 2590399961544186166, guid: 961b7e4f0a76f54409a44efc8bdd8914,
-    type: 3}
-  forestPrefab: {fileID: 2950926789261106585, guid: 9485232725a65c34884f724a27286dcd,
-    type: 3}
-  meadowPrefab: {fileID: 6430209531214425709, guid: 9d7e6301145e9bb4a92444de3f60608b,
-    type: 3}
-  dschunglePrefab: {fileID: 8468298601710139205, guid: 10089e718e079e74393a09fec691d61c,
-    type: 3}
-  swampPrefab: {fileID: 8850523404257888737, guid: c6bec3fdab762834ab2659489a1a51cc,
-    type: 3}
-  desertBiom: {fileID: 8395665153351826635, guid: 0d0ba370c4cc1c347a274bdeb78f0df2,
-    type: 3}
-  articBiom: {fileID: 1055502088759920100, guid: d4e21d91a11c73b419cc72f78608d8ed,
-    type: 3}
-  oceanBiom: {fileID: 9046238324678588267, guid: 9783bffddbf04e149a078a4633c9a7aa,
-    type: 3}
-  wasteBiom: {fileID: 5235772050481821841, guid: 4ea1576adee1cb64f8abf38ec5878d0e,
-    type: 3}
-  forestBiom: {fileID: 3324123522803589631, guid: 65936dfe3f36ecc44b13eafac55b9d68,
-    type: 3}
-  meadowBiom: {fileID: 7249984507066549258, guid: a6edc45f8b843f6489d20dfb3b631678,
-    type: 3}
-  dschungleBiom: {fileID: 5979042640482031950, guid: 3d3b3426db8b87545ae7de6eea09c291,
-    type: 3}
-  swampBiom: {fileID: 5608781878366849308, guid: b19f5b35caf528b419cf89a91a87bdac,
-    type: 3}
-  gridWidth: 1
-  gridHeigth: 1
+  gridHeigth: 10
+  gridWidth: 10
   gapHeight: 0.2
   gapWidth: 0
   catastropheChances: 000000000000000000000000
@@ -4265,3 +4233,72 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2043654906}
   m_CullTransparentMesh: 0
+--- !u!1001 &3036253924270235019
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3036253922494470045, guid: 3004fd4854fb3b641b30716674a34ef1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.2347193
+      objectReference: {fileID: 0}
+    - target: {fileID: 3036253922494470045, guid: 3004fd4854fb3b641b30716674a34ef1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.3807957
+      objectReference: {fileID: 0}
+    - target: {fileID: 3036253922494470045, guid: 3004fd4854fb3b641b30716674a34ef1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.9910624
+      objectReference: {fileID: 0}
+    - target: {fileID: 3036253922494470045, guid: 3004fd4854fb3b641b30716674a34ef1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3036253922494470045, guid: 3004fd4854fb3b641b30716674a34ef1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3036253922494470045, guid: 3004fd4854fb3b641b30716674a34ef1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3036253922494470045, guid: 3004fd4854fb3b641b30716674a34ef1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3036253922494470045, guid: 3004fd4854fb3b641b30716674a34ef1,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3036253922494470045, guid: 3004fd4854fb3b641b30716674a34ef1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3036253922494470045, guid: 3004fd4854fb3b641b30716674a34ef1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3036253922494470045, guid: 3004fd4854fb3b641b30716674a34ef1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3036253922494470046, guid: 3004fd4854fb3b641b30716674a34ef1,
+        type: 3}
+      propertyPath: m_Name
+      value: BiomeController
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3004fd4854fb3b641b30716674a34ef1, type: 3}

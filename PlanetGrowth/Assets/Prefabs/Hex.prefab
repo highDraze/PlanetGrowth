@@ -44,8 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7794acfde2441149a8030ae190ff0ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  temperatureDifference: 0
+  m_biomeController: {fileID: 4851874205664141624, guid: f51b92fc912809c4792352d24d26c410,
+    type: 3}
+  m_biome: {fileID: 3119255144300569724, guid: 4ea1576adee1cb64f8abf38ec5878d0e, type: 3}
 --- !u!64 &1063929393429309110
 MeshCollider:
   m_ObjectHideFlags: 0
