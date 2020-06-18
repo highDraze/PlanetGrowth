@@ -53,7 +53,7 @@ class BiomeController : MonoBehaviour
         }
         if (matchingBiomes.Count > 0)
         {
-            int index = UnityEngine.Random.Range(0, matchingBiomes.Count);
+            int index = matchingBiomes[UnityEngine.Random.Range(0, matchingBiomes.Count)];
             return index;
         }
         return -1;
@@ -64,8 +64,8 @@ class BiomeController : MonoBehaviour
         GameObject newBiomeModel = Instantiate(
             m_biomes[_newBiome].BiomeModel,
             _parent,
-            true);
-
+            false);
+        
         return newBiomeModel;
     }
 
