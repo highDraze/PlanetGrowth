@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 public class TestScript : MonoBehaviour {
@@ -19,42 +20,34 @@ public class TestScript : MonoBehaviour {
     }
 
     void updateBiomePrefab() {
-
-
         Debug.Log("LogMessage");
-
         GameObject modellCopy = Instantiate(biomeModel);
-        foreach (var item in transform) {
 
+        foreach (var item in transform) {
             Debug.Log(item);
         }
 
         Destroy(transform.Find(modelName).gameObject);
         modellCopy.transform.parent = transform;
 
+        /*Destroy()
 
-        //Destroy()
+        GameObject rotaParent =
 
+            Planet planet = GameObject.Find("Planet").GetComponent<Planet>();
+        Biome newBiome = planet.DetermineMatchingBiome(temperature, humidity);
 
-        //GameObject rotaParent = 
+        if (newBiome != null) {
 
-        //Planet planet = GameObject.Find("Planet").GetComponent<Planet>();
-        //Biome newBiome = planet.DetermineMatchingBiome(temperature, humidity);
+            score = newBiome.LiveAbilityScore;
+            Transform obj = transform.Find("Rota Parent");
+            UnityEngine.Quaternion cRotation = obj.rotation;
 
-        //if (newBiome != null)
-        //{
+            Destroy(obj.gameObject);
 
-        //    score = newBiome.LiveAbilityScore;
-
-
-        //    Transform obj = transform.Find("Rota Parent");
-        //    UnityEngine.Quaternion cRotation = obj.rotation;
-
-        //    Destroy(obj.gameObject);
-
-        //    GameObject newBiom = Instantiate(newBiome.getModell(), transform.position, cRotation, transform);
-        //    newBiom.name = "Rota Parent";
-        //}
+            GameObject newBiom = Instantiate(newBiome.getModell(), transform.position, cRotation, transform);
+            newBiom.name = "Rota Parent";        
+        }*/
     }
 
 

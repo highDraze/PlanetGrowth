@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 public class Planet : MonoBehaviour {
 
-
-
-    public string Name { get; set; }
-    public int age { get; set; }
+    public string Name {
+        get;
+        set;
+    }
+    public int age {
+        get;
+        set;
+    }
 
     public List<Transform> surfaceHexagons;
     public GameObject hexPrefab;
@@ -29,7 +34,6 @@ public class Planet : MonoBehaviour {
 
         AddGap();
         CreateGrid();
-
     }
 
     public int getLivabilityScore() {
@@ -39,13 +43,6 @@ public class Planet : MonoBehaviour {
             value += hexagon.GetComponent<Hexagon>().Score;
         }
         return value;
-    }
-
-
-
-    // Update is called once per frame
-    void Update() {
-
     }
 
     public int getHexagonIndex(Transform selectedHex) {
@@ -59,43 +56,33 @@ public class Planet : MonoBehaviour {
 
         if (isHovered) {
             surfaceHexagons[hexIndex].GetComponent<Hexagon>().GetComponentInChildren<ParticleSystem>().Play();
-        } else {
+        }
+        else {
             surfaceHexagons[hexIndex].GetComponent<Hexagon>().GetComponentInChildren<ParticleSystem>().Stop();
         }
     }
-
-
 
     void AddGap() {
         hexHeigth += hexHeigth * gapHeight;
         hexWidth += hexWidth * gapWidth;
     }
 
-
-
     void CreateGrid() {
         for (int i = 0; i < gridHeigth; i++) {
             for (int j = 0; j < gridWidth; j++) {
 
                 Transform hex = Instantiate(hexPrefab).transform;
-                
                 Vector2 gridPos = new Vector2(i, j);
+
                 hex.position = CalcWorldPos(gridPos);
                 hex.rotation = CalcRotation(gridPos);
                 hex.name = "Hexagon" + i + "|" + j;
-            
                 //hex.GetComponent<Hexagon>().setStartBiome();
                 hex.parent = this.transform;
-
                 surfaceHexagons.Add(hex);
             }
-
         }
-
     }
-
-
-
 
     Vector3 CalcWorldPos(Vector2 gridPos) {
 
@@ -108,13 +95,10 @@ public class Planet : MonoBehaviour {
         Vector3 pos;
         pos.z = startPos.z + radius * Mathf.Sin(ang * Mathf.Deg2Rad);
         pos.y = startPos.y + radius * Mathf.Cos(ang * Mathf.Deg2Rad);
-
-
-
-
         pos.x = startPos.x + (gridPos.y) * (hexHeigth) * 0.75f;
         return pos;
     }
+
     private Quaternion CalcRotation(Vector2 gridPos) {
         float offset = 0;
         if (gridPos.y % 2 != 0) {
@@ -130,26 +114,26 @@ public class Planet : MonoBehaviour {
             hex.SetTemperatur(hex.Temperatur + 1);
         }
     }
+
     public void lowerTempOfXRandomHex(int x) {
         if (x > surfaceHexagons.Count) x = surfaceHexagons.Count;
-        for (int i = 0; i < x; i++)
-        {
+        for (int i = 0; i < x; i++) {
             Hexagon hex = surfaceHexagons[UnityEngine.Random.Range(0, surfaceHexagons.Count)].GetComponent<Hexagon>();
             hex.SetTemperatur(hex.Temperatur - 1);
         }
     }
+
     public void raiseHumidOfXRandomHex(int x) {
         if (x > surfaceHexagons.Count) x = surfaceHexagons.Count;
-        for (int i = 0; i < x; i++)
-        {
+        for (int i = 0; i < x; i++) {
             Hexagon hex = surfaceHexagons[UnityEngine.Random.Range(0, surfaceHexagons.Count)].GetComponent<Hexagon>();
             hex.setHumidity(hex.Humidity + 1);
         }
     }
+
     public void lowerHumidOfXRandomHex(int x) {
         if (x > surfaceHexagons.Count) x = surfaceHexagons.Count;
-        for (int i = 0; i < x; i++)
-        {
+        for (int i = 0; i < x; i++) {
             Hexagon hex = surfaceHexagons[UnityEngine.Random.Range(0, surfaceHexagons.Count)].GetComponent<Hexagon>();
             hex.setHumidity(hex.Humidity - 1);
         }

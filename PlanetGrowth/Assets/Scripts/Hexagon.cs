@@ -2,53 +2,54 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+
 using UnityEngine;
 
 
-public class Hexagon : MonoBehaviour
-{
+public class Hexagon : MonoBehaviour {
 
-    public Biome BiomeModel { get; set; }
-    public string modelName { get; set; } = "init";
+    public Biome BiomeModel {
+        get;
+        set;
+    }
+    public string modelName {
+        get;
+        set;
+    } = "init";
 
-    public int Score { get; set; }
+    public int Score {
+        get;
+        set;
+    }
 
     private bool changed = false;
 
     [SerializeField] private BiomeController m_biomeController;
-     private GameObject m_biome = null;
+    private GameObject m_biome = null;
     [SerializeField] private int m_temperature;
     [SerializeField] private int m_humidity;
-    
-    
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         m_biome = m_biomeController.assignBiome(m_temperature, m_humidity, transform);
         gameObject.GetComponentInChildren<ParticleSystem>().Stop();
     }
 
-    void Update()
-    {
+    void Update() {
         updateBiomePrefab();
     }
 
-    public void setStartBiome()
-    {
+    public void setStartBiome() {
         Temperature = UnityEngine.Random.Range(-2, 2);
         m_humidity = UnityEngine.Random.Range(-2, 2);
-
         updateBiomePrefab();
     }
 
-    public void updateBiomePrefab()
-    {
-        if (changed)
-        {
+    public void updateBiomePrefab() {
+        if (changed) {
             m_biome = m_biomeController.assignBiome(
-                Temperature, 
-                m_humidity, 
+                Temperature,
+                m_humidity,
                 m_biome);
             changed = false;
         }
@@ -86,36 +87,36 @@ public class Hexagon : MonoBehaviour
     //    }
     //}
 
-    private void changesRegistered()
-    {
+    private void changesRegistered() {
         changed = true;
     }
 
     public int Temperatur => Temperature;
     public int Humidity => m_humidity;
 
-    public int Temperature { get => m_temperature; set => m_temperature = value; }
+    public int Temperature {
+        get => m_temperature;
+        set => m_temperature = value;
+    }
 
-    public void SetTemperatur(int temp)
-    {
+    public void SetTemperatur(int temp) {
         changeTemperatur(temp);
         changesRegistered();
     }
-    public void changeTemperatur(int temp)
-    {
+
+    public void changeTemperatur(int temp) {
         Temperature = temp;
         Temperature = Math.Min(Temperature, 2);
         Temperature = Math.Max(-2, Temperature);
     }
-    public void changeHumidity(int humid)
-    {
+
+    public void changeHumidity(int humid) {
         m_humidity = humid;
         m_humidity = Math.Min(m_humidity, 2);
         m_humidity = Math.Max(-2, m_humidity);
     }
 
-    public void setHumidity(int humid)
-    {
+    public void setHumidity(int humid) {
         changeHumidity(humid);
         changesRegistered();
     }
