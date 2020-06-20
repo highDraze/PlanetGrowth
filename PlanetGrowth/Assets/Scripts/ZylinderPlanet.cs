@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-public class Planet : MonoBehaviour {
+public class ZylinderPlanet : MonoBehaviour {
 
     public string Name {
         get;
@@ -45,7 +45,8 @@ public class Planet : MonoBehaviour {
         return value;
     }
 
-    public int getHexagonIndex(Transform selectedHex) {
+    public int getHexagonIndex(Transform selectedHex)
+    {
         for (int index = 0; index < surfaceHexagons.Count; index++) {
             if (selectedHex == surfaceHexagons[index]) return index;
         }

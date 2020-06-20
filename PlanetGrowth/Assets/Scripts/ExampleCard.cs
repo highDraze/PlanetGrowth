@@ -31,19 +31,19 @@ public class ExampleCard : Card {
 
     private void ExecuteEffects() {
         if (effects.temperatureAdd != 0) {
-            Planet planet = GameObject.Find("Planet").GetComponent<Planet>();
+            ZylinderPlanet planet = GameObject.Find("Planet").GetComponent<ZylinderPlanet>();
             planet.raiseTempOfXRandomHex(effects.temperatureAdd);
         }
         if (effects.humidityAdd != 0) {
-            Planet planet = GameObject.Find("Planet").GetComponent<Planet>();
+            ZylinderPlanet planet = GameObject.Find("Planet").GetComponent<ZylinderPlanet>();
             planet.raiseHumidOfXRandomHex(effects.humidityAdd);
         }
         if (effects.temperatureSub != 0) {
-            Planet planet = GameObject.Find("Planet").GetComponent<Planet>();
+            ZylinderPlanet planet = GameObject.Find("Planet").GetComponent<ZylinderPlanet>();
             planet.lowerTempOfXRandomHex(effects.temperatureSub);
         }
         if (effects.humiditySub != 0) {
-            Planet planet = GameObject.Find("Planet").GetComponent<Planet>();
+            ZylinderPlanet planet = GameObject.Find("Planet").GetComponent<ZylinderPlanet>();
             planet.lowerHumidOfXRandomHex(effects.humiditySub);
         }
     }

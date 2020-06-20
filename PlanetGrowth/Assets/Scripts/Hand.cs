@@ -149,7 +149,7 @@ public class Hand : MonoBehaviour {
                 if (hex != null) {
                     // selection cases
                     // single
-                    int new_index = GameObject.Find("Planet").GetComponent<Planet>()
+                    int new_index = GameObject.Find("Planet").GetComponent<ZylinderPlanet>()
                         .getHexagonIndex(hitPoint.transform.GetComponentInParent<Hexagon>().transform);
                     //hex.material = highlightedHex;
 
@@ -189,7 +189,7 @@ public class Hand : MonoBehaviour {
         if (phase == 1) {
             removeCards();
         }
-        turnsScript.currentScoreText.text = GameObject.Find("Planet").GetComponent<Planet>().getLivabilityScore().ToString();
+        turnsScript.currentScoreText.text = GameObject.Find("Planet").GetComponent<ZylinderPlanet>().getLivabilityScore().ToString();
     }
 
     private void redraw() {
@@ -219,12 +219,12 @@ public class Hand : MonoBehaviour {
 
     private void selectSingle(int new_index) {
 
-        GameObject.Find("Planet").GetComponent<Planet>().highlightBiome(new_index, true);
-        GameObject.Find("Planet").GetComponent<Planet>().highlightBiome(hoveredHex, false);
+        GameObject.Find("Planet").GetComponent<ZylinderPlanet>().highlightBiome(new_index, true);
+        GameObject.Find("Planet").GetComponent<ZylinderPlanet>().highlightBiome(hoveredHex, false);
     }
 
     private void selectSeven(int new_index) {
-        Planet planet = GameObject.Find("Planet").GetComponent<Planet>();
+        ZylinderPlanet planet = GameObject.Find("Planet").GetComponent<ZylinderPlanet>();
         int[] indexMods = {
             0,
             -1,
@@ -279,12 +279,12 @@ public class Hand : MonoBehaviour {
 
     public void changeLocalTemperature(int value) {
         foreach (int i in hovereredList) {
-            GameObject.Find("Planet").GetComponent<Planet>().surfaceHexagons[i].GetComponent<Hexagon>().changeTemperatur(value);
+            GameObject.Find("Planet").GetComponent<ZylinderPlanet>().surfaceHexagons[i].GetComponent<Hexagon>().changeTemperatur(value);
         }
     }
     public void changeLocalHumidity(int value) {
         foreach (int i in hovereredList) {
-            GameObject.Find("Planet").GetComponent<Planet>().surfaceHexagons[i].GetComponent<Hexagon>().changeHumidity(value);
+            GameObject.Find("Planet").GetComponent<ZylinderPlanet>().surfaceHexagons[i].GetComponent<Hexagon>().changeHumidity(value);
         }
     }
 

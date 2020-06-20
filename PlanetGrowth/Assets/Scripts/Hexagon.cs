@@ -6,7 +6,7 @@ using System.Numerics;
 using UnityEngine;
 
 
-public class Hexagon : MonoBehaviour {
+public class Hexagon : WorldElement {
 
     public Biome BiomeModel {
         get;

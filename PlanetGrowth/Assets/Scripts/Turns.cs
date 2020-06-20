@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class Turns : MonoBehaviour {
     [SerializeField] private Hand hand;
-    [SerializeField] private Planet planet;
+    [SerializeField] private ZylinderPlanet planet;
     [SerializeField] private float timePerTurn;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI currentTimeText;

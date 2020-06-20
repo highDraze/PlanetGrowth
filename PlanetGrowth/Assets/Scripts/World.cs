@@ -1,0 +1,21 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class World : MonoBehaviour
+{
+    // Start is called before the first frame update
+
+    protected List<GameObject> m_worldElements = new List<GameObject>();
+
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}

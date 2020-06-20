@@ -55,31 +55,31 @@ public class Phase1Card : Card {
 
     private void ExecuteEffects() {
         if (effects.temperatureAdd != 0) {
-            Planet planet = GameObject.Find("Planet").GetComponent<Planet>();
+            ZylinderPlanet planet = GameObject.Find("Planet").GetComponent<ZylinderPlanet>();
             planet.raiseTempOfXRandomHex(effects.temperatureAdd);
         }
         if (effects.humidityAdd != 0) {
-            Planet planet = GameObject.Find("Planet").GetComponent<Planet>();
+            ZylinderPlanet planet = GameObject.Find("Planet").GetComponent<ZylinderPlanet>();
             planet.raiseHumidOfXRandomHex(effects.humidityAdd);
         }
         if (effects.temperatureSub != 0) {
-            Planet planet = GameObject.Find("Planet").GetComponent<Planet>();
+            ZylinderPlanet planet = GameObject.Find("Planet").GetComponent<ZylinderPlanet>();
             planet.lowerTempOfXRandomHex(effects.temperatureSub);
         }
         if (effects.humiditySub != 0) {
-            Planet planet = GameObject.Find("Planet").GetComponent<Planet>();
+            ZylinderPlanet planet = GameObject.Find("Planet").GetComponent<ZylinderPlanet>();
             planet.lowerHumidOfXRandomHex(effects.humiditySub);
         }
         if (effects.CatNumber == 1) {
-            Planet planet = GameObject.Find("Planet").GetComponent<Planet>();
+            ZylinderPlanet planet = GameObject.Find("Planet").GetComponent<ZylinderPlanet>();
             planet.increaseCatastrophe(effects.CatNumber, MeteorChance);
         }
         if (effects.CatNumber == 2) {
-            Planet planet = GameObject.Find("Planet").GetComponent<Planet>();
+            ZylinderPlanet planet = GameObject.Find("Planet").GetComponent<ZylinderPlanet>();
             planet.increaseCatastrophe(effects.CatNumber, IceAgeChance);
         }
         if (effects.CatNumber == 3) {
-            Planet planet = GameObject.Find("Planet").GetComponent<Planet>();
+            ZylinderPlanet planet = GameObject.Find("Planet").GetComponent<ZylinderPlanet>();
             planet.increaseCatastrophe(effects.CatNumber, VolcanoChance);
         }
     }
@@ -131,11 +131,13 @@ public class Phase1Card : Card {
         effects.humidityAdd = 0;
         effects.humiditySub = 0;
 
+        int rareEffect = UnityEngine.Random.Range(1, 20);
+
         while (numberOfEffects > 0) {
             numberOfEffects -= 1;
             int whichEffect = UnityEngine.Random.Range(0, 4);
             whichCat = UnityEngine.Random.Range(1, 3);
-            int rareEffect = UnityEngine.Random.Range(1, 20);
+           
 
             //Catastrophs
             if (whichCat == 1 && rareEffect == 5) {
@@ -150,6 +152,7 @@ public class Phase1Card : Card {
                 effects.humidityAdd = (int) ((double) effects.humidityAdd * 1.5);
                 effects.temperatureSub = (int) ((double) effects.temperatureSub * 1.5);
                 effects.temperatureAdd = (int) ((double) effects.temperatureAdd * 1.5);
+                continue;
             }
             if (whichCat == 2 && rareEffect == 7) {
                 effectText += "IceAge % + " + IceAgeChance + "\n";
@@ -163,6 +166,7 @@ public class Phase1Card : Card {
                 effects.humidityAdd = (int) ((double) effects.humidityAdd * 1.5);
                 effects.temperatureSub = (int) ((double) effects.temperatureSub * 1.5);
                 effects.temperatureAdd = (int) ((double) effects.temperatureAdd * 1.5);
+                continue;
             }
             if (whichCat == 3 && rareEffect == 11) {
                 effectText += "Volcano % + " + VolcanoChance + "\n";
@@ -176,6 +180,7 @@ public class Phase1Card : Card {
                 effects.humidityAdd = (int) ((double) effects.humidityAdd * 1.5);
                 effects.temperatureSub = (int) ((double) effects.temperatureSub * 1.5);
                 effects.temperatureAdd = (int) ((double) effects.temperatureAdd * 1.5);
+                continue;
             }
 
             if (whichEffect == 0 && effects.temperatureAdd == 0) {
@@ -233,13 +238,13 @@ public class Phase1Card : Card {
 
         //sr.sprite = artList[(int)arts[x,y]];
         sr.sprite = artList[UnityEngine.Random.Range(0, artList.Length)];
-        if (whichCat == 1) {
+        if (rareEffect == 5) {
             sr.sprite = meteor;
         }
-        if (whichCat == 2) {
+        if (rareEffect == 7) {
             sr.sprite = iceAge;
         }
-        if (whichCat == 3) {
+        if (rareEffect == 11) {
             sr.sprite = volcano;
         }
         cardText.text = effectText;

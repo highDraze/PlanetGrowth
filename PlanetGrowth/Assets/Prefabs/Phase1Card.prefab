@@ -618,7 +618,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8616778566310346810}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0413ed9b1896b6d4cab09f316b3aa03f, type: 3}
+  m_Script: {fileID: 11500000, guid: ef47ae5bbe74d4542ac3ebf9c01740ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 1
@@ -632,13 +632,13 @@ MonoBehaviour:
   cardText: {fileID: 0}
   artList:
   - {fileID: 21300000, guid: f0b52fbea4091bc4e9e68188ae40a7d6, type: 3}
+  - {fileID: 21300000, guid: 51ac5cba4d66e1e4ba26efe2e021e761, type: 3}
   - {fileID: 21300000, guid: 24192704268134940a20403a0dce1451, type: 3}
   - {fileID: 21300000, guid: 459262f6d23ab7e43a3942d2d5c37e54, type: 3}
+  - {fileID: 21300000, guid: 18595635760cae94b856237a39b07ac0, type: 3}
   - {fileID: 21300000, guid: 315cd8186747e3b428a80f0a82192d07, type: 3}
   - {fileID: 21300000, guid: c0b65a35f795c9e499ab305581fd5668, type: 3}
   - {fileID: 21300000, guid: ab82270a03f7f584ba93c69b805d2482, type: 3}
-  - {fileID: 21300000, guid: 18595635760cae94b856237a39b07ac0, type: 3}
-  - {fileID: 21300000, guid: 51ac5cba4d66e1e4ba26efe2e021e761, type: 3}
   meteor: {fileID: 21300000, guid: 5aff90a0a78946a4d96523923f8e258d, type: 3}
   iceAge: {fileID: 21300000, guid: b5526eb10c36342409cb148693b5a5c1, type: 3}
   volcano: {fileID: 21300000, guid: 137206f841b6bca4bb0fb506622da0ea, type: 3}
