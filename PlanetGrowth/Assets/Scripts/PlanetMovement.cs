@@ -21,7 +21,9 @@ public class PlanetMovement : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-        if (Input.GetKey("w") | Input.GetKey("s") | Input.GetKey("a") | Input.GetKey("d")) {
+        if (Input.GetKey("w") | Input.GetKey("s") | Input.GetKey("a") | Input.GetKey("d")
+            | Input.GetKey("up") | Input.GetKey("down") | Input.GetKey("left")
+            | Input.GetKey("right") | Input.GetKey(KeyCode.Minus) | Input.GetKey(KeyCode.KeypadPlus)) {
             dragging = false;
             if (Input.GetKey("w")) {
                 transform.rotation *= Quaternion.Euler(10 * rotationSpeed * Time.deltaTime, 0, 0);
@@ -29,12 +31,39 @@ public class PlanetMovement : MonoBehaviour {
             else if (Input.GetKey("s")) {
                 transform.rotation *= Quaternion.Euler(-10 * rotationSpeed * Time.deltaTime, 0, 0);
             }
-            if (Input.GetKey("a")) {
+            if (Input.GetKey("a"))
+            {
                 transform.position += new Vector3(50 * horizontalSpeed * Time.deltaTime, 0, 0);
             }
-            else if (Input.GetKey("d")) {
+            else if (Input.GetKey("d"))
+            {
                 transform.position += new Vector3(-50 * horizontalSpeed * Time.deltaTime, 0, 0);
             }
+            else if (Input.GetKey("up"))
+            {
+                transform.position += new Vector3(0, -50 * horizontalSpeed * Time.deltaTime, 0);
+            }
+            else if (Input.GetKey("down"))
+            {
+                transform.position += new Vector3(0, 50 * horizontalSpeed * Time.deltaTime, 0);
+            }
+            else if (Input.GetKey("left"))
+            {
+                transform.position += new Vector3(-50 * horizontalSpeed * Time.deltaTime, 0, 0);
+            }
+            else if (Input.GetKey("right"))
+            {
+                transform.position += new Vector3(-50 * horizontalSpeed * Time.deltaTime, 0, 0);
+            }
+            else if (Input.GetKey(KeyCode.Minus))
+            {
+                transform.position += new Vector3(0, 0, 50 * horizontalSpeed * Time.deltaTime);
+            }
+            else if (Input.GetKey(KeyCode.KeypadPlus))
+            {
+                transform.position += new Vector3(0, 0, -50 * horizontalSpeed * Time.deltaTime);
+            }
+
         }
         else {
             dragWorld();

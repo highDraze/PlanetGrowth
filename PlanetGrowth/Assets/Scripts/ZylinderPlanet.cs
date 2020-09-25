@@ -75,8 +75,8 @@ public class ZylinderPlanet : MonoBehaviour {
                 Transform hex = Instantiate(hexPrefab).transform;
                 Vector2 gridPos = new Vector2(i, j);
 
-                hex.position = CalcWorldPos(gridPos);
-                hex.rotation = CalcRotation(gridPos);
+                hex.position = CalcWorldPosFlat(gridPos);
+                hex.rotation = CalcRotationFlat(gridPos);
                 hex.name = "Hexagon" + i + "|" + j;
                 //hex.GetComponent<Hexagon>().setStartBiome();
                 hex.parent = this.transform;
@@ -85,7 +85,26 @@ public class ZylinderPlanet : MonoBehaviour {
         }
     }
 
-    Vector3 CalcWorldPos(Vector2 gridPos) {
+    private Quaternion CalcRotationFlat(Vector2 gridPos)
+    {
+        return Quaternion.Euler(0, 0, 0);
+    }
+
+    private Vector3 CalcWorldPosFlat(Vector2 gridPos)
+    {
+        float offset = 0;
+        if (gridPos.y % 2 != 0)
+        {
+            offset = 0.5f;
+        }
+        Vector3 pos;
+        pos.z = startPos.z;
+        pos.y = startPos.y + hexHeigth * (gridPos.x+offset);
+        pos.x = startPos.x + hexWidth * gridPos.y;
+        return pos;
+    }
+
+    Vector3 CalcWorldPosCylinder(Vector2 gridPos) {
 
         float radius = hexWidth * 2;
         float offset = 0;
@@ -100,7 +119,7 @@ public class ZylinderPlanet : MonoBehaviour {
         return pos;
     }
 
-    private Quaternion CalcRotation(Vector2 gridPos) {
+    private Quaternion CalcRotationCylinder(Vector2 gridPos) {
         float offset = 0;
         if (gridPos.y % 2 != 0) {
             offset = 0.5f;
